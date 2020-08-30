@@ -1,5 +1,6 @@
 .app{
     display: flex;
+    height: 100%;
 }
 
 @media(max-width: 780px){
@@ -7,6 +8,5 @@
     .app{
         display: flex;
         flex-direction: column;
-        height: 100vh;
     }
 }

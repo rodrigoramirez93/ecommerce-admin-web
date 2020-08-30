@@ -1,17 +1,17 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { HomeRoutingModule } from './home-routing.module';
-import {MatGridListModule} from '@angular/material/grid-list';
 import { HomeComponent } from './home.page';
-
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   declarations: [HomeComponent],
   imports: [
     CommonModule,
     HomeRoutingModule,
-    MatGridListModule
+    MatTabsModule,
+    MatCardModule
   ],
   exports: [HomeComponent]
 })

@@ -1,0 +1,17 @@
+:host{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: inherit;
+}
+
+.login-form{
+    min-width: 50%;
+}
+
+.login-input{
+    width: 80%;
+    padding-right: 10%;
+    padding-left: 10%;
+}

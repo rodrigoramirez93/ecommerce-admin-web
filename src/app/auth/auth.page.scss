@@ -1,12 +1,9 @@
 :host{
     flex: 1;
-    background-color: red;
-    height: 100vh;
+    background-color: black;
+    border: 2px solid white;
 }
 
-@media(max-width: 780px){
-    :host{
-        flex: 1;
-        background-color: red;
-    }
+.auth{
+    height: 100%;
 }
