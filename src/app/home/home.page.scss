@@ -1,0 +1,13 @@
+:host{
+    flex: 0 0 65%;
+    background-color: blue;
+    height: 100vh;
+}
+
+
+@media(max-width: 780px){
+    :host{
+        flex: 0 0 65%;
+        background-color: blue;
+    }
+}

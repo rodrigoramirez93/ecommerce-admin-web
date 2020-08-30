@@ -1,0 +1,20 @@
+@import '~@angular/material/theming';
+@import '~src/assets/sass/_variables.scss';
+
+@include mat-core();
+
+$ecommerce-admin-web-primary: mat-palette($mat-blue-grey);
+$ecommerce-admin-web-accent: mat-palette($mat-blue-grey, A200, A100, A400);
+$ecommerce-admin-web-warn: mat-palette($mat-blue-grey);
+$ecommerce-admin-web-theme: mat-dark-theme((
+  color: (
+    primary: $ecommerce-admin-web-primary,
+    accent: $ecommerce-admin-web-accent,
+    warn: $ecommerce-admin-web-warn,
+  )
+));
+
+@include angular-material-theme($ecommerce-admin-web-theme);
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
