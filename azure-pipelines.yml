@@ -9,13 +9,42 @@ trigger:
 pool: 'RodsLocalPool'
 
 steps:
+
+- task: PowerShell@2
+  inputs:
+    targetType: 'inline'
+    script: |
+      node --version;
+      npm --version;
+      ls
+
+- task: Npm@1
+  inputs:
+    command: 'install'
+
+- task: PowerShell@2
+  inputs:
+    targetType: 'inline'
+    script: |
+      node --version;
+      npm --version;
+      ls
+
 - task: NodeTool@0
   inputs:
     versionSpec: '10.x'
   displayName: 'Install Node.js'
 
+- task: PowerShell@2
+  inputs:
+    targetType: 'inline'
+    script: |
+      node --version;
+      npm --version;
+      ls
+
 - script: |
-    npm run npm install -g @angular/cli
-    npm run npm install
-    npm run ng build --prod
+    npm install -g @angular/cli
+    npm install
+    ng build --prod
   displayName: 'npm install and build'
