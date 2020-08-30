@@ -8,6 +8,7 @@ import { AuthModule } from './auth/auth.module';
 import { HomeModule } from './home/home.module';
 import { AuthComponent } from './auth/auth.page';
 import { HomeComponent } from './home/home.page';
+import { MenuComponent } from './home/component/menu/menu.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,6 @@ import { HomeComponent } from './home/home.page';
   ],
   providers: [],
   bootstrap: [AppComponent],
-  exports: [AuthComponent, HomeComponent]
+  exports: [AuthComponent, HomeComponent, MenuComponent]
 })
 export class AppModule { }

@@ -6,6 +6,7 @@ import { AuthComponent } from './auth.page';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [AuthComponent, LoginFormComponent],
@@ -14,6 +15,7 @@ import { MatIconModule } from '@angular/material/icon';
     AuthRoutingModule,
     MatInputModule,
     MatIconModule,
+    MatButtonModule,
     FormsModule
   ],
   exports: [AuthComponent]

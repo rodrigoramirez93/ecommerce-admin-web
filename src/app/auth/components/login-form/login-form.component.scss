@@ -8,10 +8,30 @@
 
 .login-form{
     min-width: 50%;
+    padding: 10%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-form > * {
+    width: 100%;
 }
 
 .login-input{
     width: 80%;
     padding-right: 10%;
     padding-left: 10%;
+}
+
+.btn-container{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-btn{
+    width: 100%;
 }
