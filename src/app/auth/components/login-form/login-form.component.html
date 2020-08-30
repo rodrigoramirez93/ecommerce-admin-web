@@ -1,13 +1,41 @@
-<div class="login-form">
+<form class="login-form" [formGroup]="loginForm" (ngSubmit)="loginForm.valid && login()">
 
-      <mat-form-field appearance="fill" class="login-input">
+      <mat-form-field appearance="fill" class="login-input-container">
         <mat-label>Username</mat-label>
-        <input matInput type="text">
+        <input matInput type="text" required class="login-input" formControlName="username">
+
+        <div *ngIf="usernameControl.invalid && (usernameControl.dirty || usernameControl.touched)"
+          class="alert alert-danger">
+          <mat-error *ngIf="usernameControl.errors.required">
+            {{usernameRequiredErrorMessage}}
+          </mat-error>
+          <mat-error *ngIf="usernameControl.errors.maxlength">
+            {{usernameMaxLengthErrorMessage}}
+          </mat-error>
+          <mat-error *ngIf="usernameControl.errors.minlength">
+            {{usernameMinLengthErrorMessage}}
+          </mat-error>
+        </div>
+
       </mat-form-field>
     
-      <mat-form-field appearance="fill" class="login-input">
+      <mat-form-field appearance="fill" class="login-input-container">
         <mat-label>Password</mat-label>
-        <input matInput [type]="hide ? 'password' : 'text'">
+        <input matInput [type]="hide ? 'password' : 'text'" required class="login-input" formControlName="password">
+        
+        <div *ngIf="passwordControl.invalid && (passwordControl.dirty || passwordControl.touched)"
+          class="alert alert-danger">
+          <mat-error *ngIf="passwordControl.errors.required">
+            {{passwordRequiredErrorMessage}}
+          </mat-error>
+          <mat-error *ngIf="passwordControl.errors.maxlength">
+            {{passwordMaxLengthErrorMessage}}
+          </mat-error>
+          <mat-error *ngIf="passwordControl.errors.minlength">
+            {{passwordMinLengthErrorMessage}}
+          </mat-error>
+        </div>
+        
         <button mat-icon-button matSuffix (click)="hide = !hide" 
           [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
         <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
@@ -18,5 +46,5 @@
         <button mat-raised-button color="primary" class="login-btn">Login</button>
       </div>
     
-</div>
+</form>
   

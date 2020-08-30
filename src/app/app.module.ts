@@ -9,6 +9,7 @@ import { HomeModule } from './home/home.module';
 import { AuthComponent } from './auth/auth.page';
 import { HomeComponent } from './home/home.page';
 import { MenuComponent } from './home/component/menu/menu.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -19,9 +20,9 @@ import { MenuComponent } from './home/component/menu/menu.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     AuthModule,
-    HomeModule
+    HomeModule,
+    HttpClientModule,
   ],
-  providers: [],
   bootstrap: [AppComponent],
   exports: [AuthComponent, HomeComponent, MenuComponent]
 })
