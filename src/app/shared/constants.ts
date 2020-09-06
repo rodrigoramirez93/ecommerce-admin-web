@@ -1,5 +1,4 @@
 
-
 export class ValidationConstants{
     
     public static MIN_LENGTH_USERNAME: number = 4;
@@ -7,6 +6,7 @@ export class ValidationConstants{
 
     public static MIN_LENGTH_PASSWORD: number = 4;
     public static MAX_LENGTH_PASSWORD: number = 15;
+    
 }
 
 export class ErrorMessages {

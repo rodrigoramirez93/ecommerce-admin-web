@@ -23,19 +23,6 @@
         <mat-label>Password</mat-label>
         <input matInput [type]="hide ? 'password' : 'text'" required class="login-input" formControlName="password">
         
-        <div *ngIf="passwordControl.invalid && (passwordControl.dirty || passwordControl.touched)"
-          class="alert alert-danger">
-          <mat-error *ngIf="passwordControl.errors.required">
-            {{passwordRequiredErrorMessage}}
-          </mat-error>
-          <mat-error *ngIf="passwordControl.errors.maxlength">
-            {{passwordMaxLengthErrorMessage}}
-          </mat-error>
-          <mat-error *ngIf="passwordControl.errors.minlength">
-            {{passwordMinLengthErrorMessage}}
-          </mat-error>
-        </div>
-        
         <button mat-icon-button matSuffix (click)="hide = !hide" 
           [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
         <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
