@@ -1,11 +1,12 @@
+import { HttpHeaders } from '@angular/common/http';
 
 export class ValidationConstants{
     
     public static MIN_LENGTH_USERNAME: number = 4;
-    public static MAX_LENGTH_USERNAME: number = 15;
+    public static MAX_LENGTH_USERNAME: number = 25;
 
     public static MIN_LENGTH_PASSWORD: number = 4;
-    public static MAX_LENGTH_PASSWORD: number = 15;
+    public static MAX_LENGTH_PASSWORD: number = 25;
     
 }
 
@@ -26,6 +27,13 @@ export class ErrorMessages {
 
 export class API { 
 
-    public static BASE_API = "https://e-commerce.azurewebsites.net";
-    public static LOGIN = "https://jsonplaceholder.typicode.com/posts";
+    public static BASE_API = "https://localhost:44390";
+}
+
+export class CONTROLLER {
+    public static AUTH = '/auth';
+}
+
+export class METHOD {
+    public static LOGIN = '/signin';
 }

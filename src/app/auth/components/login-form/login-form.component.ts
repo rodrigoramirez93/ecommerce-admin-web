@@ -50,11 +50,17 @@ export class LoginFormComponent implements OnInit {
     
     let authData: AuthenticationModel = 
     {
-       username: this.username.value,
-       password: this.password.value
+       Email: this.username.value,
+       Password: this.password.value
     };
 
-    var response = this.loginService.authenticate(authData).subscribe(data => console.log(data));
-    console.log('response', response);
+    var response = 
+    
+    this.loginService.authenticate(authData)
+      .subscribe({
+        next(data){console.log(data)}
+      })
+    
+      console.log('response', response);
   }
 }

@@ -1,4 +1,4 @@
 export interface AuthenticationModel {
-    username: string;
-    password: string;
+    Email: string;
+    Password: string;
 }

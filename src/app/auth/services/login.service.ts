@@ -3,11 +3,10 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 import { AuthenticationModel } from '../models/auth-model';
-import { API } from 'src/app/shared/constants';
+import { API, CONTROLLER, METHOD } from 'src/app/shared/constants';
 
-interface Article {
-  id: number;
-  title: string;
+interface Token {
+  Value: string;
 }
 
 @Injectable({
@@ -15,10 +14,13 @@ interface Article {
 })
 export class LoginService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+   }
 
-  authenticate(auth: AuthenticationModel) {
-    console.log(auth);
-    return this.http.post<Article>(API.LOGIN, { title: 'Angular POST Request Example' });
+  authenticate(credentials: AuthenticationModel) {
+    return this.http.post<Token>(
+      `${API.BASE_API}${CONTROLLER.AUTH}${METHOD.LOGIN}`,
+      credentials
+      );
   }
 }

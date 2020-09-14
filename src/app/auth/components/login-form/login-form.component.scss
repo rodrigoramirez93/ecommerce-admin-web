@@ -4,8 +4,9 @@
     align-items: center;
     justify-content: center;
     width: 100%;
-    background-image: url(/assets/images/wave.svg), linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(210,180,140,1) 50%, rgba(0,0,0,1) 100%);
-    background-position-y: bottom;
+    background-image: url(/assets/images/wave.png);
+    background-color: white;
+    background-position-x: left;
     background-repeat: no-repeat;
     background-size: contain;
     height: 100%;
@@ -52,5 +53,15 @@
 .login-banner-title{
     font-family: inherit;
     font-weight: 100;
-    color: white;
+    color: black;
+}
+
+@media(max-width: 780px){
+
+    :host{
+        background-image: url(/assets/images/wave-bottom.svg);
+        background-color: white;
+        background-position-y: bottom;
+    }
+
 }

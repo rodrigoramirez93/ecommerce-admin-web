@@ -9,7 +9,9 @@ import { HomeModule } from './home/home.module';
 import { AuthComponent } from './auth/auth.page';
 import { HomeComponent } from './home/home.page';
 import { MenuComponent } from './home/component/menu/menu.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { JsonContentTypeInterceptor } from '../app/shared/Interceptors/json-content-type.service';
+import { multicast } from 'rxjs/operators';
 
 @NgModule({
   declarations: [
@@ -24,6 +26,7 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule,
   ],
   bootstrap: [AppComponent],
-  exports: [AuthComponent, HomeComponent, MenuComponent]
+  exports: [AuthComponent, HomeComponent, MenuComponent],
+  providers: [{provide: HTTP_INTERCEPTORS, useClass: JsonContentTypeInterceptor, multi: true} ]
 })
 export class AppModule { }

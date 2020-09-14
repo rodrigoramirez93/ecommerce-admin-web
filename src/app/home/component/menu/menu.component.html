@@ -1,6 +1,6 @@
 <div class="home-nav">
   <nav mat-tab-nav-bar >
-    <a mat-tab-link
+    <a class="home-selector" mat-tab-link
       *ngFor="let link of navLinks"
       [routerLink]="link.path"
       routerLinkActive #rla="routerLinkActive"

@@ -6,7 +6,8 @@
 $ecommerce-admin-web-primary: mat-palette($mat-light-blue);
 $ecommerce-admin-web-accent: mat-palette($mat-light-blue, A200, A100, A400);
 $ecommerce-admin-web-warn: mat-palette($mat-red);
-$ecommerce-admin-web-theme: mat-dark-theme((
+
+$ecommerce-admin-web-theme: mat-light-theme((
   color: (
     primary: $ecommerce-admin-web-primary,
     accent: $ecommerce-admin-web-accent,
