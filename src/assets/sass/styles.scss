@@ -17,5 +17,8 @@ $ecommerce-admin-web-theme: mat-light-theme((
 
 @include angular-material-theme($ecommerce-admin-web-theme);
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { 
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  height: 100vh;
+}
