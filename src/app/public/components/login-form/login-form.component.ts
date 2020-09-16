@@ -1,17 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup, FormControl } from '@angular/forms';
 import { ValidationConstants, ErrorMessages } from '../../../shared/constants';
-import { LoginService } from '../../services/login.service';
-import { AuthenticationModel } from '../../models/auth-model';
+// import { AuthService } from '../../services/auth.service';
+// import { AuthenticationModel } from '../../models/auth-model';
 
 @Component({
   selector: 'app-login-form',
   templateUrl: './login-form.component.html',
-  styleUrls: ['./login-form.component.scss']
+  styleUrls: ['./login-form.component.scss']  
 })
 export class LoginFormComponent implements OnInit {
 
-  constructor(private fb:FormBuilder, private loginService: LoginService) {}
+  // , private AuthService: AuthService
+
+  constructor(private fb:FormBuilder) {}
 
   hide = true;
 
@@ -48,19 +50,14 @@ export class LoginFormComponent implements OnInit {
 
   login(){  
     
-    let authData: AuthenticationModel = 
-    {
-       Email: this.username.value,
-       Password: this.password.value
-    };
-
-    var response = 
+    // let authData: AuthenticationModel = 
+    // {
+    //    Email: this.username.value,
+    //    Password: this.password.value
+    // };
     
-    this.loginService.authenticate(authData)
-      .subscribe({
-        next(data){console.log(data)}
-      })
+    // this.AuthService.authenticate(authData)
+    //   .subscribe(_ => console.log(_));
     
-      console.log('response', response);
   }
 }

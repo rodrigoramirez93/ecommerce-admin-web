@@ -1,0 +1,20 @@
+.home{
+    flex: 0 0 50%;
+    background-color: black; 
+}
+
+.auth{
+    flex: 0 0 50%;
+    background-color: black; 
+}
+
+@media(max-width: 780px){
+
+    .home{
+        order: 2;
+    }
+
+    .auth{
+        order: 1;
+    }
+}
