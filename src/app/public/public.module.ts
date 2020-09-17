@@ -16,10 +16,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   imports: [
     CoreModule,
     SharedModule,
-    CommonModule,
-    BrowserModule,
-    BrowserAnimationsModule,
-    CommonModule,
     PublicRoutingModule,
   ],
   exports: [PublicComponent, MenuComponent, LandingComponent, LoginFormComponent, NewsComponent]

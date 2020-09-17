@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup, FormControl } from '@angular/forms';
 import { ValidationConstants, ErrorMessages } from '../../../shared/constants';
-// import { AuthService } from '../../services/auth.service';
-// import { AuthenticationModel } from '../../models/auth-model';
+import { AuthService } from '../../../core/services/auth.service';
+import { AuthenticationModel } from '../../../core/models/auth-model';
 
 @Component({
   selector: 'app-login-form',
@@ -11,9 +11,7 @@ import { ValidationConstants, ErrorMessages } from '../../../shared/constants';
 })
 export class LoginFormComponent implements OnInit {
 
-  // , private AuthService: AuthService
-
-  constructor(private fb:FormBuilder) {}
+  constructor(private fb:FormBuilder, private authService: AuthService) {}
 
   hide = true;
 
@@ -49,15 +47,18 @@ export class LoginFormComponent implements OnInit {
   }
 
   login(){  
+  
+    let authData: AuthenticationModel = 
+    {
+       Email: this.username.value,
+       Password: this.password.value
+    };
     
-    // let authData: AuthenticationModel = 
-    // {
-    //    Email: this.username.value,
-    //    Password: this.password.value
-    // };
-    
-    // this.AuthService.authenticate(authData)
-    //   .subscribe(_ => console.log(_));
-    
+    this.authService.authenticate(authData)
+      .subscribe(res => {
+        console.log('res', res);
+        this.authService.saveTokenInLocalStorage(res.token.idToken);
+        this.authService.saveExpirationDateInLocalStorage(res.token.expirationDate);
+    });    
   }
 }
