@@ -2,7 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { JwtHeaderSetterInterceptor } from './Interceptors/jwt-header-setter.interceptor';
 
 @NgModule({
   declarations: [],
@@ -12,6 +13,13 @@ import { HttpClientModule } from '@angular/common/http';
     CommonModule,
     HttpClientModule
   ],
-  exports: [CommonModule, BrowserModule, BrowserAnimationsModule, HttpClientModule]
+  exports: [CommonModule, BrowserModule, BrowserAnimationsModule, HttpClientModule],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass:  JwtHeaderSetterInterceptor,
+      multi: true
+    }
+  ]
 })
 export class CoreModule { }

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { JsonContentTypeInterceptor } from '../app/shared/Interceptors/json-content-type.service';
+import { JsonContentTypeInterceptor } from '../app/core/Interceptors/json-content-type.interceptor';
 import { CoreModule } from '../app/core/core.module';
 import { PublicModule } from '../app/public/public.module';
 import { CommonModule } from '@angular/common';
