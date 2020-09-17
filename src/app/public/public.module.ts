@@ -6,15 +6,15 @@ import { MenuComponent } from './components/menu/menu.component';
 import { SharedModule } from '../shared/shared.module';
 import { LandingComponent } from './components/landing/landing.component';
 import { LoginFormComponent } from './components/login-form/login-form.component';
-import { MatIcon } from '@angular/material/icon';
 import { NewsComponent } from './components/news/news.component';
+import { CoreModule } from '../core/core.module';
 
 @NgModule({
   declarations: [PublicComponent, MenuComponent, LandingComponent, LoginFormComponent, NewsComponent],
   imports: [
-    CommonModule,
-    PublicRoutingModule,
+    CoreModule,
     SharedModule,
+    PublicRoutingModule,
   ],
   exports: [PublicComponent, MenuComponent, LandingComponent, LoginFormComponent, NewsComponent]
 })

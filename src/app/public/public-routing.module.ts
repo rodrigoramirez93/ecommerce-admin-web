@@ -5,7 +5,10 @@ import { NewsComponent } from './components/news/news.component'
 
 const routes: Routes = [
   {
-    path: 'home', component: LandingComponent,
+    path: '', component: LandingComponent
+  },
+  {
+    path: 'home', component: LandingComponent
   },
   {
     path: 'news', component: NewsComponent

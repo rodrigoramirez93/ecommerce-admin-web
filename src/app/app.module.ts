@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JsonContentTypeInterceptor } from '../app/shared/Interceptors/json-content-type.service';
@@ -8,18 +7,19 @@ import { PublicModule } from '../app/public/public.module';
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
     AppComponent,
   ],
   imports: [
-    CommonModule,
-    BrowserModule,
-    BrowserAnimationsModule,
-    AppRoutingModule,
     CoreModule,
-    PublicModule
+    PublicModule,
+    RouterModule.forRoot([
+      { path: '', redirectTo: 'home', pathMatch: 'full' },
+      { path: '**', redirectTo: 'home', pathMatch: 'full' }
+    ])
   ],
   bootstrap: [AppComponent],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: JsonContentTypeInterceptor, multi: true} ]
