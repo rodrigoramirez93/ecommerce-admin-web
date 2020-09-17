@@ -14,7 +14,6 @@ import { RouterModule } from '@angular/router';
     AppComponent,
   ],
   imports: [
-    CoreModule,
     PublicModule,
     RouterModule.forRoot([
       { path: '', redirectTo: 'home', pathMatch: 'full' },

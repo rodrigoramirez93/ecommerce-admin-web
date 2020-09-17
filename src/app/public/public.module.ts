@@ -8,12 +8,18 @@ import { LandingComponent } from './components/landing/landing.component';
 import { LoginFormComponent } from './components/login-form/login-form.component';
 import { NewsComponent } from './components/news/news.component';
 import { CoreModule } from '../core/core.module';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [PublicComponent, MenuComponent, LandingComponent, LoginFormComponent, NewsComponent],
   imports: [
     CoreModule,
     SharedModule,
+    CommonModule,
+    BrowserModule,
+    BrowserAnimationsModule,
+    CommonModule,
     PublicRoutingModule,
   ],
   exports: [PublicComponent, MenuComponent, LandingComponent, LoginFormComponent, NewsComponent]
