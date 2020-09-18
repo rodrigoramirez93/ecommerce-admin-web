@@ -13,6 +13,8 @@ export class JsonContentTypeInterceptor implements HttpInterceptor {
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
+    console.log('im json content type interceptor');
+
     const modified = req.clone({ 
       setHeaders: { "Content-Type": "application/json; charset=utf-8" } 
     });

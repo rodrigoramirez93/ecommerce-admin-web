@@ -17,6 +17,11 @@ export class AuthService {
     this.jwtHelper = new JwtHelperService()
    }
 
+  public isAuthenticated(): boolean {
+    const token = localStorage.getItem('id_token');   
+    return !this.jwtHelper.isTokenExpired(token);
+  }
+
   authenticate(credentials: AuthenticationModel) {
     var request$ = this.http.post<TokenDtoResponse>(
       API.BASE_API + CONTROLLER.AUTH + METHOD.LOGIN,

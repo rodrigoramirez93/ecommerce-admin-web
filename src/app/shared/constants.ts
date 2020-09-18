@@ -1,4 +1,5 @@
 import { HttpHeaders } from '@angular/common/http';
+import { MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 
 export class ValidationConstants{
     
@@ -7,10 +8,26 @@ export class ValidationConstants{
 
     public static MIN_LENGTH_PASSWORD: number = 4;
     public static MAX_LENGTH_PASSWORD: number = 25;
-    
+}
+
+export class StyleConstants{
+    public static SNACKBAR_HORIZONTAL_POSITION: MatSnackBarHorizontalPosition = 'end';
+    public static SNACKBAR_VERTICAL_POSITION: MatSnackBarVerticalPosition = 'top';
+}
+
+export class InformationMessages{
+
+    public static REDIRECT = (route) => {
+        return `Redirecting to ${route}`;
+    }    
+
 }
 
 export class ErrorMessages {
+
+    public static UNAUTHORIZED = () => {
+        return 'Username or password are incorrects';
+    }
 
     public static REQUIRED_ERROR_MESSAGE = (property) => {
         return `${property} is required`;  

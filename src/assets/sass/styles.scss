@@ -1,5 +1,5 @@
 @import '~@angular/material/theming';
-@import '~src/assets/sass/_variables.scss';
+@import './variables';
 
 @include mat-core();
 
@@ -21,4 +21,20 @@ body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
   height: 100vh;
+}
+
+.login-snackbar-unauthorized{
+  background-color: #FF6961;
+  color: white;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+.login-snackbar-authorized{
+  background-color: #BDECB6;
+  color: white;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+input{
+  color: black !important;
 }

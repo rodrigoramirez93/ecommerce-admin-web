@@ -1,7 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { JwtAuthGuard } from '../core/guards/jwt-auth.guard';
+import { JwtHeaderSetterInterceptor } from '../core/Interceptors/jwt-header-setter.interceptor';
+import { UserPage } from './user.page';
 
-const routes: Routes = [];
+const routes: Routes = [
+  { path: 'user', component: UserPage, canActivate: [JwtAuthGuard]},
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

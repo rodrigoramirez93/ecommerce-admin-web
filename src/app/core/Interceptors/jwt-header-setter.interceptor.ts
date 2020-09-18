@@ -18,9 +18,10 @@ import { Observable } from 'rxjs';
 export class JwtHeaderSetterInterceptor implements HttpInterceptor {  
 
   constructor(public auth: AuthService) {}  
-
+  
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-
+    
+    console.log('im JwtHeaderSetterInterceptor');
     console.log(`added jwt: ${this.auth.getToken()}`);
 
     request = request.clone({

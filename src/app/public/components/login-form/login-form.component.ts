@@ -1,8 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup, FormControl } from '@angular/forms';
-import { ValidationConstants, ErrorMessages } from '../../../shared/constants';
+import { ValidationConstants, ErrorMessages, StyleConstants, InformationMessages } from '../../../shared/constants';
 import { AuthService } from '../../../core/services/auth.service';
 import { AuthenticationModel } from '../../../core/models/auth-model';
+import { takeUntil, takeWhile } from 'rxjs/operators';
+import { Subject } from 'rxjs';
+import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-form',
@@ -11,18 +15,18 @@ import { AuthenticationModel } from '../../../core/models/auth-model';
 })
 export class LoginFormComponent implements OnInit {
 
-  constructor(private fb:FormBuilder, private authService: AuthService) {}
+  constructor(private fb:FormBuilder, private authService: AuthService, private snackBar: MatSnackBar, private router: Router) {}
 
   hide = true;
 
+  ngUnsubscribe = new Subject();
+  
   loginForm: FormGroup;
-
   username = new FormControl('', 
     [Validators.required,
      Validators.maxLength(ValidationConstants.MAX_LENGTH_USERNAME),
      Validators.minLength(ValidationConstants.MIN_LENGTH_USERNAME)
     ]);
-
   password = new FormControl('',
     [Validators.required,
     Validators.maxLength(ValidationConstants.MAX_LENGTH_PASSWORD),
@@ -47,7 +51,6 @@ export class LoginFormComponent implements OnInit {
   }
 
   login(){  
-  
     let authData: AuthenticationModel = 
     {
        Email: this.username.value,
@@ -55,10 +58,39 @@ export class LoginFormComponent implements OnInit {
     };
     
     this.authService.authenticate(authData)
-      .subscribe(res => {
-        console.log('res', res);
-        this.authService.saveTokenInLocalStorage(res.token.idToken);
-        this.authService.saveExpirationDateInLocalStorage(res.token.expirationDate);
-    });    
+      .pipe(takeUntil(this.ngUnsubscribe))
+      .subscribe(
+        (res) => {
+          this.authService.saveTokenInLocalStorage(res.token.idToken);
+          this.authService.saveExpirationDateInLocalStorage(res.token.expirationDate);
+          this.snackBar.open(
+            InformationMessages.REDIRECT('welcome'),
+            'hide',
+            {
+              horizontalPosition: StyleConstants.SNACKBAR_HORIZONTAL_POSITION,
+              verticalPosition: StyleConstants.SNACKBAR_VERTICAL_POSITION,
+              panelClass: ['login-snackbar-authorized']
+            }
+          );
+          this.router.navigate(['welcome']);
+      },
+        (error) => {
+          console.log('errrrrrrrrrrror: ', error);
+          this.snackBar.open(
+            ErrorMessages.UNAUTHORIZED(),
+            'hide',
+            {
+              horizontalPosition: StyleConstants.SNACKBAR_HORIZONTAL_POSITION,
+              verticalPosition: StyleConstants.SNACKBAR_VERTICAL_POSITION,
+              panelClass: ['login-snackbar-unauthorized']
+            }
+            );
+        }
+    );    
+  }
+
+  ngOnDestroy() {
+    this.ngUnsubscribe.next();
+    this.ngUnsubscribe.complete();
   }
 }

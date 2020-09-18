@@ -1,16 +1,10 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { ProtectedRoutingModule } from './protected-routing.module';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { CoreModule } from '../core/core.module';
-import { JwtHeaderSetterInterceptor } from '../core/Interceptors/jwt-header-setter.interceptor';
-
+import { UserPage } from './user.page';
 
 @NgModule({
-  declarations: [],
+  declarations: [UserPage],
   imports: [
-    CoreModule,
-    CommonModule,
     ProtectedRoutingModule
   ]
 })
