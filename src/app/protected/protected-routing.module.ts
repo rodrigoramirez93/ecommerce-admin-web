@@ -5,7 +5,10 @@ import { JwtHeaderSetterInterceptor } from '../core/Interceptors/jwt-header-sett
 import { UserPage } from './user.page';
 
 const routes: Routes = [
-  { path: 'user', component: UserPage, canActivate: [JwtAuthGuard]},
+  { path: 'user', 
+    component: UserPage,
+    loadChildren: ()=> import('../protected/protected.module').then(m => m.ProtectedModule)
+  }
 ];
 
 @NgModule({

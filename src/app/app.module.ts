@@ -1,18 +1,25 @@
 import { NgModule } from '@angular/core';
-import { AppComponent } from './app.component';
-import { PublicModule } from '../app/public/public.module';
+import { App } from './app.page';
+import { PublicModule } from './public/public.module';
 import { RouterModule } from '@angular/router';
+import { ProtectedModule } from './protected/protected.module';
+import { UserPage } from './protected/user.page';
+import { CoreModule } from './core/core.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
+    App,
   ],
   imports: [
+    CoreModule,
     PublicModule,
+    ProtectedModule,
     RouterModule.forRoot([
-      { path: '', redirectTo: 'home', pathMatch: 'full' },
+      { path: '', redirectTo: 'home/welcome', pathMatch: 'full' },
+      { path: 'user', redirectTo: 'user' },
+      // { path: '**', redirectTo: 'home/welcome' }
     ])
   ],
-  bootstrap: [AppComponent],
+  bootstrap: [App],
 })
 export class AppModule { }

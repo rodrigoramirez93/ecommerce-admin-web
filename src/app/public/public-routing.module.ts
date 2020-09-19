@@ -5,16 +5,20 @@ import { NewsComponent } from './components/news/news.component'
 import { JwtAuthGuard } from '../../app/core/guards/jwt-auth.guard';
 import { UserPage } from '../protected/user.page';
 import { JwtModule } from '@auth0/angular-jwt';
+import { HomePage } from './home.page';
 
 const routes: Routes = [
-  { path: '', component: LandingComponent },
-  { path: 'home', component: LandingComponent },
-  { path: 'news', component: NewsComponent },
-  { path: 'welcome', 
-    component: UserPage,
-    loadChildren: ()=> import('../protected/protected.module').then(m => m.ProtectedModule),
-    canActivate: [JwtAuthGuard]
+
+  { path: 'home',
+    component: HomePage,
+    children: [
+      { path: '', component: LandingComponent },
+      { path: 'news', component: NewsComponent }
+    ],
+    loadChildren: ()=> import('../public/public.module').then(m => m.PublicModule)
   }
+  // { path: 'home/welcome', component: LandingComponent },
+  // { path: 'home/news', component: NewsComponent }
 ];
 
 @NgModule({

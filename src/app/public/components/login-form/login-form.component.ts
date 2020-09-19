@@ -72,7 +72,7 @@ export class LoginFormComponent implements OnInit {
               panelClass: ['login-snackbar-authorized']
             }
           );
-          this.router.navigate(['welcome']);
+          this.router.navigate(['user']);
       },
         (error) => {
           console.log('errrrrrrrrrrror: ', error);

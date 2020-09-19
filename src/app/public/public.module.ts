@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { PublicComponent  } from '../public/public.page';
+import { HomePage  } from './home.page';
 import { PublicRoutingModule } from './public-routing.module';
 import { MenuComponent } from './components/menu/menu.component';
 import { SharedModule } from '../shared/shared.module';
@@ -10,15 +10,15 @@ import { CoreModule } from '../core/core.module';
 import { ProtectedModule } from '../protected/protected.module';
 import { JwtModule } from '@auth0/angular-jwt';
 import { JwtAuthGuard } from '../core/guards/jwt-auth.guard';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
-  declarations: [PublicComponent, MenuComponent, LandingComponent, LoginFormComponent, NewsComponent],
+  declarations: [HomePage, MenuComponent, LandingComponent, LoginFormComponent, NewsComponent],
   imports: [
-    CoreModule,
+    CommonModule,
     SharedModule,
-    ProtectedModule,
     PublicRoutingModule,
   ],
-  exports: [PublicComponent, MenuComponent, LandingComponent, LoginFormComponent, NewsComponent]
+  exports: [HomePage, MenuComponent, LandingComponent, LoginFormComponent, NewsComponent]
 })
 export class PublicModule { }
