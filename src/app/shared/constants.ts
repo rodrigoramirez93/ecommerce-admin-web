@@ -1,5 +1,6 @@
 import { HttpHeaders } from '@angular/common/http';
 import { MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
+import { environment } from 'src/environments/environment';
 
 export class ValidationConstants{
     
@@ -44,7 +45,7 @@ export class ErrorMessages {
 
 export class API { 
 
-    public static BASE_API = "https://localhost:44390";
+    public static BASE_API = environment.ApiUrl;
 }
 
 export class CONTROLLER {
