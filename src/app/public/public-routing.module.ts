@@ -3,22 +3,21 @@ import { Routes, RouterModule } from '@angular/router';
 import { LandingComponent } from './components/landing/landing.component';
 import { NewsComponent } from './components/news/news.component'
 import { JwtAuthGuard } from '../../app/core/guards/jwt-auth.guard';
-import { UserPage } from '../protected/user.page';
-import { JwtModule } from '@auth0/angular-jwt';
 import { HomePage } from './home.page';
+import { UnauthorizedComponent } from './components/unauthorized/unauthorized.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 const routes: Routes = [
 
-  { path: 'home',
+  { 
+    path: '',
     component: HomePage,
     children: [
-      { path: '', component: LandingComponent },
-      { path: 'news', component: NewsComponent }
-    ],
-    loadChildren: ()=> import('../public/public.module').then(m => m.PublicModule)
+      { path: 'news', component: NewsComponent },
+      { path: 'welcome', component: LandingComponent },
+      { path: '', component: LandingComponent, pathMatch: 'full' }
+    ]
   }
-  // { path: 'home/welcome', component: LandingComponent },
-  // { path: 'home/news', component: NewsComponent }
 ];
 
 @NgModule({

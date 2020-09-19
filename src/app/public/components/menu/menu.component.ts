@@ -9,11 +9,11 @@ export class MenuComponent implements OnInit {
 
   navLinks = [
     {
-      path: "/home",
+      path: "welcome",
       label: "Home"
     },
     {
-      path: "/home/news",
+      path: "news",
       label: "News"
     }];
 

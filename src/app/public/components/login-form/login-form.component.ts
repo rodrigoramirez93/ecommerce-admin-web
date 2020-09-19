@@ -64,7 +64,7 @@ export class LoginFormComponent implements OnInit {
           this.authService.saveTokenInLocalStorage(res.token.idToken);
           this.authService.saveExpirationDateInLocalStorage(res.token.expirationDate);
           this.snackBar.open(
-            InformationMessages.REDIRECT('welcome'),
+            InformationMessages.REDIRECT('user'),
             'hide',
             {
               horizontalPosition: StyleConstants.SNACKBAR_HORIZONTAL_POSITION,
@@ -75,7 +75,7 @@ export class LoginFormComponent implements OnInit {
           this.router.navigate(['user']);
       },
         (error) => {
-          console.log('errrrrrrrrrrror: ', error);
+          console.log('error: ', error);
           this.snackBar.open(
             ErrorMessages.UNAUTHORIZED(),
             'hide',
@@ -84,7 +84,8 @@ export class LoginFormComponent implements OnInit {
               verticalPosition: StyleConstants.SNACKBAR_VERTICAL_POSITION,
               panelClass: ['login-snackbar-unauthorized']
             }
-            );
+          );
+          this.router.navigate(['unauthorized']);
         }
     );    
   }

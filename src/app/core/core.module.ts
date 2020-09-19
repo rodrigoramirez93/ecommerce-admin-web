@@ -26,7 +26,8 @@ import { JwtAuthGuard } from './guards/jwt-auth.guard';
       provide: HTTP_INTERCEPTORS,
       useClass:  JsonContentTypeInterceptor,
       multi: true
-    }
+    },
+    JwtAuthGuard
   ]
 })
 export class CoreModule { }

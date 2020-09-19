@@ -5,6 +5,9 @@ import { RouterModule } from '@angular/router';
 import { ProtectedModule } from './protected/protected.module';
 import { UserPage } from './protected/user.page';
 import { CoreModule } from './core/core.module';
+import { JwtAuthGuard } from './core/guards/jwt-auth.guard';
+import { UnauthorizedComponent } from './public/components/unauthorized/unauthorized.component';
+import { NotFoundComponent } from './public/components/not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -12,12 +15,13 @@ import { CoreModule } from './core/core.module';
   ],
   imports: [
     CoreModule,
-    PublicModule,
-    ProtectedModule,
     RouterModule.forRoot([
-      { path: '', redirectTo: 'home/welcome', pathMatch: 'full' },
-      { path: 'user', redirectTo: 'user' },
-      // { path: '**', redirectTo: 'home/welcome' }
+      { path: 'home', loadChildren: () => import('./public/public.module').then(m => m.PublicModule) },
+      { path: 'user', loadChildren: () => import('./protected/protected.module').then(m => m.ProtectedModule), canActivate: [JwtAuthGuard] },
+      { path: '', redirectTo: '/home', pathMatch: 'full' },
+      { path: 'unauthorized', component: UnauthorizedComponent },
+      { path: 'not-found', component: NotFoundComponent },
+      { path: '**', redirectTo: '/not-found' }
     ])
   ],
   bootstrap: [App],

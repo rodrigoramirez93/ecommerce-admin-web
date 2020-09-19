@@ -11,9 +11,11 @@ import { ProtectedModule } from '../protected/protected.module';
 import { JwtModule } from '@auth0/angular-jwt';
 import { JwtAuthGuard } from '../core/guards/jwt-auth.guard';
 import { CommonModule } from '@angular/common';
+import { UnauthorizedComponent } from './components/unauthorized/unauthorized.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 @NgModule({
-  declarations: [HomePage, MenuComponent, LandingComponent, LoginFormComponent, NewsComponent],
+  declarations: [HomePage, MenuComponent, LandingComponent, LoginFormComponent, NewsComponent, UnauthorizedComponent, NotFoundComponent],
   imports: [
     CommonModule,
     SharedModule,
