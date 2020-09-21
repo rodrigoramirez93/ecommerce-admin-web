@@ -9,6 +9,16 @@ export class HomePage implements OnInit {
 
   constructor() { }
 
+  navLinks = [
+    {
+      path: "welcome",
+      label: "Home"
+    },
+    {
+      path: "news",
+      label: "News"
+    }];
+
   ngOnInit(): void {
   }
 

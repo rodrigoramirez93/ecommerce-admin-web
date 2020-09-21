@@ -7,11 +7,10 @@ import { HomePage } from './home.page';
 import { UnauthorizedComponent } from './components/unauthorized/unauthorized.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 
-const routes: Routes = [
-
+const routes: Routes = 
+[
   { 
-    path: '',
-    component: HomePage,
+    path: '', component: HomePage,
     children: [
       { path: 'news', component: NewsComponent },
       { path: 'welcome', component: LandingComponent },

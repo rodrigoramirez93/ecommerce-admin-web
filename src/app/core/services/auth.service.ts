@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { AuthenticationModel } from '../models/auth-model';
+import { SignupModel } from '../models/signup-model';
 import { API, CONTROLLER, METHOD } from '../../shared/constants';
 import { CoreModule } from '../core.module';
 import { TokenDtoResponse } from '../models/token-model';
@@ -25,6 +26,15 @@ export class AuthService {
   authenticate(credentials: AuthenticationModel) {
     var request$ = this.http.post<TokenDtoResponse>(
       API.BASE_API + CONTROLLER.AUTH + METHOD.LOGIN,
+      credentials
+      );
+    
+    return request$;
+  }
+
+  addUser(credentials: SignupModel){
+    var request$ = this.http.post(
+      API.BASE_API + CONTROLLER.AUTH + METHOD.SIGNUP,
       credentials
       );
     

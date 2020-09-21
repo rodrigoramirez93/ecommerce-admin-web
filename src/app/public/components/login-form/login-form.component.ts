@@ -69,7 +69,7 @@ export class LoginFormComponent implements OnInit {
             {
               horizontalPosition: StyleConstants.SNACKBAR_HORIZONTAL_POSITION,
               verticalPosition: StyleConstants.SNACKBAR_VERTICAL_POSITION,
-              panelClass: ['login-snackbar-authorized']
+              panelClass: ['snackbar-success']
             }
           );
           this.router.navigate(['user']);
@@ -82,7 +82,7 @@ export class LoginFormComponent implements OnInit {
             {
               horizontalPosition: StyleConstants.SNACKBAR_HORIZONTAL_POSITION,
               verticalPosition: StyleConstants.SNACKBAR_VERTICAL_POSITION,
-              panelClass: ['login-snackbar-unauthorized']
+              panelClass: ['snackbar-error']
             }
           );
           this.router.navigate(['unauthorized']);

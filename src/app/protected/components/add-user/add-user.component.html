@@ -1,0 +1,75 @@
+<mat-card class="add-user-card">
+  <mat-card-header>
+    <mat-card-title>Add a new user</mat-card-title>
+    <mat-card-subtitle></mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <form class="add-user-form" [formGroup]="addUserForm" (ngSubmit)="addUserForm.valid && login()">
+      <mat-form-field appearance="fill" class="add-user-input-container">
+        <mat-label>Username</mat-label>
+        <input matInput type="text" required class="add-user-input" formControlName="username">
+        <div *ngIf="usernameControl.invalid && (usernameControl.dirty || usernameControl.touched)"
+          class="alert alert-danger">
+          <mat-error *ngIf="usernameControl.errors.required">
+            {{usernameRequiredErrorMessage}}
+          </mat-error>
+          <mat-error *ngIf="usernameControl.errors.maxlength">
+            {{usernameMaxLengthErrorMessage}}
+          </mat-error>
+          <mat-error *ngIf="usernameControl.errors.minlength">
+            {{usernameMinLengthErrorMessage}}
+          </mat-error>
+        </div>
+      </mat-form-field>
+      <br>
+      <mat-form-field appearance="fill" class="add-user-input-container">
+        <mat-label>Password</mat-label>
+        <input matInput [type]="hide ? 'password' : 'text'" required class="add-user-input" formControlName="password">
+        <button mat-icon-button matSuffix (click)="hide = !hide" 
+          [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+      </mat-form-field>
+      <br>
+      <mat-form-field appearance="fill" class="add-user-input-container">
+        <mat-label>Firstname</mat-label>
+        <input matInput type="text" required class="add-user-input" formControlName="firstname">
+        <div *ngIf="firstnameControl.invalid && (firstnameControl.dirty || firstnameControl.touched)"
+          class="alert alert-danger">
+          <mat-error *ngIf="firstnameControl.errors.required">
+            {{firstnameRequiredErrorMessage}}
+          </mat-error>
+          <mat-error *ngIf="firstnameControl.errors.maxlength">
+            {{firstnameMaxLengthErrorMessage}}
+          </mat-error>
+          <mat-error *ngIf="firstnameControl.errors.minlength">
+            {{firstnameMinLengthErrorMessage}}
+          </mat-error>
+        </div>
+      </mat-form-field>
+      <br>
+      <mat-form-field appearance="fill" class="add-user-input-container">
+        <mat-label>Lastname</mat-label>
+        <input matInput type="text" required class="add-user-input" formControlName="lastname">
+        <div *ngIf="lastnameControl.invalid && (lastnameControl.dirty || lastnameControl.touched)"
+          class="alert alert-danger">
+          <mat-error *ngIf="lastnameControl.errors.required">
+            {{lastnameRequiredErrorMessage}}
+          </mat-error>
+          <mat-error *ngIf="lastnameControl.errors.maxlength">
+            {{lastnameMaxLengthErrorMessage}}
+          </mat-error>
+          <mat-error *ngIf="lastnameControl.errors.minlength">
+            {{lastnameMinLengthErrorMessage}}
+          </mat-error>
+        </div>
+      </mat-form-field>
+      <br>
+      <div class="btn-container">
+        <button mat-raised-button color="primary" class="add-user-btn">Create</button>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>
+
+  

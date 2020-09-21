@@ -9,6 +9,9 @@ export class ValidationConstants{
 
     public static MIN_LENGTH_PASSWORD: number = 4;
     public static MAX_LENGTH_PASSWORD: number = 25;
+
+    public static MIN_LENGTH_NAME: number = 2;
+    public static MAX_LENGTH_NAME: number = 30;
 }
 
 export class StyleConstants{
@@ -22,9 +25,17 @@ export class InformationMessages{
         return `Redirecting to ${route}`;
     }    
 
+    public static ADDED_SUCCESFULLY = (object) => {
+        return `${object} was added succesfully`
+    }
+
 }
 
 export class ErrorMessages {
+
+    public static INTERNAL_ERROR = () => {
+        return 'Something went wrong';
+    }
 
     public static UNAUTHORIZED = () => {
         return 'Username or password are incorrects';
@@ -54,4 +65,5 @@ export class CONTROLLER {
 
 export class METHOD {
     public static LOGIN = '/signin';
+    public static SIGNUP = '/signup';
 }

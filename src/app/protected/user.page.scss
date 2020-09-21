@@ -1,22 +1,10 @@
 :host{
-    width: 100vw;
-    height: 100vh;
+
 }
 
 .user{
-    background-color: black;
     display: flex;
-    align-self: center;
     justify-content: center;
+    align-items: center;
     height: 100%;
-    width: 100%;
-}
-
-.user-title{
-    max-width: 50%;
-    color: white;
-    background-color: transparent;
-    text-align: center;
-    margin: 0;
-    align-self: center;
 }

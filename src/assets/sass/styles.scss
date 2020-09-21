@@ -23,13 +23,13 @@ body {
   height: 100vh;
 }
 
-.login-snackbar-unauthorized{
+.snackbar-error{
   background-color: #FF6961;
   color: white;
   text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
 
-.login-snackbar-authorized{
+.snackbar-success{
   background-color: #BDECB6;
   color: white;
   text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
