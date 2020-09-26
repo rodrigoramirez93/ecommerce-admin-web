@@ -8,7 +8,6 @@ import { CoreModule } from './core/core.module';
 import { JwtAuthGuard } from './core/guards/jwt-auth.guard';
 import { UnauthorizedComponent } from './public/components/unauthorized/unauthorized.component';
 import { NotFoundComponent } from './public/components/not-found/not-found.component';
-import { SpinnerLoaderComponent } from '../app/shared/shared-components/spinner-loader/spinner-loader.component';
 import { SharedModule } from './shared/shared.module';
 
 @NgModule({

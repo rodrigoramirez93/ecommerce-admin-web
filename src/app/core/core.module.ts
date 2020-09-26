@@ -5,8 +5,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtHeaderSetterInterceptor } from './Interceptors/jwt-header-setter.interceptor';
 import { JsonContentTypeInterceptor } from './Interceptors/json-content-type.interceptor';
+import { SpinnerLoaderInterceptor } from './Interceptors/spinner-loader.interceptor';
 import { JwtAuthGuard } from './guards/jwt-auth.guard';
-import { SpinnerLoaderInterceptor } from './interceptors/spinner-loader.interceptor';
 
 @NgModule({
   declarations: [],
