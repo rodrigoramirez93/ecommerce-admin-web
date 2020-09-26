@@ -55,7 +55,8 @@ export class AddRoleComponent implements OnInit {
             {
               horizontalPosition: StyleConstants.SNACKBAR_HORIZONTAL_POSITION,
               verticalPosition: StyleConstants.SNACKBAR_VERTICAL_POSITION,
-              panelClass: ['snackbar-success']
+              duration: StyleConstants.SNACKBAR_DURATION,
+              panelClass: [StyleConstants.SNACKBAR_TYPE_SUCCESS]
             }
           );
       },
@@ -67,7 +68,8 @@ export class AddRoleComponent implements OnInit {
             {
               horizontalPosition: StyleConstants.SNACKBAR_HORIZONTAL_POSITION,
               verticalPosition: StyleConstants.SNACKBAR_VERTICAL_POSITION,
-              panelClass: ['snackbar-error']
+              duration: StyleConstants.SNACKBAR_DURATION,
+              panelClass: [StyleConstants.SNACKBAR_TYPE_ERROR]
             }
           );
         }

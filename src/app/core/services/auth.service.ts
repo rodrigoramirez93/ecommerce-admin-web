@@ -4,7 +4,7 @@ import { AuthenticationModel } from '../models/auth-model';
 import { SignupModel } from '../models/signup-model';
 import { API, CONTROLLER, METHOD } from '../../shared/constants';
 import { CoreModule } from '../core.module';
-import { TokenDtoResponse } from '../models/token-model';
+import { TokenDtoResponse, UserDto } from '../models/token-model';
 import { JwtHelperService } from '@auth0/angular-jwt/';
 import { AddRoleModel } from '../models/add-role-model';
 
@@ -55,6 +55,10 @@ export class AuthService {
     return localStorage.getItem('id_token');
   }
 
+  getFromLocalStorage(key){
+    return localStorage.getItem(key);
+  }
+
   saveTokenInLocalStorage(token: string){
     console.log('save token', token);
     localStorage.setItem('id_token', token);
@@ -64,6 +68,13 @@ export class AuthService {
     console.log('save date', expirationDate);
     console.log('expirationDate', expirationDate.valueOf());
     localStorage.setItem('expires_at', JSON.stringify(expirationDate.valueOf()))
+  }
+
+  saveUserDataInLocalStorage(userData: UserDto){
+    console.log(userData);
+    localStorage.setItem('user_data_id', userData.id);
+    localStorage.setItem('user_data_firstname', userData.firstName);
+    localStorage.setItem('user_data_lastname', userData.lastName);
   }
 
   isTokenExpired(){

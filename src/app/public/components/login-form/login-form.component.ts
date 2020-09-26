@@ -5,7 +5,7 @@ import { AuthService } from '../../../core/services/auth.service';
 import { AuthenticationModel } from '../../../core/models/auth-model';
 import { takeUntil, takeWhile } from 'rxjs/operators';
 import { Subject } from 'rxjs';
-import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 
 @Component({
@@ -63,13 +63,15 @@ export class LoginFormComponent implements OnInit {
         (res) => {
           this.authService.saveTokenInLocalStorage(res.token.idToken);
           this.authService.saveExpirationDateInLocalStorage(res.token.expirationDate);
+          this.authService.saveUserDataInLocalStorage(res.token.user);
           this.snackBar.open(
             InformationMessages.REDIRECT('user'),
             'hide',
             {
               horizontalPosition: StyleConstants.SNACKBAR_HORIZONTAL_POSITION,
               verticalPosition: StyleConstants.SNACKBAR_VERTICAL_POSITION,
-              panelClass: ['snackbar-success']
+              duration: StyleConstants.SNACKBAR_DURATION,
+              panelClass: [StyleConstants.SNACKBAR_TYPE_SUCCESS]
             }
           );
           this.router.navigate(['user']);
@@ -82,7 +84,8 @@ export class LoginFormComponent implements OnInit {
             {
               horizontalPosition: StyleConstants.SNACKBAR_HORIZONTAL_POSITION,
               verticalPosition: StyleConstants.SNACKBAR_VERTICAL_POSITION,
-              panelClass: ['snackbar-error']
+              duration: StyleConstants.SNACKBAR_DURATION,
+              panelClass: [StyleConstants.SNACKBAR_TYPE_ERROR]
             }
           );
           this.router.navigate(['unauthorized']);

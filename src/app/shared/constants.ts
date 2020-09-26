@@ -14,9 +14,19 @@ export class ValidationConstants{
     public static MAX_LENGTH_NAME: number = 30;
 }
 
+export class LocalStorageKeys{
+    public static TOKEN_EXPIRATION_DATE = 'expires_at';
+    public static USER_ID = 'user_data_id';
+    public static USER_FIRST_NAME = 'user_data_firstname';
+    public static USER_LAST_NAME = 'user_data_lastname';
+}
+
 export class StyleConstants{
     public static SNACKBAR_HORIZONTAL_POSITION: MatSnackBarHorizontalPosition = 'end';
     public static SNACKBAR_VERTICAL_POSITION: MatSnackBarVerticalPosition = 'top';
+    public static SNACKBAR_DURATION: number = 2000;
+    public static SNACKBAR_TYPE_SUCCESS: string = "snackbar-success";
+    public static SNACKBAR_TYPE_ERROR: string = "snackbar-error";
 }
 
 export class InformationMessages{

@@ -8,9 +8,10 @@ import { NewsComponent } from './components/news/news.component';
 import { CommonModule } from '@angular/common';
 import { UnauthorizedComponent } from './components/unauthorized/unauthorized.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { UserRedirectionComponent } from './components/user-redirection/user-redirection.component';
 
 @NgModule({
-  declarations: [HomePage, LandingComponent, LoginFormComponent, NewsComponent, UnauthorizedComponent, NotFoundComponent],
+  declarations: [HomePage, LandingComponent, LoginFormComponent, NewsComponent, UnauthorizedComponent, NotFoundComponent, UserRedirectionComponent],
   imports: [
     CommonModule,
     SharedModule,
