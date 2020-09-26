@@ -31,4 +31,8 @@ export class AuthBannerComponent implements OnInit {
     );
   }
 
+  redirectTo(route){
+    this.router.navigate([route]);
+  }
+
 }

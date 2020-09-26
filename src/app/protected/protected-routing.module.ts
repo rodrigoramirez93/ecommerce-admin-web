@@ -9,8 +9,8 @@ const routes: Routes =
   { 
     path: '', component: UserPage,
     children: [
-      { path: '', component: ManagmentComponent, pathMatch: 'full' },
-      { path: 'managment', component: ManagmentComponent }
+      { path: 'managment', component: ManagmentComponent },
+      { path: '', component: ManagmentComponent, pathMatch: 'full' }
     ]
   },
 ];

@@ -8,8 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class UserPage implements OnInit {
 
   navLinks = [ 
-    { path: '', label: 'Home' },
-    { path: 'managment', label: 'Managment' },
+    { path: 'managment', label: 'Managment' }
    ];
 
   constructor() { }

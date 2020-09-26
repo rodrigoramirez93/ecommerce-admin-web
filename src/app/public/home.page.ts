@@ -11,14 +11,9 @@ export class HomePage implements OnInit {
   constructor(public authService: AuthService) { }
 
   navLinks = [
-    {
-      path: "welcome",
-      label: "Home"
-    },
-    {
-      path: "news",
-      label: "News"
-    }];
+    { path: "welcome", label: "Home" },
+    { path: "news", label: "News"}
+  ];
 
   ngOnInit(): void {
   }
