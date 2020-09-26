@@ -1,9 +1,4 @@
-<mat-card class="add-user-card">
-  <mat-card-header>
-    <mat-card-title>Add a new user</mat-card-title>
-    <mat-card-subtitle></mat-card-subtitle>
-  </mat-card-header>
-  <mat-card-content>
+
     <form class="add-user-form" [formGroup]="addUserForm" (ngSubmit)="addUserForm.valid && login()">
       <mat-form-field appearance="fill" class="add-user-input-container">
         <mat-label>Username</mat-label>
@@ -69,7 +64,8 @@
         <button mat-raised-button color="primary" class="add-user-btn">Create</button>
       </div>
     </form>
-  </mat-card-content>
-</mat-card>
+    <div class="add-user-side-text">
+      <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p>
+    </div>
 
   
