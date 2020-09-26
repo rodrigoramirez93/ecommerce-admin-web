@@ -7,3 +7,29 @@
 .add-role-side-text{
     padding: 0% 5% 5% 5%;
 }
+
+@media(max-width: 550px){
+
+    :host{
+        max-width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .add-role-input-container{
+        width: 100%;
+    }
+
+    .add-role-side-text{
+        padding: 5% 5% 5% 5%;
+    }
+
+    .btn-container{
+        width: 100%;
+    }
+
+    .add-user-btn{
+        width: 100%;
+    }
+
+}

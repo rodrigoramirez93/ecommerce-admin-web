@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { MatInput, MatInputModule } from '@angular/material/input';
 import { MatIcon, MatIconModule } from '@angular/material/icon';
 import { MatButton, MatButtonModule } from '@angular/material/button';
-import { MatTab, MatTabLink, MatTabNav, MatTabsModule } from '@angular/material/tabs';
+import { MatTab, MatTabGroup, MatTabLink, MatTabNav, MatTabsModule } from '@angular/material/tabs';
 import { MatCard, MatCardContent, MatCardHeader, MatCardModule, MatCardSubtitle, MatCardTitle } from '@angular/material/card';
 import { MatError, MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
@@ -30,7 +30,8 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatInput, MatButton, MatTab, 
     MatTabNav, MatTabLink, MatError, MatAccordion,
     MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelContent,
-    MatExpansionPanelTitle, MatExpansionPanelDescription, MatDatepicker ]
+    MatExpansionPanelTitle, MatExpansionPanelDescription, MatDatepicker,
+    MatTabGroup ]
 })
 
 export class MaterialModule { }

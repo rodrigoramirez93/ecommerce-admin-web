@@ -83,4 +83,9 @@ export class AuthService {
     console.log('is expired: ', response)
   }
 
+  logout(){
+    localStorage.removeItem("id_token");
+    localStorage.removeItem("expires_at");
+  }
+
 }

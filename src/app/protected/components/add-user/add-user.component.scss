@@ -9,10 +9,28 @@
 }
 
 
-@media(max-width: 780px){
+@media(max-width: 550px){
 
     :host{
+        max-width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
 
+    .add-user-side-text{
+        padding: 5% 5% 5% 5%;
+    }
+
+    .btn-container{
+        width: 100%;
+    }
+
+    .add-user-btn{
+        width: 100%;
+    }
+
+    .add-user-input-container{
+        width: 100%;
     }
 
 }
