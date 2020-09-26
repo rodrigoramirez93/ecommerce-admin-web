@@ -9,13 +9,15 @@ import { JwtAuthGuard } from './core/guards/jwt-auth.guard';
 import { UnauthorizedComponent } from './public/components/unauthorized/unauthorized.component';
 import { NotFoundComponent } from './public/components/not-found/not-found.component';
 import { SpinnerLoaderComponent } from '../app/shared/shared-components/spinner-loader/spinner-loader.component';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
-    App, SpinnerLoaderComponent
+    App
   ],
   imports: [
     CoreModule,
+    SharedModule,
     RouterModule.forRoot([
       { path: 'home', loadChildren: () => import('./public/public.module').then(m => m.PublicModule) },
       { path: 'user', loadChildren: () => import('./protected/protected.module').then(m => m.ProtectedModule), canActivate: [JwtAuthGuard] },
