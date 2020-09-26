@@ -6,6 +6,7 @@ import { API, CONTROLLER, METHOD } from '../../shared/constants';
 import { CoreModule } from '../core.module';
 import { TokenDtoResponse } from '../models/token-model';
 import { JwtHelperService } from '@auth0/angular-jwt/';
+import { AddRoleModel } from '../models/add-role-model';
 
 @Injectable({
   providedIn: CoreModule
@@ -36,6 +37,15 @@ export class AuthService {
     var request$ = this.http.post(
       API.BASE_API + CONTROLLER.AUTH + METHOD.SIGNUP,
       credentials
+      );
+    
+    return request$;
+  }
+
+  addRole(data: AddRoleModel){
+    var request$ = this.http.post(
+      API.BASE_API + CONTROLLER.AUTH + METHOD.ADD_ROLE,
+      data
       );
     
     return request$;

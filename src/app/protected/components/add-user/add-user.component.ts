@@ -74,7 +74,7 @@ export class AddUserComponent implements OnInit {
     })
   }
 
-  login(){  
+  addUser(){  
     let authData: SignupModel = 
     {
        Email: this.username.value,

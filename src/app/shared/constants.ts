@@ -64,6 +64,7 @@ export class CONTROLLER {
 }
 
 export class METHOD {
-    public static LOGIN = '/signin';
+    public static LOGIN = '/signIn';
     public static SIGNUP = '/signup';
+    public static ADD_ROLE = '/user/role';
 }

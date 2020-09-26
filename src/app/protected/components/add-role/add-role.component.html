@@ -1,5 +1,5 @@
 
-    <form class="add-role-form" [formGroup]="addRoleForm" (ngSubmit)="addRoleForm.valid">
+    <form class="add-role-form" [formGroup]="addRoleForm" (ngSubmit)="addRoleForm.valid && addRole()">
         <mat-form-field appearance="fill" class="add-role-input-container">
           <mat-label>Username/Email</mat-label>
           <input matInput type="text" required class="add-role-input" formControlName="username">

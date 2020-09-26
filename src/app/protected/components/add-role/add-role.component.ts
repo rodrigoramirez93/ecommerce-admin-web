@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Subject } from 'rxjs';
-import { ErrorMessages, ValidationConstants } from 'src/app/shared/constants';
+import { takeUntil } from 'rxjs/operators';
+import { AddRoleModel } from 'src/app/core/models/add-role-model';
+import { AuthService } from 'src/app/core/services/auth.service';
+import { ErrorMessages, InformationMessages, StyleConstants, ValidationConstants } from 'src/app/shared/constants';
 
 @Component({
   selector: 'add-role',
@@ -10,7 +14,7 @@ import { ErrorMessages, ValidationConstants } from 'src/app/shared/constants';
 })
 export class AddRoleComponent implements OnInit {
 
-  constructor(private fb:FormBuilder) { }
+  constructor(private fb:FormBuilder, private authService: AuthService, private snackBar: MatSnackBar) { }
 
   ngUnsubscribe = new Subject();
   addRoleForm: FormGroup;
@@ -33,6 +37,42 @@ export class AddRoleComponent implements OnInit {
 
   get usernameControl() { return this.addRoleForm.get('username') };
   get roleControl() { return this.addRoleForm.get('role') };
+
+  addRole(){  
+    let roleData: AddRoleModel = 
+    {
+       Username: this.username.value,
+       Role: this.role.value
+    };
+    
+    this.authService.addRole(roleData)
+      .pipe(takeUntil(this.ngUnsubscribe))
+      .subscribe(
+        () => {
+          this.snackBar.open(
+            InformationMessages.ADDED_SUCCESFULLY('Role'),
+            'hide',
+            {
+              horizontalPosition: StyleConstants.SNACKBAR_HORIZONTAL_POSITION,
+              verticalPosition: StyleConstants.SNACKBAR_VERTICAL_POSITION,
+              panelClass: ['snackbar-success']
+            }
+          );
+      },
+        (error) => {
+          console.log('error: ', error);
+          this.snackBar.open(
+            ErrorMessages.INTERNAL_ERROR(),
+            'hide',
+            {
+              horizontalPosition: StyleConstants.SNACKBAR_HORIZONTAL_POSITION,
+              verticalPosition: StyleConstants.SNACKBAR_VERTICAL_POSITION,
+              panelClass: ['snackbar-error']
+            }
+          );
+        }
+    );    
+  }
 
   ngOnInit(): void {  
     this.addRoleForm = this.fb.group({
