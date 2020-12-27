@@ -61,9 +61,9 @@ export class LoginFormComponent implements OnInit {
       .pipe(takeUntil(this.ngUnsubscribe))
       .subscribe(
         (res) => {
-          this.authService.saveTokenInLocalStorage(res.token.idToken);
-          this.authService.saveExpirationDateInLocalStorage(res.token.expirationDate);
-          this.authService.saveUserDataInLocalStorage(res.token.user);
+          this.authService.saveTokenInLocalStorage(res.idToken);
+          this.authService.saveExpirationDateInLocalStorage(res.expirationDate);
+          this.authService.saveUserDataInLocalStorage(res.user);
           this.snackBar.open(
             InformationMessages.REDIRECT('user'),
             'hide',

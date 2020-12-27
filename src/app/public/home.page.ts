@@ -21,6 +21,4 @@ export class HomePage implements OnInit {
   userIsLoggedIn(){
     return this.authService.isAuthenticated();
   }
-
-
 }

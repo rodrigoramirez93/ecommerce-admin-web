@@ -9,9 +9,4 @@ export interface TokenDto{
     expirationDate: Date;
     user: UserDto
 }
-
-export interface TokenDtoResponse {
-    token: TokenDto,
-    httpStatusCode: number
-}
   

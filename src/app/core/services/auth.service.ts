@@ -4,7 +4,7 @@ import { AuthenticationModel } from '../models/auth-model';
 import { SignupModel } from '../models/signup-model';
 import { API, CONTROLLER, METHOD } from '../../shared/constants';
 import { CoreModule } from '../core.module';
-import { TokenDtoResponse, UserDto } from '../models/token-model';
+import { TokenDto, UserDto } from '../models/token-model';
 import { JwtHelperService } from '@auth0/angular-jwt/';
 import { AddRoleModel } from '../models/add-role-model';
 
@@ -25,7 +25,7 @@ export class AuthService {
   }
 
   authenticate(credentials: AuthenticationModel) {
-    var request$ = this.http.post<TokenDtoResponse>(
+    var request$ = this.http.post<TokenDto>(
       API.BASE_API + CONTROLLER.AUTH + METHOD.LOGIN,
       credentials
       );
