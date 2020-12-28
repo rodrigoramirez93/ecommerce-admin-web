@@ -8,9 +8,9 @@ import { MatAccordion } from '@angular/material/expansion';
 })
 export class ManagmentComponent implements OnInit {
 
-  @ViewChild(MatAccordion) accordion: MatAccordion;
-
   constructor() { }
+
+  cardsVisible: boolean = true;
 
   ngOnInit(): void {
   }

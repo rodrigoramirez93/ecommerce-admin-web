@@ -2,14 +2,18 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { UserPage } from './user.page';
 import { ManagmentComponent } from './components/managment/managment.component';
-import { HomePage } from '../public/home.page';
+import { AddRoleComponent } from './components/add-role/add-role.component';
 
 const routes: Routes = 
 [
   { 
     path: '', component: UserPage,
     children: [
-      { path: 'managment', component: ManagmentComponent },
+      { path: 'managment', component: ManagmentComponent, children: [
+        { 
+            path: 'add-role', component: AddRoleComponent 
+        }]
+      },
       { path: '', component: ManagmentComponent, pathMatch: 'full' }
     ]
   },

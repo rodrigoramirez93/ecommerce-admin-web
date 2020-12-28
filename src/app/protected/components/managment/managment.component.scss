@@ -1,4 +1,37 @@
-:host{
-    margin: 5%;
-    align-self: flex-start;
-}
+    .card {
+        overflow: hidden;   
+        margin: 1vw;
+    }
+
+    .card:hover{
+        background-color: red;
+    }
+
+    .subtitle {
+        text-align: center;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    }
+
+    .grid-container {
+        background-color: black;
+        border-radius: 2%;
+        opacity: 0.9;
+        margin-top: 2.5vh;
+        margin-bottom: 5vh;
+        margin-left: 5vw;
+        margin-right: 5vw;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-rows: 1fr;
+        gap: 1fr 1fr;
+        grid-template-areas:
+            ". . . ."
+    }
+
+    @media(max-width: 780px){
+
+        .grid-container {
+            background-color: red;
+        }
+    
+    }

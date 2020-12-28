@@ -3,7 +3,7 @@ import { MatInput, MatInputModule } from '@angular/material/input';
 import { MatIcon, MatIconModule } from '@angular/material/icon';
 import { MatButton, MatButtonModule } from '@angular/material/button';
 import { MatTab, MatTabGroup, MatTabLink, MatTabNav, MatTabsModule } from '@angular/material/tabs';
-import { MatCard, MatCardContent, MatCardHeader, MatCardModule, MatCardSubtitle, MatCardTitle } from '@angular/material/card';
+import { MatCard, MatCardContent, MatCardHeader, MatCardModule, MatCardSubtitle, MatCardTitle, MatCardActions } from '@angular/material/card';
 import { MatError, MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatAccordion, MatExpansionModule, MatExpansionPanel, MatExpansionPanelContent, MatExpansionPanelDescription, MatExpansionPanelHeader, MatExpansionPanelTitle } from '@angular/material/expansion';
@@ -21,7 +21,7 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatSnackBarModule,
     MatExpansionModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
   ],
   exports: 
     [MatCard, MatCardTitle, MatCardContent,
@@ -31,7 +31,7 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatTabNav, MatTabLink, MatError, MatAccordion,
     MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelContent,
     MatExpansionPanelTitle, MatExpansionPanelDescription, MatDatepicker,
-    MatTabGroup ]
+    MatTabGroup, MatCardActions]
 })
 
 export class MaterialModule { }
