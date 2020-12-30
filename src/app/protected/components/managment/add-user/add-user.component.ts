@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup, FormControl } from '@angular/forms';
-import { ValidationConstants, ErrorMessages, StyleConstants, InformationMessages } from '../../../shared/constants';
-import { AuthService } from '../../../core/services/auth.service';
+import { ValidationConstants, ErrorMessages, StyleConstants, InformationMessages } from '../../../../shared/constants';
+import { AuthService } from '../../../../core/services/auth.service';
 import { takeUntil } from 'rxjs/operators';
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { SignupModel } from 'src/app/core/models/signup-model';
+import { ManagmentService } from 'src/app/core/services/managment.service';
 
 @Component({
   selector: 'add-user',
@@ -14,10 +15,16 @@ import { SignupModel } from 'src/app/core/models/signup-model';
 })
 export class AddUserComponent implements OnInit {
 
-  constructor(private fb:FormBuilder, private authService: AuthService, private snackBar: MatSnackBar) {}
+  constructor(
+    private fb:FormBuilder,
+    private authService: AuthService,
+    private snackBar: MatSnackBar,
+    private managmentService: ManagmentService
+  ) {}
 
   hide = true;
   ngUnsubscribe = new Subject();
+  cardsVisible$: Observable<boolean> = new Observable<boolean>();
   addUserForm: FormGroup;
 
   username = new FormControl('', 
@@ -72,6 +79,13 @@ export class AddUserComponent implements OnInit {
       firstname: this.firstname,
       lastname: this.lastname 
     })
+
+    this.cardsVisible$ = this.managmentService.cardsVisible$;
+    this.cardsVisible$.subscribe(x => console.log('add-user cardsVisible', x));
+  }
+
+  onClickGoBack(){
+    this.managmentService.setCardVisible(!this.managmentService.getCardsVisible);
   }
 
   addUser(){  

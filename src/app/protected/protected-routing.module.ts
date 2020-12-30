@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { UserPage } from './user.page';
-import { ManagmentComponent } from './components/managment/managment.component';
-import { AddRoleComponent } from './components/add-role/add-role.component';
+import { ManagmentComponent } from './components/managment/managment.component'
+import { AddRoleComponent } from './components/managment/add-role/add-role.component';
 
 const routes: Routes = 
 [

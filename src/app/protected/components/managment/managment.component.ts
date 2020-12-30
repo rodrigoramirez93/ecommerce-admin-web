@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatAccordion } from '@angular/material/expansion';
+import { Observable } from 'rxjs';
+import { ManagmentService } from '../../../core/services/managment.service';
 
 @Component({
   selector: 'managment',
@@ -8,11 +9,17 @@ import { MatAccordion } from '@angular/material/expansion';
 })
 export class ManagmentComponent implements OnInit {
 
-  constructor() { }
+  constructor(private managmentService: ManagmentService) { }
 
-  cardsVisible: boolean = true;
+  cardsVisible$: Observable<boolean> = new Observable<boolean>();
 
   ngOnInit(): void {
+    this.cardsVisible$ = this.managmentService.cardsVisible$;
   }
 
+  onClickCard(id){
+    console.log(id);
+    return;
+    // this.managmentService.setCardVisible(!this.managmentService.getCardsVisible);
+  }
 }

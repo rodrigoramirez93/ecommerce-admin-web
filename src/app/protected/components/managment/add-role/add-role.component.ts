@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { AddRoleModel } from 'src/app/core/models/add-role-model';
 import { AuthService } from 'src/app/core/services/auth.service';
+import { ManagmentService } from 'src/app/core/services/managment.service';
 import { ErrorMessages, InformationMessages, StyleConstants, ValidationConstants } from 'src/app/shared/constants';
 
 @Component({
@@ -14,9 +15,15 @@ import { ErrorMessages, InformationMessages, StyleConstants, ValidationConstants
 })
 export class AddRoleComponent implements OnInit {
 
-  constructor(private fb:FormBuilder, private authService: AuthService, private snackBar: MatSnackBar) { }
+  constructor(
+    private fb:FormBuilder,
+    private authService: AuthService,
+    private snackBar: MatSnackBar,
+    private managmentService: ManagmentService
+  ) { }
 
   ngUnsubscribe = new Subject();
+  cardsVisible$: Observable<boolean> = new Observable<boolean>();
   addRoleForm: FormGroup;
 
   username = new FormControl('', 
@@ -80,7 +87,14 @@ export class AddRoleComponent implements OnInit {
     this.addRoleForm = this.fb.group({
       username: this.username,
       role: this.role
-    })
+    });
+
+    this.cardsVisible$ = this.managmentService.cardsVisible$;
+    this.cardsVisible$.subscribe(x => console.log('add-role cardsVisible', x));
+  }
+
+  onClickGoBack(){
+    this.managmentService.setCardVisible(!this.managmentService.getCardsVisible);
   }
 
   ngOnDestroy() {

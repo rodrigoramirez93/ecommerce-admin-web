@@ -1,164 +1,86 @@
 <router-outlet></router-outlet>
 
-<div>
-  <h1 class="subtitle">User</h1>
-  <div class="grid-container">
-    <mat-card class="card">
-      <mat-card-header>
-        <mat-card-title>Add User</mat-card-title>
-      </mat-card-header>
-      <mat-card-content>
-        <p>
-          Create a new blank user with base information.
-        </p>
-      </mat-card-content>
-      <mat-card-actions>
-        <button mat-button routerLink="/user/managment/add-role">Create</button>
-      </mat-card-actions>
-    </mat-card>
-    <!--  -->
-    <mat-card class="card">
-      <mat-card-header>
-        <mat-card-title>Get all users</mat-card-title>
-      </mat-card-header>
-      <mat-card-content>
-        <p>
-          Retrieve all users.
-        </p>
-      </mat-card-content>
-      <mat-card-actions>
-        <button mat-button>Get</button>
-      </mat-card-actions>
-    </mat-card>
-    <!--  -->
-    <mat-card class="card">
-      <mat-card-header>
-        <mat-card-title>Update User</mat-card-title>
-      </mat-card-header>
-      <mat-card-content>
-        <p>
-          Update a given user information
-        </p>
-      </mat-card-content>
-      <mat-card-actions>
-        <button mat-button>Update</button>
-      </mat-card-actions>
-    </mat-card>
-    <!--  -->
-    <mat-card class="card">
-      <mat-card-header>
-        <mat-card-title>Delete a user</mat-card-title>
-      </mat-card-header>
-      <mat-card-content>
-        <p>
-          Delete a user from the database
-        </p>
-      </mat-card-content>
-      <mat-card-actions>
-        <button mat-button>Delete</button>
-      </mat-card-actions>
-    </mat-card>
+  <div *ngIf="cardsVisible$ | async">
+    <div> 
+      <h1 class="subtitle">User</h1>
+      <div class="grid-container">
+        <!--  -->
+        <card 
+          titleText="Add User" 
+          contentText="Create a new blank user" 
+          redirectRoute="/user/managment/add-role"
+          buttonText="Create"
+          >
+        </card>
+        <!--  -->
+        <card 
+          titleText="Get all users" 
+          contentText="Retrieve all users." 
+          redirectRoute="/user/managment/add-role"
+          buttonText="Get"
+          >
+        </card>
+        <!--  -->
+        <card 
+          titleText="Update User" 
+          contentText="Update a given user information" 
+          redirectRoute="/user/managment/add-role"
+          buttonText="Update">
+        </card>
+        <!--  -->
+        <card 
+          titleText="Delete a user" 
+          contentText="Delete a user from the database" 
+          redirectRoute="/user/managment/add-role"
+          buttonText="Delete">
+        </card>
+      </div>
+    </div>
+    
+    <div>
+      <h1 class="subtitle">Role</h1>
+      <div class="grid-container">
+        <card 
+          titleText="Add user to role" 
+          contentText="Add a user to a given role" 
+          redirectRoute="/user/managment/add-role"
+          buttonText="Create">
+        </card>
+        <!--  -->
+        <card 
+          titleText="Get user roles" 
+          contentText="Get user roles" 
+          redirectRoute="/user/managment/add-role"
+          buttonText="Get">
+        </card>
+        <!--  -->
+        <card 
+          titleText="Update user role" 
+          contentText="Update user role" 
+          redirectRoute="/user/managment/add-role"
+          buttonText="Update">
+        </card>
+        <!--  -->
+        <card 
+          titleText="Delete role from user" 
+          contentText="Delete role from user" 
+          redirectRoute="/user/managment/add-role"
+          buttonText="Delete">
+        </card>
+        <!--  -->
+        <card 
+          titleText="Adding access to a role" 
+          contentText="Adding access to a role" 
+          redirectRoute="/user/managment/add-role"
+          buttonText="Add">
+        </card>
+        <!--  -->
+        <card 
+          titleText="Remove access to a role" 
+          contentText="Remove access to a role" 
+          redirectRoute="/user/managment/add-role"
+          buttonText="Remove">
+        </card>
+      </div>
+    </div>
   </div>
-</div>
-<div>
-  <h1 class="subtitle">Role</h1>
-  <div class="grid-container">
-    <mat-card class="card">
-      <mat-card-header>
-        <mat-card-title>Add user to role</mat-card-title>
-      </mat-card-header>
-      <mat-card-content>
-        <p>
-          Add a user to a given role.
-        </p>
-      </mat-card-content>
-      <mat-card-actions>
-        <button mat-button>Create</button>
-      </mat-card-actions>
-    </mat-card>
-    <!--  -->
-    <mat-card class="card">
-      <mat-card-header>
-        <mat-card-title>Get user roles</mat-card-title>
-      </mat-card-header>
-      <mat-card-content>
-        <p>
-          Get user roles.
-        </p>
-      </mat-card-content>
-      <mat-card-actions>
-        <button mat-button>Get</button>
-      </mat-card-actions>
-    </mat-card>
-    <!--  -->
-    <mat-card class="card">
-      <mat-card-header>
-        <mat-card-title>Update user role</mat-card-title>
-      </mat-card-header>
-      <mat-card-content>
-        <p>
-          Update user role
-        </p>
-      </mat-card-content>
-      <mat-card-actions>
-        <button mat-button>Update</button>
-      </mat-card-actions>
-    </mat-card>
-    <!--  -->
-    <mat-card class="card">
-      <mat-card-header>
-        <mat-card-title>Delete role from user</mat-card-title>
-      </mat-card-header>
-      <mat-card-content>
-        <p>
-          Delete role from user.
-        </p>
-      </mat-card-content>
-      <mat-card-actions>
-        <button mat-button>Delete</button>
-      </mat-card-actions>
-    </mat-card>
-    <!--  -->
-    <mat-card class="card">
-      <mat-card-header>
-        <mat-card-title>Adding access to a role</mat-card-title>
-      </mat-card-header>
-      <mat-card-content>
-        <p>
-          Adding access to a role
-        </p>
-      </mat-card-content>
-      <mat-card-actions>
-        <button mat-button>Add</button>
-      </mat-card-actions>
-    </mat-card>
-    <!--  -->
-    <mat-card class="card">
-      <mat-card-header>
-        <mat-card-title>Add access to a user</mat-card-title>
-      </mat-card-header>
-      <mat-card-content>
-        <p>
-          Add access to a user
-        </p>
-      </mat-card-content>
-      <mat-card-actions>
-        <button mat-button>Add</button>
-      </mat-card-actions>
-    </mat-card>
-    <!--  -->
-    <mat-card class="card">
-      <mat-card-header>
-        <mat-card-title>Remove access to a role</mat-card-title>
-      </mat-card-header>
-      <mat-card-content>
-        <p>
-          Remove access to a role
-        </p>
-      </mat-card-content>
-      <mat-card-actions>
-        <button mat-button>Remove</button>
-      </mat-card-actions>
-    </mat-card>
-  </div>
-</div>
