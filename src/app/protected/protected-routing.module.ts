@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { UserPage } from './user.page';
 import { ManagmentComponent } from './components/managment/managment.component'
 import { AddRoleComponent } from './components/managment/add-role/add-role.component';
+import { AddUserComponent } from './components/managment/add-user/add-user.component';
 
 const routes: Routes = 
 [
@@ -11,8 +12,12 @@ const routes: Routes =
     children: [
       { path: 'managment',  component: ManagmentComponent, children: [
         { 
-            path: 'add-role', component: AddRoleComponent 
-        }]
+            path: 'add-role', component: AddRoleComponent
+        },
+        { 
+          path: 'add-user', component: AddUserComponent
+        }
+      ]
       },
       { path: '', component: ManagmentComponent, pathMatch: 'full' }
     ]
