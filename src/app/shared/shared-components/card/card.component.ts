@@ -1,4 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { CardsService } from 'src/app/core/services/cards.service';
 
 @Component({
   selector: 'card',
@@ -12,15 +14,15 @@ export class CardComponent implements OnInit {
   @Input() redirectRoute: string;
   @Input() buttonText: string;
 
-  constructor() { }
+  constructor(private cardsService: CardsService) { }
+
+  cardsVisible$: Observable<boolean> = new Observable<boolean>();
 
   ngOnInit(): void {
+    this.cardsVisible$ = this.cardsService.cardsVisible$;
   }
 
-  onClickCard(id){
-    console.log(id);
-    return;
-    // this.managmentService.setCardVisible(!this.managmentService.getCardsVisible);
+  onClickCard(){
+    this.cardsService.setCardVisible(!this.cardsService.getCardsVisible);
   }
-
 }

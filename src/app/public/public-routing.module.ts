@@ -4,8 +4,6 @@ import { LandingComponent } from './components/landing/landing.component';
 import { NewsComponent } from './components/news/news.component'
 import { JwtAuthGuard } from '../../app/core/guards/jwt-auth.guard';
 import { HomePage } from './home.page';
-import { UnauthorizedComponent } from './components/unauthorized/unauthorized.component';
-import { NotFoundComponent } from './components/not-found/not-found.component';
 
 const routes: Routes = 
 [

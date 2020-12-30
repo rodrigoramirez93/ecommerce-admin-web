@@ -1,8 +1,10 @@
 .card {
     overflow: hidden;   
     margin: 1vw;
+    opacity: 0.9;
 }
 
 .card:hover{
-    background-color: red;
+    cursor: pointer;
+    opacity: 1;
 }

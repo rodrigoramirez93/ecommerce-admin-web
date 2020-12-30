@@ -9,7 +9,7 @@ const routes: Routes =
   { 
     path: '', component: UserPage,
     children: [
-      { path: 'managment', component: ManagmentComponent, children: [
+      { path: 'managment',  component: ManagmentComponent, children: [
         { 
             path: 'add-role', component: AddRoleComponent 
         }]

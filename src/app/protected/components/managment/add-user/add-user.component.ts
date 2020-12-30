@@ -6,7 +6,7 @@ import { takeUntil } from 'rxjs/operators';
 import { Observable, Subject } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { SignupModel } from 'src/app/core/models/signup-model';
-import { ManagmentService } from 'src/app/core/services/managment.service';
+import { CardsService } from 'src/app/core/services/cards.service';
 
 @Component({
   selector: 'add-user',
@@ -19,7 +19,7 @@ export class AddUserComponent implements OnInit {
     private fb:FormBuilder,
     private authService: AuthService,
     private snackBar: MatSnackBar,
-    private managmentService: ManagmentService
+    private cardsService: CardsService
   ) {}
 
   hide = true;
@@ -80,12 +80,12 @@ export class AddUserComponent implements OnInit {
       lastname: this.lastname 
     })
 
-    this.cardsVisible$ = this.managmentService.cardsVisible$;
+    this.cardsVisible$ = this.cardsService.cardsVisible$;
     this.cardsVisible$.subscribe(x => console.log('add-user cardsVisible', x));
   }
 
   onClickGoBack(){
-    this.managmentService.setCardVisible(!this.managmentService.getCardsVisible);
+    this.cardsService.setCardVisible(!this.cardsService.getCardsVisible);
   }
 
   addUser(){  

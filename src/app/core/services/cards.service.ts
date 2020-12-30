@@ -4,7 +4,7 @@ import { BehaviorSubject } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class ManagmentService {
+export class CardsService {
 
   constructor() { }
 
@@ -17,7 +17,6 @@ export class ManagmentService {
   }
 
   setCardVisible(cardVisible: boolean){
-    console.log('setCardVisible', cardVisible);
     this.cardsVisibleSource.next(cardVisible);
   }
 }

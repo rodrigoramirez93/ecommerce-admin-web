@@ -5,7 +5,7 @@ import { Observable, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { AddRoleModel } from 'src/app/core/models/add-role-model';
 import { AuthService } from 'src/app/core/services/auth.service';
-import { ManagmentService } from 'src/app/core/services/managment.service';
+import { CardsService } from 'src/app/core/services/cards.service';
 import { ErrorMessages, InformationMessages, StyleConstants, ValidationConstants } from 'src/app/shared/constants';
 
 @Component({
@@ -19,7 +19,7 @@ export class AddRoleComponent implements OnInit {
     private fb:FormBuilder,
     private authService: AuthService,
     private snackBar: MatSnackBar,
-    private managmentService: ManagmentService
+    private cardsService: CardsService
   ) { }
 
   ngUnsubscribe = new Subject();
@@ -89,18 +89,15 @@ export class AddRoleComponent implements OnInit {
       role: this.role
     });
 
-    this.cardsVisible$ = this.managmentService.cardsVisible$;
-    this.cardsVisible$.subscribe(x => console.log('add-role cardsVisible', x));
+    this.cardsVisible$ = this.cardsService.cardsVisible$;
   }
 
   onClickGoBack(){
-    this.managmentService.setCardVisible(!this.managmentService.getCardsVisible);
+    this.cardsService.setCardVisible(!this.cardsService.getCardsVisible);
   }
 
   ngOnDestroy() {
     this.ngUnsubscribe.next();
     this.ngUnsubscribe.complete();
   }
-
-
 }

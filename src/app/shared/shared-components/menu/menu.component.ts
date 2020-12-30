@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { CardsService } from 'src/app/core/services/cards.service';
 
 @Component({
   selector: 'app-menu',
@@ -9,9 +10,13 @@ export class MenuComponent implements OnInit {
 
   @Input() navLinks: [];
 
-  constructor() { }
+  constructor(private cardsService: CardsService) { }
 
   ngOnInit(): void {
+  }
+
+  onClickBanner(){
+    this.cardsService.setCardVisible(true);
   }
 
 }

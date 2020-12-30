@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { CardsService } from '../core/services/cards.service';
 
 @Component({
   selector: 'app-user',
@@ -11,7 +13,9 @@ export class UserPage implements OnInit {
     { path: 'managment', label: 'Managment' }
    ];
 
-  constructor() { }
+  constructor(
+    private cardsService: CardsService
+  ) { }
 
   ngOnInit(): void {
   }

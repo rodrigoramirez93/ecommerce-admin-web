@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ManagmentService } from '../../../core/services/managment.service';
+import { CardsService } from '../../../core/services/cards.service';
+import { HostListener } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'managment',
@@ -9,17 +11,19 @@ import { ManagmentService } from '../../../core/services/managment.service';
 })
 export class ManagmentComponent implements OnInit {
 
-  constructor(private managmentService: ManagmentService) { }
+  constructor(
+    private cardsService: CardsService
+    ) { }
 
   cardsVisible$: Observable<boolean> = new Observable<boolean>();
 
-  ngOnInit(): void {
-    this.cardsVisible$ = this.managmentService.cardsVisible$;
+  @HostListener('window:popstate', ['$event'])
+
+  onPopState(event) {
+    this.cardsService.setCardVisible(true);
   }
 
-  onClickCard(id){
-    console.log(id);
-    return;
-    // this.managmentService.setCardVisible(!this.managmentService.getCardsVisible);
+  ngOnInit(): void {
+    this.cardsVisible$ = this.cardsService.cardsVisible$;
   }
 }
