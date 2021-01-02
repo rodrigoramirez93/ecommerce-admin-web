@@ -17,6 +17,11 @@ $ecommerce-admin-web-theme: mat-light-theme((
 
 @include angular-material-theme($ecommerce-admin-web-theme);
 
+* {
+  font-family: Raleway /* Replace with your custom font */, sans-serif !important; 
+  /* Add !important to overwrite all elements */
+}
+
 body { 
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
