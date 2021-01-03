@@ -112,10 +112,10 @@ export class AddUserComponent implements OnInit {
             }
           );
       },
-        (error) => {
-          console.log('error: ', error);
+        (errorResponse) => {
+          console.log('error: ', errorResponse);
           this.snackBar.open(
-            ErrorMessages.INTERNAL_ERROR(),
+            errorResponse?.error?.detail ?? ErrorMessages.INTERNAL_ERROR(),
             'hide',
             {
               horizontalPosition: StyleConstants.SNACKBAR_HORIZONTAL_POSITION,

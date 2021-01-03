@@ -9,15 +9,14 @@ const routes: Routes =
 [
   { 
     path: '', component: UserPage,
-    children: [
-      { path: 'managment',  component: ManagmentComponent, children: [
-        { 
-            path: 'add-role', component: AddRoleComponent
-        },
-        { 
-          path: 'add-user', component: AddUserComponent
-        }
-      ]
+    children: 
+    [
+      { 
+        path: 'managment',  component: ManagmentComponent, children: 
+        [
+          {  path: 'add-role', component: AddRoleComponent },
+          {  path: 'add-user', component: AddUserComponent }
+        ]
       },
       { path: '', component: ManagmentComponent, pathMatch: 'full' }
     ]

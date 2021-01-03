@@ -26,7 +26,7 @@ export class AuthService {
 
   authenticate(credentials: AuthenticationModel) {
     var request$ = this.http.post<TokenDto>(
-      API.BASE_API + CONTROLLER.AUTH + METHOD.LOGIN,
+      API.BASE_API + CONTROLLER.AUTH + METHOD.AUTH_SIGNIN,
       credentials
       );
     
@@ -34,8 +34,10 @@ export class AuthService {
   }
 
   addUser(credentials: SignupModel){
+    console.log('result', API.BASE_API + CONTROLLER.AUTH);
+    console.log(credentials);
     var request$ = this.http.post(
-      API.BASE_API + CONTROLLER.AUTH + METHOD.SIGNUP,
+      API.BASE_API + CONTROLLER.USER,
       credentials
       );
     
@@ -44,7 +46,7 @@ export class AuthService {
 
   addRole(data: AddRoleModel){
     var request$ = this.http.post(
-      API.BASE_API + CONTROLLER.AUTH + METHOD.ADD_ROLE,
+      API.BASE_API + CONTROLLER.USER,
       data
       );
     

@@ -5,9 +5,9 @@ import { environment } from 'src/environments/environment';
 export class ValidationConstants{
     
     public static MIN_LENGTH_USERNAME: number = 4;
-    public static MAX_LENGTH_USERNAME: number = 25;
+    public static MAX_LENGTH_USERNAME: number = 35;
 
-    public static MIN_LENGTH_PASSWORD: number = 4;
+    public static MIN_LENGTH_PASSWORD: number = 8;
     public static MAX_LENGTH_PASSWORD: number = 25;
 
     public static MIN_LENGTH_NAME: number = 2;
@@ -65,16 +65,28 @@ export class ErrorMessages {
 }
 
 export class API { 
-
     public static BASE_API = environment.ApiUrl;
 }
 
 export class CONTROLLER {
-    public static AUTH = '/auth';
+    public static AUTH: string = "/Auth"
+    public static PRODUCT: string = "/Product"
+    public static ROLE: string = "/Role"    
+    public static USER: string = "/User"
+    public static ACCESS: string = "/Access"
+    public static CLAIMS: string = "/Claim"
 }
 
-export class METHOD {
-    public static LOGIN = '/signIn';
-    public static SIGNUP = '/signup';
-    public static ADD_ROLE = '/user/role';
+export class METHOD { 
+    public static AUTH_SIGNIN: string = '/SignIn';
+}
+
+export interface Method {
+    name: string,
+    controllerId: number
+}
+
+export interface Controller {
+    id: number,
+    name: string
 }

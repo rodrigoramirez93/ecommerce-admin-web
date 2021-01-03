@@ -1,85 +1,28 @@
 <router-outlet></router-outlet>
 
   <div *ngIf="cardsVisible$ | async">
-    <div> 
+    <div *ngIf="userCardsVisible$ | async"> 
       <h1 class="subtitle">User</h1>
       <div class="grid-container">
-        <!--  -->
-        <card 
-          titleText="Add User" 
-          contentText="Create a new blank user" 
-          redirectRoute="/user/managment/add-role"
-          buttonText="Create"
+        <card *ngFor="let card of userCards$ | async" 
+          [titleText]="card.titleText" 
+          [contentText]="card.contentText" 
+          [redirectRoute]="card.redirectRoute"
+          [buttonText]="card.buttonText"
           >
-        </card>
-        <!--  -->
-        <card 
-          titleText="Get all users" 
-          contentText="Retrieve all users." 
-          redirectRoute="/user/managment/add-role"
-          buttonText="Get"
-          >
-        </card>
-        <!--  -->
-        <card 
-          titleText="Update User" 
-          contentText="Update a given user information" 
-          redirectRoute="/user/managment/add-role"
-          buttonText="Update">
-        </card>
-        <!--  -->
-        <card 
-          titleText="Delete a user" 
-          contentText="Delete a user from the database" 
-          redirectRoute="/user/managment/add-role"
-          buttonText="Delete">
         </card>
       </div>
     </div>
     
-    <div>
+    <div *ngIf="roleCardsVisible$ | async">
       <h1 class="subtitle">Role</h1>
       <div class="grid-container">
-        <card 
-          titleText="Add user to role" 
-          contentText="Add a user to a given role" 
-          redirectRoute="/user/managment/add-role"
-          buttonText="Create">
-        </card>
-        <!--  -->
-        <card 
-          titleText="Get user roles" 
-          contentText="Get user roles" 
-          redirectRoute="/user/managment/add-role"
-          buttonText="Get">
-        </card>
-        <!--  -->
-        <card 
-          titleText="Update user role" 
-          contentText="Update user role" 
-          redirectRoute="/user/managment/add-role"
-          buttonText="Update">
-        </card>
-        <!--  -->
-        <card 
-          titleText="Delete role from user" 
-          contentText="Delete role from user" 
-          redirectRoute="/user/managment/add-role"
-          buttonText="Delete">
-        </card>
-        <!--  -->
-        <card 
-          titleText="Adding access to a role" 
-          contentText="Adding access to a role" 
-          redirectRoute="/user/managment/add-role"
-          buttonText="Add">
-        </card>
-        <!--  -->
-        <card 
-          titleText="Remove access to a role" 
-          contentText="Remove access to a role" 
-          redirectRoute="/user/managment/add-role"
-          buttonText="Remove">
+        <card *ngFor="let card of roleCards$ | async" 
+          [titleText]="card.titleText" 
+          [contentText]="card.contentText" 
+          [redirectRoute]="card.redirectRoute"
+          [buttonText]="card.buttonText"
+        >
         </card>
       </div>
     </div>
