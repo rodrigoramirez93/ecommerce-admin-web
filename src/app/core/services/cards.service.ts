@@ -26,9 +26,9 @@ export class CardsService {
        { titleText: 'Add user to role', buttonText: 'Create', contentText: 'Add user to role', redirectRoute: '/user/managment/add-role'},
        { titleText: 'Get user roles', buttonText: 'Get', contentText: 'Get user roles', redirectRoute: '/user/managment/add-role'},
        { titleText: 'Update user role', buttonText: 'Update', contentText: 'Update user role', redirectRoute: '/user/managment/add-role'},
-       { titleText: 'Delete role from user', buttonText: 'Delete', contentText: 'Delete role from user', redirectRoute: '/user/managment/add-role'},
-       { titleText: 'Adding access to a role', buttonText: 'Add', contentText: 'Adding access to a role', redirectRoute: '/user/managment/add-role'},
-       { titleText: 'Remove access to a role', buttonText: 'Remove', contentText: 'Remove access to a role', redirectRoute: '/user/managment/add-role'}
+       { titleText: 'Delete role', buttonText: 'Delete', contentText: 'Delete role from user', redirectRoute: '/user/managment/add-role'},
+       { titleText: 'Adding access', buttonText: 'Add', contentText: 'Adding access to a role', redirectRoute: '/user/managment/add-role'},
+       { titleText: 'Remove access', buttonText: 'Remove', contentText: 'Remove access to a role', redirectRoute: '/user/managment/add-role'}
     ]
   };
 

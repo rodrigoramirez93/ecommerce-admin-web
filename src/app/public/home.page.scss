@@ -5,6 +5,9 @@
 
 .auth{
     flex: 0 0 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .app{
@@ -25,5 +28,8 @@
 
     .auth{
         order: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 }
