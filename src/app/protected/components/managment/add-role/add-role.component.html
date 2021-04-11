@@ -1,5 +1,6 @@
 <div class="grid-container" *ngIf="!(cardsVisible$ | async)">  
-  <form class="form" [formGroup]="addRoleForm" (ngSubmit)="addRoleForm.valid && addRole()">
+   <h1 class="title">Add role to user</h1>
+   <form class="form" [formGroup]="addRoleForm" (ngSubmit)="addRoleForm.valid && addRole()">
    <mat-form-field class="input" appearance="fill">
       <mat-label>Username/Email</mat-label>
       <input matInput type="text" required formControlName="username">
