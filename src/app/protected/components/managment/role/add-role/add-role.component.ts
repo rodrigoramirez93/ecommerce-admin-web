@@ -26,30 +26,19 @@ export class AddRoleComponent implements OnInit {
   cardsVisible$: Observable<boolean> = new Observable<boolean>();
   addRoleForm: FormGroup;
 
-  username = new FormControl('', 
-  [Validators.required,
-   Validators.maxLength(ValidationConstants.MAX_LENGTH_USERNAME),
-   Validators.minLength(ValidationConstants.MIN_LENGTH_USERNAME)
-  ]);
-
   role = new FormControl('', 
   [Validators.required
   ]);
 
-  usernameMinLengthErrorMessage = ErrorMessages.MIN_LENGTH_ERROR_MESSAGE('Username', ValidationConstants.MIN_LENGTH_USERNAME);
-  usernameMaxLengthErrorMessage = ErrorMessages.MAX_LENGTH_ERROR_MESSAGE('Username', ValidationConstants.MAX_LENGTH_USERNAME);
-  usernameRequiredErrorMessage = ErrorMessages.REQUIRED_ERROR_MESSAGE('Username');
-
-  roleRequiredErrorMessage = ErrorMessages.REQUIRED_ERROR_MESSAGE('Username');
-
-  get usernameControl() { return this.addRoleForm.get('username') };
   get roleControl() { return this.addRoleForm.get('role') };
 
   addRole(){  
+
+    console.log('im being clicked');
+
     let roleData: AddRoleModel = 
     {
-       Username: this.username.value,
-       Role: this.role.value
+       name: this.role.value
     };
     
     this.authService.addRole(roleData)
@@ -85,7 +74,6 @@ export class AddRoleComponent implements OnInit {
 
   ngOnInit(): void {  
     this.addRoleForm = this.fb.group({
-      username: this.username,
       role: this.role
     });
 

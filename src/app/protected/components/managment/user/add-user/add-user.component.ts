@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup, FormControl } from '@angular/forms';
-import { ValidationConstants, ErrorMessages, StyleConstants, InformationMessages } from '../../../../shared/constants';
-import { AuthService } from '../../../../core/services/auth.service';
+import { ValidationConstants, ErrorMessages, StyleConstants, InformationMessages } from '../../../../../shared/constants';
+import { AuthService } from '../../../.././../core/services/auth.service';
 import { takeUntil } from 'rxjs/operators';
 import { Observable, Subject } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';

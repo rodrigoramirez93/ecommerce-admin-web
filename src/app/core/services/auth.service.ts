@@ -46,7 +46,7 @@ export class AuthService {
 
   addRole(data: AddRoleModel){
     var request$ = this.http.post(
-      API.BASE_API + CONTROLLER.USER,
+      API.BASE_API + CONTROLLER.ROLE,
       data
       );
     

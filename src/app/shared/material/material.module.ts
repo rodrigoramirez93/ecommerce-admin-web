@@ -9,6 +9,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatAccordion, MatExpansionModule, MatExpansionPanel, MatExpansionPanelContent, MatExpansionPanelDescription, MatExpansionPanelHeader, MatExpansionPanelTitle } from '@angular/material/expansion';
 import { MatDatepicker, MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { MatSelect, MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [],
@@ -22,6 +23,7 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatExpansionModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatSelectModule
   ],
   exports: 
     [MatCard, MatCardTitle, MatCardContent,
@@ -31,7 +33,7 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatTabNav, MatTabLink, MatError, MatAccordion,
     MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelContent,
     MatExpansionPanelTitle, MatExpansionPanelDescription, MatDatepicker,
-    MatTabGroup, MatCardActions]
+    MatTabGroup, MatCardActions, MatSelect]
 })
 
 export class MaterialModule { }

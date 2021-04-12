@@ -1,4 +1,3 @@
 export interface AddRoleModel {
-    Username: string;
-    Role: string;
+    name: string;
 }
