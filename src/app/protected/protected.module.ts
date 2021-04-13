@@ -17,7 +17,21 @@ import { DeleteRoleComponent } from './components/managment/role/delete-role/del
 import { UpdateRoleComponent } from './components/managment/role/update-role/update-role.component';
 
 @NgModule({
-  declarations: [UserPage, AddUserComponent, ManagmentComponent, AddRoleComponent, GetUserComponent, UpdateUserComponent, DeleteUserComponent, DeleteRoleComponent, GetRoleComponent, UpdateRoleComponent],
+  declarations: [
+    UserPage,
+    ManagmentComponent,  
+      
+      AddUserComponent, 
+      GetUserComponent,
+      UpdateUserComponent,
+      DeleteUserComponent,
+
+      AddRoleComponent,
+      DeleteRoleComponent, 
+      GetRoleComponent, 
+      UpdateRoleComponent
+    ],
+  
   imports: [
     CommonModule,
     SharedModule,

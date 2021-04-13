@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Observable } from 'rxjs/internal/Observable';
+import { CardsService } from 'src/app/core/services/cards.service';
 
 @Component({
   selector: 'delete-role',
@@ -7,9 +10,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DeleteRoleComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private snackBar: MatSnackBar,
+    private cardsService: CardsService
+  ) {}
 
-  ngOnInit(): void {
+  cardsVisible$: Observable<boolean> = new Observable<boolean>();
+
+  ngOnInit(): void {  
+    this.cardsVisible$ = this.cardsService.cardsVisible$;
   }
 
 }

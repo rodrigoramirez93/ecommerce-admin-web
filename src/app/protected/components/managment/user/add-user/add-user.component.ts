@@ -81,7 +81,6 @@ export class AddUserComponent implements OnInit {
     })
 
     this.cardsVisible$ = this.cardsService.cardsVisible$;
-    this.cardsVisible$.subscribe(x => console.log('add-user cardsVisible', x));
   }
 
   onClickGoBack(){

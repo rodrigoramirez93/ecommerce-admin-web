@@ -10,6 +10,8 @@ import { MatAccordion, MatExpansionModule, MatExpansionPanel, MatExpansionPanelC
 import { MatDatepicker, MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatSelect, MatSelectModule } from '@angular/material/select';
+import { MatCell, MatCellDef, MatColumnDef, MatFooterCellDef, MatHeaderCell, MatHeaderCellDef, MatHeaderRow, MatHeaderRowDef, MatRow, MatRowDef, MatTable, MatTableModule } from '@angular/material/table';
+import { CdkTableModule } from '@angular/cdk/table';
 
 @NgModule({
   declarations: [],
@@ -23,7 +25,8 @@ import { MatSelect, MatSelectModule } from '@angular/material/select';
     MatExpansionModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatSelectModule
+    MatSelectModule,
+    MatTableModule
   ],
   exports: 
     [MatCard, MatCardTitle, MatCardContent,
@@ -33,7 +36,7 @@ import { MatSelect, MatSelectModule } from '@angular/material/select';
     MatTabNav, MatTabLink, MatError, MatAccordion,
     MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelContent,
     MatExpansionPanelTitle, MatExpansionPanelDescription, MatDatepicker,
-    MatTabGroup, MatCardActions, MatSelect]
+    MatTabGroup, MatCardActions, MatSelect, MatTableModule]
 })
 
 export class MaterialModule { }
