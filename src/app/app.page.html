@@ -1,2 +1,2 @@
-<spinner-loader  *ngIf="spinnerService.isVisible() | async"></spinner-loader>
+<spinner-loader  *ngIf="spinnerVisible$ | async"></spinner-loader>
 <router-outlet></router-outlet>

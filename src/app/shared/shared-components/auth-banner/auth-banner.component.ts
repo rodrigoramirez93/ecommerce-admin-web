@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/core/services/auth.service';
+import { CardsService } from 'src/app/core/services/cards.service';
 import { InformationMessages, StyleConstants } from '../../constants';
 
 @Component({
@@ -11,7 +12,12 @@ import { InformationMessages, StyleConstants } from '../../constants';
 })
 export class AuthBannerComponent implements OnInit {
 
-  constructor(private router: Router, private authService: AuthService,  private snackBar: MatSnackBar) { }
+  constructor(
+    private router: Router,
+    private authService: AuthService,
+    private snackBar: MatSnackBar,
+    private cardService: CardsService
+    ) { }
 
   ngOnInit(): void {
   }
@@ -32,6 +38,7 @@ export class AuthBannerComponent implements OnInit {
   }
 
   redirectTo(route){
+    this.cardService.setCardVisible(true);
     this.router.navigate([route]);
   }
 

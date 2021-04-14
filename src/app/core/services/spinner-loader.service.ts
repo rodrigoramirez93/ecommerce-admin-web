@@ -9,17 +9,15 @@ export class SpinnerLoaderService {
 
   constructor() { }
 
-  private visible$ = new BehaviorSubject<boolean>(false);
+  private spinnerVisibleSource = new BehaviorSubject<boolean>(false);
 
-  show() {
-    this.visible$.next(true);
+  spinnerVisible$ = this.spinnerVisibleSource.asObservable();
+
+  public get getSpinnerVisible(){
+    return this.spinnerVisibleSource.value;
   }
 
-  hide() {
-    this.visible$.next(false);
-  }
-
-  isVisible(): Observable<boolean> {
-    return this.visible$.asObservable().pipe(share());
+  setSpinnerVisible(spinnerVisible: boolean){
+    this.spinnerVisibleSource.next(spinnerVisible);
   }
 }

@@ -37,6 +37,7 @@ const routes: Routes =
       { path: '', component: ManagmentComponent, pathMatch: 'full' }
     ]
   },
+  { path: 'user', redirectTo: '', pathMatch: 'full'}
 ];
 
 @NgModule({

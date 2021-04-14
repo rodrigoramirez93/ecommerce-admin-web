@@ -15,17 +15,16 @@ export class SpinnerLoaderInterceptor implements HttpInterceptor {
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
-    console.log('spinner interceptor');
-    this.spinnerService.show();
+    this.spinnerService.setSpinnerVisible(true);
 
     return next.handle(req).pipe(tap(
       (event: HttpEvent<any>) => {
         if (event instanceof HttpResponse) {
-          this.spinnerService.hide();
+          this.spinnerService.setSpinnerVisible(false);
         }
       },
       (err: any) => {
-        this.spinnerService.hide();
+        this.spinnerService.setSpinnerVisible(false);
       }
     ));
 

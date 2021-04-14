@@ -18,7 +18,9 @@ export class GetUserComponent implements AfterViewInit, OnInit {
   @ViewChild(MatTable) table: MatTable<UserTableItem>;
   dataSource: GetUserDataSource;
 
-  constructor(private userService: UserService, private cardsService: CardsService) {
+  constructor(
+    private userService: UserService,
+    private cardsService: CardsService) {
   }
   
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
@@ -35,9 +37,6 @@ export class GetUserComponent implements AfterViewInit, OnInit {
   }
 
   ngAfterViewInit() {
-    console.log('this', this);
-    this.dataSource.sort = this.sort;
-    this.dataSource.paginator = this.paginator;
     this.table.dataSource = this.dataSource;
   }
 }
