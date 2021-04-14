@@ -34,8 +34,6 @@ export class AuthService {
   }
 
   addUser(credentials: SignupModel){
-    console.log('result', API.BASE_API + CONTROLLER.AUTH);
-    console.log(credentials);
     var request$ = this.http.post(
       API.BASE_API + CONTROLLER.USER,
       credentials

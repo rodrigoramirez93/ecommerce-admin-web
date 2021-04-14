@@ -1,22 +1,3 @@
-.grid-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 0.4fr 0.5fr 2.1fr;
-  gap: 0px 0px;
-  grid-template-areas:
-    "title title title"
-    "text text text"
-    "table table table";
-}
-
-.table {
-    width: 100%;
-    grid-area: title;
-    text-align: center;
-  }
-
-.text {
+.full-width-table {
   width: 100%;
-  grid-area: text;
-  text-align: center;
 }

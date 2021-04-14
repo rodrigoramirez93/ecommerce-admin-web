@@ -33,9 +33,7 @@ export class AddRoleComponent implements OnInit {
   get roleControl() { return this.addRoleForm.get('role') };
 
   addRole(){  
-
-    console.log('im being clicked');
-
+    
     let roleData: AddRoleModel = 
     {
        name: this.role.value

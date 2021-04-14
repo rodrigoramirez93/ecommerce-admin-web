@@ -1,48 +1,43 @@
-import { Component, OnInit } from '@angular/core';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { Observable } from 'rxjs/internal/Observable';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTable } from '@angular/material/table';
+import { Observable } from 'rxjs';
 import { CardsService } from 'src/app/core/services/cards.service';
-
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
-}
-
-const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-  {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-  {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
-  {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-  {position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},
-  {position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C'},
-  {position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
-  {position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
-  {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
-  {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
-];
-
+import { UserService } from 'src/app/core/services/user.service';
+import { GetUserDataSource, UserTableItem } from './get-user-datasource';
 
 @Component({
   selector: 'get-user',
   templateUrl: './get-user.component.html',
   styleUrls: ['./get-user.component.scss']
 })
+export class GetUserComponent implements AfterViewInit, OnInit {
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatTable) table: MatTable<UserTableItem>;
+  dataSource: GetUserDataSource;
 
-export class GetUserComponent implements OnInit {
-
-  constructor(
-    private snackBar: MatSnackBar,
-    private cardsService: CardsService
-  ) {}
-
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  dataSource = ELEMENT_DATA;
-
+  constructor(private userService: UserService, private cardsService: CardsService) {
+  }
+  
+  /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
+  displayedColumns = ['firstName', 'lastName'];
   cardsVisible$: Observable<boolean> = new Observable<boolean>();
 
-  ngOnInit(): void {  
+  ngOnInit() {
     this.cardsVisible$ = this.cardsService.cardsVisible$;
+    this.dataSource = new GetUserDataSource(this.userService);
+  }
+
+  onClickGoBack(){
+    this.cardsService.setCardVisible(!this.cardsService.getCardsVisible);
+  }
+
+  ngAfterViewInit() {
+    console.log('this', this);
+    this.dataSource.sort = this.sort;
+    this.dataSource.paginator = this.paginator;
+    this.table.dataSource = this.dataSource;
   }
 }

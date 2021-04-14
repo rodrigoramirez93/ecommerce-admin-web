@@ -15,6 +15,9 @@ import { AddRoleComponent } from './components/managment/role/add-role/add-role.
 import { GetRoleComponent } from './components/managment/role/get-role/get-role.component';
 import { DeleteRoleComponent } from './components/managment/role/delete-role/delete-role.component';
 import { UpdateRoleComponent } from './components/managment/role/update-role/update-role.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
 
 @NgModule({
   declarations: [
@@ -35,7 +38,10 @@ import { UpdateRoleComponent } from './components/managment/role/update-role/upd
   imports: [
     CommonModule,
     SharedModule,
-    ProtectedRoutingModule
+    ProtectedRoutingModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule
   ]
 })
 export class ProtectedModule { }
