@@ -3,9 +3,10 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTable } from '@angular/material/table';
 import { Observable } from 'rxjs';
+import { UserDto } from 'src/app/core/models/token-model';
 import { CardsService } from 'src/app/core/services/cards.service';
 import { UserService } from 'src/app/core/services/user.service';
-import { GetUserDataSource, UserTableItem } from './get-user-datasource';
+import { GetUserDataSource } from './get-user-datasource';
 
 @Component({
   selector: 'get-user',
@@ -15,7 +16,7 @@ import { GetUserDataSource, UserTableItem } from './get-user-datasource';
 export class GetUserComponent implements AfterViewInit, OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
-  @ViewChild(MatTable) table: MatTable<UserTableItem>;
+  @ViewChild(MatTable) table: MatTable<UserDto>;
   dataSource: GetUserDataSource;
 
   constructor(
@@ -29,7 +30,7 @@ export class GetUserComponent implements AfterViewInit, OnInit {
 
   ngOnInit() {
     this.cardsVisible$ = this.cardsService.cardsVisible$;
-    this.dataSource = new GetUserDataSource(this.userService);
+    this.dataSource = new GetUserDataSource(this.userService, this.userService.getSearchUserInformation);
   }
 
   onClickGoBack(){

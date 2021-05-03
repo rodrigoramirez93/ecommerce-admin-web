@@ -1,0 +1,24 @@
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto  1fr 1fr;
+    gap: 0px 0px;
+    grid-template-areas:
+      ". title ."
+      "form form button";
+    }
+
+  .title{
+    grid-area: title;
+    text-align: center;
+  }
+
+  .form{
+    grid-area: form;
+    text-align: center;
+  }
+
+  .button{
+    grid-area: button;
+    text-align: center;
+  }

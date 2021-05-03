@@ -4,24 +4,23 @@ import { MatSort } from '@angular/material/sort';
 import { map } from 'rxjs/operators';
 import { Observable, of as observableOf, merge } from 'rxjs';
 import { UserService } from '../../../../../core/services/user.service'; 
+import { SearchUser } from 'src/app/core/models/search-user-model';
+import { UserDto } from 'src/app/core/models/token-model';
 
 // TODO: Replace this with your own data model type
-export interface UserTableItem {
-  firstName: string;
-  lastName: number;
-}
-
 /**
  * Data source for the GetUser view. This class should
  * encapsulate all logic for fetching and manipulating the displayed data
  * (including sorting, pagination, and filtering).
  */
-export class GetUserDataSource extends DataSource<UserTableItem> {
+export class GetUserDataSource extends DataSource<UserDto> {
   paginator: MatPaginator;
   sort: MatSort;
+  searchUser: SearchUser;
 
-  constructor(private userService: UserService) {
+  constructor(private userService: UserService, searchUser: SearchUser) {
     super();
+    this.searchUser = searchUser;
   }
 
   /**
@@ -29,10 +28,10 @@ export class GetUserDataSource extends DataSource<UserTableItem> {
    * the returned stream emits new items.
    * @returns A stream of the items to be rendered.
    */
-  connect(): Observable<UserTableItem[]> {
+  connect(): Observable<UserDto[]> {
     // Combine everything that affects the rendered data into one update
     // stream for the data-table to consume.
-    return this.userService.getUser();
+    return this.userService.searchedUsers$
   }
 
   /**
@@ -45,29 +44,29 @@ export class GetUserDataSource extends DataSource<UserTableItem> {
    * Paginate the data (client-side). If you're using server-side pagination,
    * this would be replaced by requesting the appropriate data from the server.
    */
-  private getPagedData(data: UserTableItem[]) {
-    const startIndex = this.paginator.pageIndex * this.paginator.pageSize;
-    return data.splice(startIndex, this.paginator.pageSize);
-  }
+  // private getPagedData(data: UserTableItem[]) {
+  //   const startIndex = this.paginator.pageIndex * this.paginator.pageSize;
+  //   return data.splice(startIndex, this.paginator.pageSize);
+  // }
 
   /**
    * Sort the data (client-side). If you're using server-side sorting,
    * this would be replaced by requesting the appropriate data from the server.
    */
-  private getSortedData(data: UserTableItem[]) {
-    if (!this.sort.active || this.sort.direction === '') {
-      return data;
-    }
+  // private getSortedData(data: UserTableItem[]) {
+  //   if (!this.sort.active || this.sort.direction === '') {
+  //     return data;
+  //   }
 
-    return data.sort((a, b) => {
-      const isAsc = this.sort.direction === 'asc';
-      switch (this.sort.active) {
-        case 'firstName': return compare(a.firstName, b.firstName, isAsc);
-        case 'lastName': return compare(+a.lastName, +b.lastName, isAsc);
-        default: return 0;
-      }
-    });
-  }
+  //   return data.sort((a, b) => {
+  //     const isAsc = this.sort.direction === 'asc';
+  //     switch (this.sort.active) {
+  //       case 'firstName': return compare(a.firstName, b.firstName, isAsc);
+  //       case 'lastName': return compare(+a.lastName, +b.lastName, isAsc);
+  //       default: return 0;
+  //     }
+  //   });
+  // }
 }
 
 /** Simple sort comparator for example ID/Name columns (for client-side sorting). */

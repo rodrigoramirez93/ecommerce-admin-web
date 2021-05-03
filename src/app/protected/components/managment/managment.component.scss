@@ -1,5 +1,9 @@
-    .card {
-        overflow: hidden;   
+:host{
+    width:100%;
+}
+
+.card {
+        overflow: hidden;       
         margin: 1vw;
     }
 

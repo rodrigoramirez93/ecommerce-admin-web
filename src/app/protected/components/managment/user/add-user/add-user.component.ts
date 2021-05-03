@@ -72,7 +72,7 @@ export class AddUserComponent implements OnInit {
   get firstnameControl() { return this.addUserForm.get('firstname') };
   get lastnameControl() { return this.addUserForm.get('lastname') };
 
-  ngOnInit(): void {  
+  ngOnInit(): void {
     this.addUserForm = this.fb.group({
       username: this.username,
       password: this.password,
