@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { API, CONTROLLER, METHOD } from '../../shared/constants';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { UserTableItem } from 'src/app/protected/components/managment/user/get-user/get-user-datasource';
 import { UserDto } from '../models/token-model';
 import { SearchUser } from '../models/search-user-model';
 
