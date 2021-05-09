@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup, FormControl } from '@angular/forms';
 import { ValidationConstants, ErrorMessages, StyleConstants, InformationMessages } from '../../../shared/constants';
 import { AuthService } from '../../../core/services/auth.service';
-import { AuthenticationModel } from '../../../core/models/auth-model';
+import { Authentication } from '../../../core/models/auth-model';
 import { takeUntil, takeWhile } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -51,10 +51,10 @@ export class LoginFormComponent implements OnInit {
   }
 
   login(){  
-    let authData: AuthenticationModel = 
+    let authData: Authentication = 
     {
-       Email: this.username.value,
-       Password: this.password.value
+       email: this.username.value,
+       password: this.password.value
     };
     
     this.authService.authenticate(authData)

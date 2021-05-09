@@ -5,3 +5,9 @@ export interface Card
     redirectRoute: string;
     buttonText: string;
 }
+
+export interface Cards
+{
+    context: string;
+    cardList: Card[]
+}

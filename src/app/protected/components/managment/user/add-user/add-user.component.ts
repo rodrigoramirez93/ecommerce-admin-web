@@ -5,7 +5,7 @@ import { AuthService } from '../../../.././../core/services/auth.service';
 import { takeUntil } from 'rxjs/operators';
 import { Observable, Subject } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { SignupModel } from 'src/app/core/models/signup-model';
+import { Signup } from 'src/app/core/models/auth-model';
 import { CardsService } from 'src/app/core/services/cards.service';
 
 @Component({
@@ -88,12 +88,12 @@ export class AddUserComponent implements OnInit {
   }
 
   addUser(){  
-    let authData: SignupModel = 
+    let authData: Signup = 
     {
-       Email: this.username.value,
-       Password: this.password.value,
-       FirstName: this.firstname.value,
-       LastName: this.lastname.value
+       email: this.username.value,
+       password: this.password.value,
+       firstName: this.firstname.value,
+       lastName: this.lastname.value
     };
     
     this.authService.addUser(authData)

@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 })
 export class JwtAuthGuard implements CanActivate {
 
-  constructor(private router: Router, private authService: AuthService, ) {}  
+  constructor(private router: Router, private authService: AuthService, ) {}
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
     var userIsAuthenticated = this.authService.isAuthenticated();

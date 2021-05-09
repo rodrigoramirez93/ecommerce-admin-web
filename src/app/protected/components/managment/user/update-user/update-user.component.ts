@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Observable } from 'rxjs/internal/Observable';
-import { ISearchUser, SearchUser } from 'src/app/core/models/search-user-model';
+import { SearchUser, SearchUserImpl } from 'src/app/core/models/search-user-model';
 import { CardsService } from 'src/app/core/services/cards.service';
 import { UserService } from 'src/app/core/services/user.service';
 import { SearchUserService } from 'src/app/core/services/search-user.service';
@@ -27,7 +27,7 @@ export class UpdateUserComponent implements OnInit {
   lastNameSearch = new FormControl('', []);
   firstNameUpdate = new FormControl('', []);
   lastNameUpdate = new FormControl('', []);
-  searchInformation: ISearchUser = new SearchUser();
+  searchInformation: SearchUser = new SearchUserImpl();
   searchUserForm: FormGroup;
   updateUserForm: FormGroup;
 
@@ -53,7 +53,7 @@ export class UpdateUserComponent implements OnInit {
   }
   
   searchUser() {
-    let searchUserInformation = new SearchUser();
+    let searchUserInformation = new SearchUserImpl();
     searchUserInformation.firstName = this.searchUserService.getFirstName;
     searchUserInformation.lastName = this.searchUserService.getLastName;
     this.userService.setSearchUserInformation(searchUserInformation);

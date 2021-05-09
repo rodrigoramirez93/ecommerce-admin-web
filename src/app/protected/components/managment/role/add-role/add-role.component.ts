@@ -3,7 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Observable, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { AddRoleModel } from 'src/app/core/models/add-role-model';
+import { AddRole } from 'src/app/core/models/role-model';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { CardsService } from 'src/app/core/services/cards.service';
 import { ErrorMessages, InformationMessages, StyleConstants, ValidationConstants } from 'src/app/shared/constants';
@@ -34,7 +34,7 @@ export class AddRoleComponent implements OnInit {
 
   addRole(){  
     
-    let roleData: AddRoleModel = 
+    let roleData: AddRole = 
     {
        name: this.role.value
     };

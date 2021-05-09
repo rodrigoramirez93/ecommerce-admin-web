@@ -5,7 +5,7 @@ import { map } from 'rxjs/operators';
 import { Observable, of as observableOf, merge } from 'rxjs';
 import { UserService } from '../../../../../core/services/user.service'; 
 import { SearchUser } from 'src/app/core/models/search-user-model';
-import { UserDto } from 'src/app/core/models/token-model';
+import { User } from 'src/app/core/models/auth-model';
 
 // TODO: Replace this with your own data model type
 /**
@@ -13,7 +13,7 @@ import { UserDto } from 'src/app/core/models/token-model';
  * encapsulate all logic for fetching and manipulating the displayed data
  * (including sorting, pagination, and filtering).
  */
-export class GetUserDataSource extends DataSource<UserDto> {
+export class GetUserDataSource extends DataSource<User> {
   paginator: MatPaginator;
   sort: MatSort;
   searchUser: SearchUser;
@@ -28,7 +28,7 @@ export class GetUserDataSource extends DataSource<UserDto> {
    * the returned stream emits new items.
    * @returns A stream of the items to be rendered.
    */
-  connect(): Observable<UserDto[]> {
+  connect(): Observable<User[]> {
     // Combine everything that affects the rendered data into one update
     // stream for the data-table to consume.
     return this.userService.searchedUsers$

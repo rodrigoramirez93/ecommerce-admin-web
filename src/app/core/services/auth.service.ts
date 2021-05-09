@@ -1,12 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { AuthenticationModel } from '../models/auth-model';
-import { SignupModel } from '../models/signup-model';
+import { Authentication, Signup, Token, User } from '../models/auth-model';
 import { API, CONTROLLER, METHOD } from '../../shared/constants';
 import { CoreModule } from '../core.module';
-import { TokenDto, UserDto } from '../models/token-model';
 import { JwtHelperService } from '@auth0/angular-jwt/';
-import { AddRoleModel } from '../models/add-role-model';
+import { AddRole } from '../models/role-model';
 
 @Injectable({
   providedIn: CoreModule
@@ -24,8 +22,8 @@ export class AuthService {
     return !this.jwtHelper.isTokenExpired(token);
   }
 
-  authenticate(credentials: AuthenticationModel) {
-    var request$ = this.http.post<TokenDto>(
+  authenticate(credentials: Authentication) {
+    var request$ = this.http.post<Token>(
       API.BASE_API + CONTROLLER.AUTH + METHOD.AUTH_SIGNIN,
       credentials
       );
@@ -33,7 +31,7 @@ export class AuthService {
     return request$;
   }
 
-  addUser(credentials: SignupModel){
+  addUser(credentials: Signup){
     var request$ = this.http.post(
       API.BASE_API + CONTROLLER.USER,
       credentials
@@ -42,7 +40,7 @@ export class AuthService {
     return request$;
   }
 
-  addRole(data: AddRoleModel){
+  addRole(data: AddRole){
     var request$ = this.http.post(
       API.BASE_API + CONTROLLER.ROLE,
       data
@@ -70,7 +68,7 @@ export class AuthService {
     localStorage.setItem('expires_at', JSON.stringify(expirationDate.valueOf()))
   }
 
-  saveUserDataInLocalStorage(userData: UserDto){
+  saveUserDataInLocalStorage(userData: User){
     console.log(userData);
     localStorage.setItem('user_data_id', userData.id);
     localStorage.setItem('user_data_firstname', userData.firstName);

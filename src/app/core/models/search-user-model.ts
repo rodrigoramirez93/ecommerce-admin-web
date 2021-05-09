@@ -1,10 +1,10 @@
-export interface ISearchUser {
+export interface SearchUser {
     id: number;
     firstName: string;
     lastName: string;
 }
 
-export class SearchUser implements ISearchUser {
+export class SearchUserImpl implements SearchUser {
     id: number;
     lastName: string;
     firstName: string;

@@ -80,13 +80,3 @@ export class CONTROLLER {
 export class METHOD { 
     public static AUTH_SIGNIN: string = '/SignIn';
 }
-
-export interface Method {
-    name: string,
-    controllerId: number
-}
-
-export interface Controller {
-    id: number,
-    name: string
-}

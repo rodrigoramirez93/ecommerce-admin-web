@@ -2,8 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Observable } from 'rxjs';
 import { CardsService } from '../../../core/services/cards.service';
 import { HostListener } from '@angular/core';
-import { Cards } from "../../classes/cards";
-import { Card } from "../../classes/card";
+import { Card, Cards } from "../../../core/models/card-model";
 
 @Component({
   selector: 'managment',

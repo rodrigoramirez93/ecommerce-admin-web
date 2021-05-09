@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { API, CONTROLLER, METHOD } from '../../shared/constants';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { UserDto } from '../models/token-model';
-import { SearchUser } from '../models/search-user-model';
+import { User } from '../models/auth-model';
+import { SearchUser, SearchUserImpl } from '../models/search-user-model';
 
 @Injectable({
   providedIn: 'root'
@@ -12,8 +12,8 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
-  private searchUserInformationSource = new BehaviorSubject<SearchUser>(new SearchUser()); 
-  private searchedUsersSource = new BehaviorSubject<UserDto[]>([]);
+  private searchUserInformationSource = new BehaviorSubject<SearchUser>(new SearchUserImpl()); 
+  private searchedUsersSource = new BehaviorSubject<User[]>([]);
 
   searchUserInformation$ = this.searchUserInformationSource.asObservable();
   searchedUsers$ = this.searchedUsersSource.asObservable();
@@ -30,7 +30,7 @@ export class UserService {
     this.searchUserInformationSource.next(searchUser);
   }
 
-  setSearchedUsers(searchedUsers: UserDto[]){
+  setSearchedUsers(searchedUsers: User[]){
     this.searchedUsersSource.next(searchedUsers);
   }
 
@@ -43,7 +43,7 @@ export class UserService {
     
     var queryString = '/?' + searchParams.toString();
     
-    var request$ = this.http.get<UserDto[]>(
+    var request$ = this.http.get<User[]>(
       API.BASE_API + CONTROLLER.USER + queryString
     );
 
