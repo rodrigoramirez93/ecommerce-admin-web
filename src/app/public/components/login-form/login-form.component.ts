@@ -54,7 +54,7 @@ export class LoginFormComponent implements OnInit {
     let authData: Authentication = 
     {
        email: this.username.value,
-       password: this.password.value
+       password: btoa(this.password.value)
     };
     
     this.authService.authenticate(authData)
