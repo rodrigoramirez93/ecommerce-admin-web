@@ -44,7 +44,7 @@ export class UserService {
     var queryString = '/?' + searchParams.toString();
     
     var request$ = this.http.get<User[]>(
-      API.BASE_API + CONTROLLER.USER + queryString
+      API.IDENTITY + CONTROLLER.USER + queryString
     );
 
     return request$;

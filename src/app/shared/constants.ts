@@ -66,6 +66,7 @@ export class ErrorMessages {
 
 export class API { 
     public static BASE_API = environment.ApiUrl;
+    public static IDENTITY = environment.IdentityUrl;
 }
 
 export class CONTROLLER {
