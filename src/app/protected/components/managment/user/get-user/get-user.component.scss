@@ -1,3 +1,16 @@
 .full-width-table {
   width: 100%;
 }
+
+.table-row:hover{
+  cursor: pointer;
+  background-color: primary;
+  opacity: 0.5;
+  color: black;
+}
+
+@media(max-width: 700px){
+  .title{
+    text-align: center;
+  }
+}

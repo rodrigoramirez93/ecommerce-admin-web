@@ -13,7 +13,6 @@ export class CardsService {
     context: 'User',
     cardList: [
        { titleText: 'Add User', buttonText: 'Create', contentText: 'Create a new blank user', redirectRoute: '/user/managment/add-user'},
-       { titleText: 'Get All User', buttonText: 'Get', contentText: 'Retrieve all users', redirectRoute: '/user/managment/get-user'},
        { titleText: 'Update User', buttonText: 'Update', contentText: 'Update a given user', redirectRoute: '/user/managment/update-user'},
        { titleText: 'Delete User', buttonText: 'Delete', contentText: 'Delete a given user', redirectRoute: '/user/managment/delete-user'}
     ]
@@ -23,10 +22,10 @@ export class CardsService {
     context: 'Role',
     cardList: [
        { titleText: 'Add role', buttonText: 'Create', contentText: 'Add new role', redirectRoute: '/user/managment/add-role'},
-       { titleText: 'Get roles', buttonText: 'Get', contentText: 'Get roles', redirectRoute: '/user/managment/get-role'},
-       { titleText: 'Delete role', buttonText: 'Delete', contentText: 'Delete role from user', redirectRoute: '/user/managment/delete-role'},
-       { titleText: 'Update role', buttonText: 'Update', contentText: 'Update role', redirectRoute: '/user/managment/update-role'},    ]
-  };
+       { titleText: 'Update role', buttonText: 'Update', contentText: 'Update role', redirectRoute: '/user/managment/update-role'},
+       { titleText: 'Delete role', buttonText: 'Delete', contentText: 'Delete role from user', redirectRoute: '/user/managment/delete-role'}
+    ]
+  }
 
   private userCardsSource = new BehaviorSubject<Card[]>(this.userCards.cardList);
   private roleCardsSource = new BehaviorSubject<Card[]>(this.roleCards.cardList);

@@ -42,3 +42,13 @@ body {
 input{
   color: black !important;
 }
+
+.middle-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.middle-item{
+  max-width: 50%;
+}

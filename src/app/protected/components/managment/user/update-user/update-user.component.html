@@ -1,18 +1,29 @@
 <div *ngIf="!(cardsVisible$ | async)">
   <h1 style="text-align: center;">Update user</h1>
   <div class="grid-container">
-    <h2 class="title">Search</h2>
+    <div class="title-container middle-container">
+      <h2 class="item-container">Search</h2>
+    </div>
     <form class="form" [formGroup]="searchUserForm">
-      <mat-form-field class="example-full-width">
-        <mat-label>First name</mat-label>
-        <input (blur)="saveFirstNameSearch($event.target.value)" matInput placeholder="I.E: Rodrigo" formControlName="firstNameSearch">
-      </mat-form-field>
-      <mat-form-field class="example-full-width">
-        <mat-label>Last name</mat-label>
-        <input (blur)="saveLastNameSearch($event.target.value)" matInput placeholder="I.E Ramirez" formControlName="lastNameSearch">
-      </mat-form-field>
+      <div class="middle-container">
+        <mat-form-field class="firstname">
+          <mat-label>First name</mat-label>
+          <input (blur)="saveFirstNameSearch($event.target.value)" matInput placeholder="I.E: Rodrigo" formControlName="firstNameSearch">
+        </mat-form-field>
+      </div>
+      <div class="middle-container">
+        <mat-form-field class="lastname">
+          <mat-label>Last name</mat-label>
+          <input (blur)="saveLastNameSearch($event.target.value)" matInput placeholder="I.E Ramirez" formControlName="lastNameSearch">
+        </mat-form-field>
+      </div>
+      <div class="middle-container">
+        <button class="middle-item" mat-raised-button color="primary" (click)="searchUser()">Search</button>
+      </div>
     </form>
-    <button class="button" mat-raised-button color="primary" (click)="searchUser()">Search</button>
+    <div class="text">
+      <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+   </div>
   </div>
   <get-user></get-user>
 </div>
