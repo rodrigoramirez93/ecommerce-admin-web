@@ -12,6 +12,12 @@ export class ValidationConstants{
 
     public static MIN_LENGTH_NAME: number = 2;
     public static MAX_LENGTH_NAME: number = 30;
+
+    public static MIN_LENGTH_EMAIL: number = 9;
+    public static MAX_LENGTH_EMAIL: number = 50;
+
+    public static MIN_LENGTH_PHONE_NUMBER: number = 6;
+    public static MAX_LENGTH_PHONE_NUMBER: number = 20;
 }
 
 export class LocalStorageKeys{

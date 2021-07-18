@@ -1,71 +1,110 @@
 <div class="grid-container" *ngIf="!(cardsVisible$ | async)">
-  <h1 class="title">Add User</h1>
-  <form class="form" [formGroup]="addUserForm" (ngSubmit)="addUserForm.valid && addUser()">
-  <mat-form-field appearance="fill">
-     <mat-label>Username</mat-label>
-     <input matInput type="text" required formControlName="username">
-     <div *ngIf="usernameControl.invalid && (usernameControl.dirty || usernameControl.touched)">
-        <mat-error *ngIf="usernameControl.errors.required">
-           {{usernameRequiredErrorMessage}}
-        </mat-error>
-        <mat-error *ngIf="usernameControl.errors.maxlength">
-           {{usernameMaxLengthErrorMessage}}
-        </mat-error>
-        <mat-error *ngIf="usernameControl.errors.minlength">
-           {{usernameMinLengthErrorMessage}}
-        </mat-error>
-     </div>
-  </mat-form-field>
-  <br>
-  <mat-form-field appearance="fill">
-     <mat-label>Password</mat-label>
-     <input matInput [type]="hide ? 'password' : 'text'" required formControlName="password">
-     <button mat-icon-button matSuffix (click)="hide = !hide" 
-     [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-     <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-     </button>
-  </mat-form-field>
-  <br>
-  <mat-form-field appearance="fill">
-     <mat-label>Firstname</mat-label>
-     <input matInput type="text" required formControlName="firstname">
-     <div *ngIf="firstnameControl.invalid && (firstnameControl.dirty || firstnameControl.touched)"
-        >
-        <mat-error *ngIf="firstnameControl.errors.required">
-           {{firstnameRequiredErrorMessage}}
-        </mat-error>
-        <mat-error *ngIf="firstnameControl.errors.maxlength">
-           {{firstnameMaxLengthErrorMessage}}
-        </mat-error>
-        <mat-error *ngIf="firstnameControl.errors.minlength">
-           {{firstnameMinLengthErrorMessage}}
-        </mat-error>
-     </div>
-  </mat-form-field>
-  <br>
-  <mat-form-field appearance="fill">
-     <mat-label>Lastname</mat-label>
-     <input matInput type="text" required formControlName="lastname">
-     <div *ngIf="lastnameControl.invalid && (lastnameControl.dirty || lastnameControl.touched)">
-        <mat-error *ngIf="lastnameControl.errors.required">
-           {{lastnameRequiredErrorMessage}}
-        </mat-error>
-        <mat-error *ngIf="lastnameControl.errors.maxlength">
-           {{lastnameMaxLengthErrorMessage}}
-        </mat-error>
-        <mat-error *ngIf="lastnameControl.errors.minlength">
-           {{lastnameMinLengthErrorMessage}}
-        </mat-error>
-     </div>
+   <h1 class="title">Add User</h1>
+   <form class="form" [formGroup]="addUserForm" (ngSubmit)="addUserForm.valid && addUser()">
+   <mat-form-field appearance="fill">
+      <mat-label>Username</mat-label>
+      <input matInput type="text" required formControlName="username">
+      <div *ngIf="usernameControl.invalid && (usernameControl.dirty || usernameControl.touched)">
+         <mat-error *ngIf="usernameControl.errors.required">
+            {{usernameRequiredErrorMessage}}
+         </mat-error>
+         <mat-error *ngIf="usernameControl.errors.maxlength">
+            {{usernameMaxLengthErrorMessage}}
+         </mat-error>
+         <mat-error *ngIf="usernameControl.errors.minlength">
+            {{usernameMinLengthErrorMessage}}
+         </mat-error>
+      </div>
+   </mat-form-field>
+   <br>
+   <mat-form-field appearance="fill">
+      <mat-label>Password</mat-label>
+      <input matInput [type]="hide ? 'password' : 'text'" required formControlName="password">
+      <button mat-icon-button matSuffix (click)="hide = !hide" 
+      [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+   </mat-form-field>
+   <mat-form-field appearance="fill">
+      <mat-label>Confirm password</mat-label>
+      <input matInput [type]="hide ? 'password' : 'text'" required formControlName="confirmPassword">
+      <button mat-icon-button matSuffix (click)="hide = !hide" 
+      [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+   </mat-form-field>
+   <br>
+   <mat-form-field appearance="fill">
+      <mat-label>Firstname</mat-label>
+      <input matInput type="text" required formControlName="firstname">
+      <div *ngIf="firstnameControl.invalid && (firstnameControl.dirty || firstnameControl.touched)"
+         >
+         <mat-error *ngIf="firstnameControl.errors.required">
+            {{firstnameRequiredErrorMessage}}
+         </mat-error>
+         <mat-error *ngIf="firstnameControl.errors.maxlength">
+            {{firstnameMaxLengthErrorMessage}}
+         </mat-error>
+         <mat-error *ngIf="firstnameControl.errors.minlength">
+            {{firstnameMinLengthErrorMessage}}
+         </mat-error>
+      </div>
+   </mat-form-field>
+   <br>
+   <mat-form-field appearance="fill">
+      <mat-label>Lastname</mat-label>
+      <input matInput type="text" required formControlName="lastname">
+      <div *ngIf="lastnameControl.invalid && (lastnameControl.dirty || lastnameControl.touched)">
+         <mat-error *ngIf="lastnameControl.errors.required">
+            {{lastnameRequiredErrorMessage}}
+         </mat-error>
+         <mat-error *ngIf="lastnameControl.errors.maxlength">
+            {{lastnameMaxLengthErrorMessage}}
+         </mat-error>
+         <mat-error *ngIf="lastnameControl.errors.minlength">
+            {{lastnameMinLengthErrorMessage}}
+         </mat-error>
+      </div>
+   </mat-form-field>
+   <br>
+   <mat-form-field appearance="fill">
+      <mat-label>Email</mat-label>
+      <input matInput type="text" required formControlName="email">
+      <div *ngIf="emailControl.invalid && (emailControl.dirty || emailControl.touched)">
+         <mat-error *ngIf="emailControl.errors.required">
+            {{emailControlRequiredErrorMessage}}
+         </mat-error>
+         <mat-error *ngIf="emailControl.errors.maxlength">
+            {{emailControlMaxLengthErrorMessage}}
+         </mat-error>
+         <mat-error *ngIf="emailControl.errors.minlength">
+            {{emailControlMinLengthErrorMessage}}
+         </mat-error>
+      </div>
+   </mat-form-field>
+   <br>
+   <mat-form-field appearance="fill">
+      <mat-label>Phone number</mat-label>
+      <input matInput type="text" required formControlName="phoneNumber">
+      <div *ngIf="phoneNumberControl.invalid && (phoneNumberControl.dirty || phoneNumberControl.touched)">
+         <mat-error *ngIf="phoneNumberControl.errors.required">
+            {{phoneNumberRequiredErrorMessage}}
+         </mat-error>
+         <mat-error *ngIf="phoneNumberControl.errors.maxlength">
+            {{phoneNumberMaxLengthErrorMessage}}
+         </mat-error>
+         <mat-error *ngIf="phoneNumberControl.errors.minlength">
+            {{phoneNumberMinLengthErrorMessage}}
+         </mat-error>
+      </div>
    </mat-form-field>
    <br>
    <div class="button">
       <button class="return" mat-raised-button color="error" (click)="onClickGoBack()" routerLink="/user/managment"> Go back </button>
       <button class="action" mat-raised-button color="primary">Create</button>
    </div>
-  </form>
-  <div class="text">
-     <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p>
-  </div>
+   </form>
+   <div class="text">
+      <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p>
+   </div>
 </div>
-

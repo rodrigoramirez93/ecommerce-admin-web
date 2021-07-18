@@ -1,13 +1,17 @@
+import { EmailValidator } from "@angular/forms";
+
 export interface Authentication {
     email: string;
     password: string;
 }
 
 export interface Signup {
-    email: string;
+    username: string;
     firstName: string;
     lastName: string;
     password: string;
+    email: string;
+    phoneNumber: string;
 }
 
 export interface User{

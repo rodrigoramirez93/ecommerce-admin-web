@@ -39,6 +39,12 @@ export class AddUserComponent implements OnInit {
     Validators.minLength(ValidationConstants.MIN_LENGTH_PASSWORD)
     ]);
 
+  confirmPassword = new FormControl('',
+    [Validators.required,
+    Validators.maxLength(ValidationConstants.MAX_LENGTH_PASSWORD),
+    Validators.minLength(ValidationConstants.MIN_LENGTH_PASSWORD)
+    ]);
+
   firstname = new FormControl('',
     [Validators.required,
     Validators.maxLength(ValidationConstants.MAX_LENGTH_NAME),
@@ -51,6 +57,18 @@ export class AddUserComponent implements OnInit {
     Validators.minLength(ValidationConstants.MIN_LENGTH_NAME)
     ]);
 
+  email = new FormControl('',
+    [Validators.required,
+    Validators.maxLength(ValidationConstants.MAX_LENGTH_EMAIL),
+    Validators.minLength(ValidationConstants.MIN_LENGTH_EMAIL)
+  ]);
+
+  phoneNumber = new FormControl('',
+    [Validators.required,
+    Validators.maxLength(ValidationConstants.MAX_LENGTH_PHONE_NUMBER),
+    Validators.minLength(ValidationConstants.MIN_LENGTH_PHONE_NUMBER)
+    ]);
+
   usernameMinLengthErrorMessage = ErrorMessages.MIN_LENGTH_ERROR_MESSAGE('Username', ValidationConstants.MIN_LENGTH_USERNAME);
   usernameMaxLengthErrorMessage = ErrorMessages.MAX_LENGTH_ERROR_MESSAGE('Username', ValidationConstants.MAX_LENGTH_USERNAME);
   usernameRequiredErrorMessage = ErrorMessages.REQUIRED_ERROR_MESSAGE('Username');
@@ -58,6 +76,10 @@ export class AddUserComponent implements OnInit {
   passwordMinLengthErrorMessage = ErrorMessages.MIN_LENGTH_ERROR_MESSAGE('Password', ValidationConstants.MIN_LENGTH_PASSWORD);
   passwordMaxLengthErrorMessage = ErrorMessages.MAX_LENGTH_ERROR_MESSAGE('Password', ValidationConstants.MAX_LENGTH_PASSWORD);
   passwordRequiredErrorMessage = ErrorMessages.REQUIRED_ERROR_MESSAGE('Password');
+
+  confirmPasswordMinLengthErrorMessage = ErrorMessages.MIN_LENGTH_ERROR_MESSAGE('Password', ValidationConstants.MIN_LENGTH_PASSWORD);
+  confirmPasswordMaxLengthErrorMessage = ErrorMessages.MAX_LENGTH_ERROR_MESSAGE('Password', ValidationConstants.MAX_LENGTH_PASSWORD);
+  confirmPasswordRequiredErrorMessage = ErrorMessages.REQUIRED_ERROR_MESSAGE('Password');
 
   firstnameMinLengthErrorMessage = ErrorMessages.MIN_LENGTH_ERROR_MESSAGE('Firstname', ValidationConstants.MIN_LENGTH_NAME);
   firstnameMaxLengthErrorMessage = ErrorMessages.MAX_LENGTH_ERROR_MESSAGE('Firstname', ValidationConstants.MAX_LENGTH_NAME);
@@ -67,17 +89,31 @@ export class AddUserComponent implements OnInit {
   lastnameMaxLengthErrorMessage = ErrorMessages.MAX_LENGTH_ERROR_MESSAGE('Lastname', ValidationConstants.MAX_LENGTH_NAME);
   lastnameRequiredErrorMessage = ErrorMessages.REQUIRED_ERROR_MESSAGE('Lastname');
 
+  emailMinLengthErrorMessage = ErrorMessages.MIN_LENGTH_ERROR_MESSAGE('Email', ValidationConstants.MIN_LENGTH_NAME);
+  emailMaxLengthErrorMessage = ErrorMessages.MAX_LENGTH_ERROR_MESSAGE('Email', ValidationConstants.MAX_LENGTH_NAME);
+  emailRequiredErrorMessage = ErrorMessages.REQUIRED_ERROR_MESSAGE('Email');
+
+  phoneNumberMinLengthErrorMessage = ErrorMessages.MIN_LENGTH_ERROR_MESSAGE('Phone Number', ValidationConstants.MIN_LENGTH_NAME);
+  phoneNumberMaxLengthErrorMessage = ErrorMessages.MAX_LENGTH_ERROR_MESSAGE('Phone Number', ValidationConstants.MAX_LENGTH_NAME);
+  phoneNumberRequiredErrorMessage = ErrorMessages.REQUIRED_ERROR_MESSAGE('Phone Number');
+
   get usernameControl() { return this.addUserForm.get('username') };
   get passwordControl() { return this.addUserForm.get('password') };
+  get confirmPasswordControl() { return this.addUserForm.get('password') };
   get firstnameControl() { return this.addUserForm.get('firstname') };
   get lastnameControl() { return this.addUserForm.get('lastname') };
-
+  get emailControl() { return this.addUserForm.get('email') };
+  get phoneNumberControl() { return this.addUserForm.get('phoneNumber') };
+  
   ngOnInit(): void {
     this.addUserForm = this.fb.group({
       username: this.username,
       password: this.password,
+      confirmPassword: this.confirmPassword,
       firstname: this.firstname,
-      lastname: this.lastname 
+      lastname: this.lastname,
+      email: this.email,
+      phoneNumber: this.phoneNumber
     })
 
     this.cardsVisible$ = this.cardsService.cardsVisible$;
@@ -90,10 +126,12 @@ export class AddUserComponent implements OnInit {
   addUser(){  
     let authData: Signup = 
     {
-       email: this.username.value,
+       username: this.username.value,
+       email: this.email.value,
        password: this.password.value,
        firstName: this.firstname.value,
-       lastName: this.lastname.value
+       lastName: this.lastname.value,
+       phoneNumber: this.phoneNumber.value
     };
     
     this.authService.addUser(authData)
