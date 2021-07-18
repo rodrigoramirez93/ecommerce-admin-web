@@ -26,17 +26,18 @@ import { CdkTableModule } from '@angular/cdk/table';
     MatDatepickerModule,
     MatNativeDateModule,
     MatSelectModule,
-    MatTableModule
+    MatTableModule,
+    MatExpansionModule
   ],
   exports: 
     [MatCard, MatCardTitle, MatCardContent,
-    MatCardSubtitle, MatCardHeader, MatIcon,
+    MatCardSubtitle, MatCardHeader, MatIconModule,
     MatLabel, MatFormField,
     MatInput, MatButton, MatTab, 
     MatTabNav, MatTabLink, MatError, MatAccordion,
     MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelContent,
     MatExpansionPanelTitle, MatExpansionPanelDescription, MatDatepicker,
-    MatTabGroup, MatCardActions, MatSelect, MatTableModule]
+    MatTabGroup, MatCardActions, MatSelect, MatTableModule, MatExpansionModule]
 })
 
 export class MaterialModule { }

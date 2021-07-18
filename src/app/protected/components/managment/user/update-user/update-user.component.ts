@@ -23,13 +23,14 @@ export class UpdateUserComponent implements OnInit {
   ) {}
 
   cardsVisible$: Observable<boolean> = new Observable<boolean>();
+
   firstNameSearch = new FormControl('', []);
   lastNameSearch = new FormControl('', []);
-  firstNameUpdate = new FormControl('', []);
-  lastNameUpdate = new FormControl('', []);
+  emailSearch = new FormControl('', []);
+  phoneNumberSearch = new FormControl('', []);
+
   searchInformation: SearchUser = new SearchUserImpl();
   searchUserForm: FormGroup;
-  updateUserForm: FormGroup;
 
   ngOnInit(): void {
     this.cardsVisible$ = this.cardsService.cardsVisible$;
@@ -40,7 +41,9 @@ export class UpdateUserComponent implements OnInit {
     
       this.searchUserForm = this.fb.group({
         firstNameSearch: this.firstNameSearch,
-        lastNameSearch: this.lastNameSearch
+        lastNameSearch: this.lastNameSearch,
+        emailSearch: this.emailSearch,
+        phoneNumberSearch: this.phoneNumberSearch
     })
   }
 
