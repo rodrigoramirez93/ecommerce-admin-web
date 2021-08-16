@@ -20,6 +20,7 @@ export class ValidationConstants{
     public static MAX_LENGTH_PHONE_NUMBER: number = 20;
 
     public static EMAIL_REGEX: string = '[a-zA-Z0-9_\\.\\+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-\\.]+';
+    public static ONLY_NUMBERS_REGEX: string = '^[0-9]*$';
 }
 
 export class LocalStorageKeys{
@@ -52,7 +53,7 @@ export class InformationMessages{
 export class ErrorMessages {
 
     public static INTERNAL_ERROR = () => {
-        return 'Something went wrong';
+        return 'Something went wrong 😅';
     }
 
     public static UNAUTHORIZED = () => {

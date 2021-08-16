@@ -32,49 +32,61 @@ export class AddUserComponent implements OnInit {
   customValidator: CustomValidator = new CustomValidator();
   matcher = new PasswordErrorStateMatcher();
 
-  username = new FormControl('', 
-    [Validators.required,
-     Validators.maxLength(ValidationConstants.MAX_LENGTH_USERNAME),
-     Validators.minLength(ValidationConstants.MIN_LENGTH_USERNAME)
-    ]);
+  username = new FormControl('', {
+    validators: [Validators.required,
+      Validators.maxLength(ValidationConstants.MAX_LENGTH_USERNAME),
+      Validators.minLength(ValidationConstants.MIN_LENGTH_USERNAME)
+     ],
+    updateOn: 'blur'
+  });
 
-  password = new FormControl('',
-    [Validators.required,
-    Validators.maxLength(ValidationConstants.MAX_LENGTH_PASSWORD),
-    Validators.minLength(ValidationConstants.MIN_LENGTH_PASSWORD)
-    ]);
+  password = new FormControl('', {
+    validators:[Validators.required,
+      Validators.maxLength(ValidationConstants.MAX_LENGTH_PASSWORD),
+      Validators.minLength(ValidationConstants.MIN_LENGTH_PASSWORD)
+      ],
+    updateOn: 'blur'
+  });
 
-  confirmPassword = new FormControl('',
-    [Validators.required,
-    Validators.maxLength(ValidationConstants.MAX_LENGTH_PASSWORD),
-    Validators.minLength(ValidationConstants.MIN_LENGTH_PASSWORD),
-    ]);
+  confirmPassword = new FormControl('', {
+    validators: [Validators.required,
+      Validators.maxLength(ValidationConstants.MAX_LENGTH_PASSWORD),
+      Validators.minLength(ValidationConstants.MIN_LENGTH_PASSWORD),
+      ],
+    updateOn: 'blur'
+  });
 
-  firstname = new FormControl('',
-    [Validators.required,
-    Validators.maxLength(ValidationConstants.MAX_LENGTH_NAME),
-    Validators.minLength(ValidationConstants.MIN_LENGTH_NAME)
-    ]);
+  firstname = new FormControl('', {
+    validators: [Validators.required,
+        Validators.maxLength(ValidationConstants.MAX_LENGTH_NAME),
+        Validators.minLength(ValidationConstants.MIN_LENGTH_NAME)
+        ],
+     updateOn: 'blur'
+    });
     
-  lastname = new FormControl('',
-    [Validators.required,
-    Validators.maxLength(ValidationConstants.MAX_LENGTH_NAME),
-    Validators.minLength(ValidationConstants.MIN_LENGTH_NAME)
-    ]);
+  lastname = new FormControl('', {
+    validators: [Validators.required,
+      Validators.maxLength(ValidationConstants.MAX_LENGTH_NAME),
+      Validators.minLength(ValidationConstants.MIN_LENGTH_NAME)
+      ],
+    updateOn: 'blur'
+  });
 
-  email = new FormControl('',
-    [Validators.required,
-    Validators.maxLength(ValidationConstants.MAX_LENGTH_EMAIL),
-    Validators.minLength(ValidationConstants.MIN_LENGTH_EMAIL),
-    Validators.pattern(ValidationConstants.EMAIL_REGEX)
-  ]);
+  email = new FormControl('', {
+    validators: [Validators.required,
+      Validators.maxLength(ValidationConstants.MAX_LENGTH_EMAIL),
+      Validators.minLength(ValidationConstants.MIN_LENGTH_EMAIL),
+      Validators.pattern(ValidationConstants.EMAIL_REGEX)],
+    updateOn: 'blur'
+  });
 
-  phoneNumber = new FormControl('',
-    [Validators.required,
-    Validators.maxLength(ValidationConstants.MAX_LENGTH_PHONE_NUMBER),
-    Validators.minLength(ValidationConstants.MIN_LENGTH_PHONE_NUMBER),
-    Validators.pattern("^[0-9]*$")
-    ]);
+  phoneNumber = new FormControl('', {
+    validators: [Validators.required,
+      Validators.maxLength(ValidationConstants.MAX_LENGTH_PHONE_NUMBER),
+      Validators.minLength(ValidationConstants.MIN_LENGTH_PHONE_NUMBER),
+      Validators.pattern(ValidationConstants.ONLY_NUMBERS_REGEX)],
+    updateOn: 'blur'
+  });
 
   usernameMinLengthErrorMessage = ErrorMessages.MIN_LENGTH_ERROR_MESSAGE('Username', ValidationConstants.MIN_LENGTH_USERNAME);
   usernameMaxLengthErrorMessage = ErrorMessages.MAX_LENGTH_ERROR_MESSAGE('Username', ValidationConstants.MAX_LENGTH_USERNAME);
