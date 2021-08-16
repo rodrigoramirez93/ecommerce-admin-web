@@ -22,16 +22,22 @@ export class LoginFormComponent implements OnInit {
   ngUnsubscribe = new Subject();
   
   loginForm: FormGroup;
-  username = new FormControl('', 
-    [Validators.required,
-     Validators.maxLength(ValidationConstants.MAX_LENGTH_USERNAME),
-     Validators.minLength(ValidationConstants.MIN_LENGTH_USERNAME)
-    ]);
-  password = new FormControl('',
-    [Validators.required,
-    Validators.maxLength(ValidationConstants.MAX_LENGTH_PASSWORD),
-    Validators.minLength(ValidationConstants.MIN_LENGTH_PASSWORD)
-    ]);
+  username = new FormControl('', {
+    validators: [Validators.required,
+      Validators.maxLength(ValidationConstants.MAX_LENGTH_USERNAME),
+      Validators.minLength(ValidationConstants.MIN_LENGTH_USERNAME)
+     ],
+     updateOn: 'blur'
+  }
+);
+  password = new FormControl('', {
+    validators: [Validators.required,
+      Validators.maxLength(ValidationConstants.MAX_LENGTH_PASSWORD),
+      Validators.minLength(ValidationConstants.MIN_LENGTH_PASSWORD)
+      ],
+      updateOn: 'blur'
+  }
+);
 
   usernameMinLengthErrorMessage = ErrorMessages.MIN_LENGTH_ERROR_MESSAGE('Username', ValidationConstants.MIN_LENGTH_USERNAME);
   usernameMaxLengthErrorMessage = ErrorMessages.MAX_LENGTH_ERROR_MESSAGE('Username', ValidationConstants.MAX_LENGTH_USERNAME);
@@ -51,8 +57,7 @@ export class LoginFormComponent implements OnInit {
   }
 
   login(){  
-    let authData: Authentication = 
-    {
+    let authData: Authentication = {
        email: this.username.value,
        password: btoa(this.password.value)
     };
@@ -61,9 +66,10 @@ export class LoginFormComponent implements OnInit {
       .pipe(takeUntil(this.ngUnsubscribe))
       .subscribe(
         (res) => {
+          console.log('login form', res);
           this.authService.saveTokenInLocalStorage(res.idToken);
           this.authService.saveExpirationDateInLocalStorage(res.expirationDate);
-          this.authService.saveUserDataInLocalStorage(res.user);
+          this.authService.saveUserInfoInLocalStorage(res.user);
           this.snackBar.open(
             InformationMessages.REDIRECT('user'),
             'hide',

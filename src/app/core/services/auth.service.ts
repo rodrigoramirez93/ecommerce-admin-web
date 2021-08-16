@@ -5,6 +5,7 @@ import { API, CONTROLLER, METHOD } from '../../shared/constants';
 import { CoreModule } from '../core.module';
 import { JwtHelperService } from '@auth0/angular-jwt/';
 import { AddRole } from '../models/role-model';
+import { JsonContentTypeInterceptor } from '../Interceptors/json-content-type.interceptor';
 
 @Injectable({
   providedIn: CoreModule
@@ -49,41 +50,39 @@ export class AuthService {
     return request$;
   }
 
-  getToken(){
-    return localStorage.getItem('id_token');
-  }
-
-  getFromLocalStorage(key){
-    return localStorage.getItem(key);
-  }
-
+  //set
   saveTokenInLocalStorage(token: string){
-    console.log('save token', token);
     localStorage.setItem('id_token', token);
   }
 
   saveExpirationDateInLocalStorage(expirationDate: Date){
-    console.log('save date', expirationDate);
-    console.log('expirationDate', expirationDate.valueOf());
     localStorage.setItem('expires_at', JSON.stringify(expirationDate.valueOf()))
   }
 
-  saveUserDataInLocalStorage(userData: User){
-    console.log(userData);
-    localStorage.setItem('user_data_id', userData.id);
-    localStorage.setItem('user_data_firstname', userData.firstName);
-    localStorage.setItem('user_data_lastname', userData.lastName);
+  saveUserInfoInLocalStorage(userInfo: User){
+    localStorage.setItem('user_info', JSON.stringify(userInfo))
+  }
+
+  //get
+  getFromLocalStorage(item: string){
+    return localStorage.getItem(item);
+  }
+
+  getUserInfo(): User{
+    var userInfo = this.getFromLocalStorage('user_info');
+    console.log('userInfo', userInfo);
+    var res = JSON.parse(userInfo) as User;
+    console.log('res', res);
+    return res;
   }
 
   isTokenExpired(){
-    var token = this.getToken();
-    var response = this.jwtHelper.isTokenExpired(token);
-    console.log('is expired: ', response)
+    var token = this.getFromLocalStorage('id_token');
+    return this.jwtHelper.isTokenExpired(token);
   }
 
   logout(){
     localStorage.removeItem("id_token");
     localStorage.removeItem("expires_at");
   }
-
 }

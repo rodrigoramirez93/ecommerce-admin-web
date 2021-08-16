@@ -14,10 +14,19 @@ export interface Signup {
     phoneNumber: string;
 }
 
+export interface TenantRole
+{
+    tenantId: number;
+    tenantName: string;
+    roleId: number;
+    roleName: string;
+}
+
 export interface User{
     id: string;
     firstName: string;
     lastName: string;
+    tenantsRoles: TenantRole[];
 }
 
 export interface Token{

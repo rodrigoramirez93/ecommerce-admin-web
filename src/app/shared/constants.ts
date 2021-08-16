@@ -23,13 +23,6 @@ export class ValidationConstants{
     public static ONLY_NUMBERS_REGEX: string = '^[0-9]*$';
 }
 
-export class LocalStorageKeys{
-    public static TOKEN_EXPIRATION_DATE = 'expires_at';
-    public static USER_ID = 'user_data_id';
-    public static USER_FIRST_NAME = 'user_data_firstname';
-    public static USER_LAST_NAME = 'user_data_lastname';
-}
-
 export class StyleConstants{
     public static SNACKBAR_HORIZONTAL_POSITION: MatSnackBarHorizontalPosition = 'end';
     public static SNACKBAR_VERTICAL_POSITION: MatSnackBarVerticalPosition = 'top';

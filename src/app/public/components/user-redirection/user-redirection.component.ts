@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { CardsService } from 'src/app/core/services/cards.service';
-import { LocalStorageKeys } from '../../../shared/constants'; 
 
 @Component({
   selector: 'user-redirection',
@@ -18,7 +17,10 @@ export class UserRedirectionComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  get userName() { return this.authService.getFromLocalStorage(LocalStorageKeys.USER_FIRST_NAME) };
+  get userName() { 
+    var userInfo = this.authService.getUserInfo();
+    return userInfo.firstName + ' ' + userInfo.lastName;
+  };
 
   onClickHome(){
     this.cardsService.setCardVisible(true);
