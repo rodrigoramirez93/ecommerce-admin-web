@@ -3,6 +3,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { CardsService } from 'src/app/core/services/cards.service';
+import { UserService } from 'src/app/core/services/user.service';
 import { InformationMessages, StyleConstants } from '../../constants';
 
 @Component({
@@ -16,13 +17,18 @@ export class AuthBannerComponent implements OnInit {
     private router: Router,
     private authService: AuthService,
     private snackBar: MatSnackBar,
-    private cardService: CardsService
+    private cardService: CardsService,
+    private userService: UserService
     ) { }
 
   ngOnInit(): void {
   }
 
-  logout(){
+  clickHome(){
+    this.redirectTo("/user");
+  }
+
+  clickLogout(){
     this.authService.logout();
     this.router.navigate(['']);
     this.snackBar.open(

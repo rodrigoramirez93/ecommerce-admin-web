@@ -11,20 +11,27 @@ import { tap } from 'rxjs/internal/operators';
 
 export class SpinnerLoaderInterceptor implements HttpInterceptor {
 
-  constructor(private spinnerService: SpinnerLoaderService) { }
+  constructor(
+    private spinnerService: SpinnerLoaderService) { }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
-    this.spinnerService.setSpinnerVisible(true);
+    setTimeout(() => {
+      this.spinnerService.setSpinnerVisible(true)
+    }, 0);
 
     return next.handle(req).pipe(tap(
       (event: HttpEvent<any>) => {
         if (event instanceof HttpResponse) {
-          this.spinnerService.setSpinnerVisible(false);
+          setTimeout(() => {
+            this.spinnerService.setSpinnerVisible(false)
+          }, 0);
         }
       },
       (err: any) => {
-        this.spinnerService.setSpinnerVisible(false);
+        setTimeout(() => {
+          this.spinnerService.setSpinnerVisible(false)
+        }, 0);
       }
     ));
 

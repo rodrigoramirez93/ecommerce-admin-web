@@ -35,7 +35,7 @@
    </mat-form-field>
    <br>
    <mat-form-field appearance="fill">
-      <mat-label>Firstname</mat-label>
+      <mat-label>First Name</mat-label>
       <input matInput type="text" required formControlName="firstname">
       <div *ngIf="firstnameControl.invalid && (firstnameControl.dirty || firstnameControl.touched)"
          >
@@ -52,7 +52,7 @@
    </mat-form-field>
    <br>
    <mat-form-field appearance="fill">
-      <mat-label>Lastname</mat-label>
+      <mat-label>Last Name</mat-label>
       <input matInput type="text" required formControlName="lastname">
       <div *ngIf="lastnameControl.invalid && (lastnameControl.dirty || lastnameControl.touched)">
          <mat-error *ngIf="lastnameControl.errors.required">

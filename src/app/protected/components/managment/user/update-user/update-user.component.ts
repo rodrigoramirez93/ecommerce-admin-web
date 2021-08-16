@@ -34,10 +34,15 @@ export class UpdateUserComponent implements OnInit {
 
   ngOnInit(): void {
     this.cardsVisible$ = this.cardsService.cardsVisible$;
+
+    this.saveFirstNameSearch('');
+    this.saveLastNameSearch('');
     
     this.userService
-      .searchUser(this.userService.getSearchUserInformation)
-      .subscribe(result => this.userService.setSearchedUsers(result));
+      .searchUser(this.getUserSearch())
+      .subscribe(result => {
+        this.userService.setSearchedUsers(result)
+      });
     
       this.searchUserForm = this.fb.group({
         firstNameSearch: this.firstNameSearch,
@@ -54,12 +59,20 @@ export class UpdateUserComponent implements OnInit {
   saveLastNameSearch(value: string){
     this.searchUserService.setLastName(value)
   }
+
+  getUserSearch(firstName = '', lastName = ''){
+    return new SearchUserImpl(firstName, lastName);
+  }
   
   searchUser() {
-    let searchUserInformation = new SearchUserImpl();
-    searchUserInformation.firstName = this.searchUserService.getFirstName;
-    searchUserInformation.lastName = this.searchUserService.getLastName;
-    this.userService.setSearchUserInformation(searchUserInformation);
+    let searchUserInformation = 
+      this.getUserSearch(
+        this.searchUserService.getFirstName,
+        this.searchUserService.getLastName);
+
+    this.userService
+      .setSearchUserInformation(searchUserInformation);
+
     this.userService
       .searchUser(searchUserInformation)
       .subscribe(result => this.userService.setSearchedUsers(result));

@@ -127,10 +127,10 @@ export class AddUserComponent implements OnInit {
     let authData: Signup = 
     {
        username: this.username.value,
-       email: this.email.value,
        password: this.password.value,
        firstName: this.firstname.value,
        lastName: this.lastname.value,
+       email: this.email.value,
        phoneNumber: this.phoneNumber.value
     };
     
