@@ -1,6 +1,6 @@
 <div class="grid-container" *ngIf="!(cardsVisible$ | async)">
    <h1 class="title">Add User</h1>
-   <form class="form" [formGroup]="addUserForm" (ngSubmit)="addUserForm.valid && addUser()">
+   <form class="form" [formGroup]="addUserForm" #formDirective="ngForm" (ngSubmit)="addUserForm.valid && addUser(formDirective)">
    <mat-form-field appearance="fill">
       <mat-label>Username</mat-label>
       <input matInput type="text" required formControlName="username">
@@ -17,22 +17,49 @@
       </div>
    </mat-form-field>
    <br>
-   <mat-form-field appearance="fill">
-      <mat-label>Password</mat-label>
-      <input matInput [type]="hide ? 'password' : 'text'" required formControlName="password">
-      <button mat-icon-button matSuffix (click)="hide = !hide" 
-      [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-      </button>
-   </mat-form-field>
-   <mat-form-field appearance="fill">
-      <mat-label>Confirm password</mat-label>
-      <input matInput [type]="hide ? 'password' : 'text'" required formControlName="confirmPassword">
-      <button mat-icon-button matSuffix (click)="hide = !hide" 
-      [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-      </button>
-   </mat-form-field>
+   <form [formGroup]="passwordForm">
+      <mat-form-field appearance="fill">
+         <mat-label>Password</mat-label>
+         <input matInput [type]="hide ? 'password' : 'text'" required formControlName="password">
+         <button mat-icon-button matSuffix (click)="hide = !hide" 
+            [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+         </button>
+         <div *ngIf="passwordControl.invalid && (passwordControl.dirty || passwordControl.touched)">
+            <mat-error *ngIf="passwordControl.errors.required">
+               {{passwordRequiredErrorMessage}}
+            </mat-error>
+            <mat-error *ngIf="passwordControl.errors.maxlength">
+               {{passwordMaxLengthErrorMessage}}
+            </mat-error>
+            <mat-error *ngIf="passwordControl.errors.minlength">
+               {{passwordMinLengthErrorMessage}}
+            </mat-error>
+         </div>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+         <mat-label>Confirm password</mat-label>
+         <input matInput [type]="hide ? 'password' : 'text'" required formControlName="confirmPassword" [errorStateMatcher]="matcher">
+         <button mat-icon-button matSuffix (click)="hide = !hide" 
+            [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+         </button>
+         <div *ngIf="confirmPasswordControl.invalid && (confirmPasswordControl.dirty || confirmPasswordControl.touched)">
+            <mat-error *ngIf="confirmPasswordControl.errors.required">
+               {{passwordRequiredErrorMessage}}
+            </mat-error>
+            <mat-error *ngIf="confirmPasswordControl.errors.maxlength">
+               {{passwordMaxLengthErrorMessage}}
+            </mat-error>
+            <mat-error *ngIf="confirmPasswordControl.errors.minlength">
+               {{passwordMinLengthErrorMessage}}
+            </mat-error>
+         </div>
+         <mat-error *ngIf="confirmPasswordControl.dirty && passwordForm.hasError('notSame')">
+            {{passwordsDontMatch}}
+         </mat-error>
+      </mat-form-field>
+   </form>
    <br>
    <mat-form-field appearance="fill">
       <mat-label>First Name</mat-label>
@@ -80,6 +107,9 @@
          <mat-error *ngIf="emailControl.errors.minlength">
             {{emailControlMinLengthErrorMessage}}
          </mat-error>
+         <mat-error *ngIf="emailControl.errors.pattern">
+            {{emailValidErrorMessage}}
+         </mat-error>
       </div>
    </mat-form-field>
    <br>
@@ -95,6 +125,9 @@
          </mat-error>
          <mat-error *ngIf="phoneNumberControl.errors.minlength">
             {{phoneNumberMinLengthErrorMessage}}
+         </mat-error>
+         <mat-error *ngIf="phoneNumberControl.errors.pattern">
+            {{phoneNumberShouldBeNumbersErrorMessage}}
          </mat-error>
       </div>
    </mat-form-field>

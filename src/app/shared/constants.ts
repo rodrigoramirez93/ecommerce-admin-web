@@ -18,6 +18,8 @@ export class ValidationConstants{
 
     public static MIN_LENGTH_PHONE_NUMBER: number = 6;
     public static MAX_LENGTH_PHONE_NUMBER: number = 20;
+
+    public static EMAIL_REGEX: string = '[a-zA-Z0-9_\\.\\+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-\\.]+';
 }
 
 export class LocalStorageKeys{
@@ -67,6 +69,18 @@ export class ErrorMessages {
 
     public static MAX_LENGTH_ERROR_MESSAGE = (property, maxLength) => {
         return `${property} must be up to ${maxLength} characters long.`;  
+    }
+
+    public static PASSWORDS_DONT_MATCH = () => {
+        return `Passwords don't match`;  
+    }
+
+    public static PHONE_SHOULD_BE_ONLY_NUMBERS = () => {
+        return `Phone number should be a number`
+    }
+
+    public static EMAIL_NOT_VALID = () => {
+        return `Email should be valid`
     }
 }
 

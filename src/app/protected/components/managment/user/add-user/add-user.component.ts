@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators, FormGroup, FormControl } from '@angular/forms';
+import { FormBuilder, Validators, FormGroup, FormControl, ValidatorFn, AbstractControl, ValidationErrors, FormGroupDirective } from '@angular/forms';
 import { ValidationConstants, ErrorMessages, StyleConstants, InformationMessages } from '../../../../../shared/constants';
 import { AuthService } from '../../../.././../core/services/auth.service';
 import { takeUntil } from 'rxjs/operators';
@@ -7,6 +7,8 @@ import { Observable, Subject } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Signup } from 'src/app/core/models/auth-model';
 import { CardsService } from 'src/app/core/services/cards.service';
+import { CustomValidator } from '../../../../../core/validators/same-password.validator';
+import { PasswordErrorStateMatcher } from '../../../../../core/error-state-matchers/password-state-matcher';
 
 @Component({
   selector: 'add-user',
@@ -26,6 +28,9 @@ export class AddUserComponent implements OnInit {
   ngUnsubscribe = new Subject();
   cardsVisible$: Observable<boolean> = new Observable<boolean>();
   addUserForm: FormGroup;
+  passwordForm: FormGroup;
+  customValidator: CustomValidator = new CustomValidator();
+  matcher = new PasswordErrorStateMatcher();
 
   username = new FormControl('', 
     [Validators.required,
@@ -42,7 +47,7 @@ export class AddUserComponent implements OnInit {
   confirmPassword = new FormControl('',
     [Validators.required,
     Validators.maxLength(ValidationConstants.MAX_LENGTH_PASSWORD),
-    Validators.minLength(ValidationConstants.MIN_LENGTH_PASSWORD)
+    Validators.minLength(ValidationConstants.MIN_LENGTH_PASSWORD),
     ]);
 
   firstname = new FormControl('',
@@ -60,13 +65,15 @@ export class AddUserComponent implements OnInit {
   email = new FormControl('',
     [Validators.required,
     Validators.maxLength(ValidationConstants.MAX_LENGTH_EMAIL),
-    Validators.minLength(ValidationConstants.MIN_LENGTH_EMAIL)
+    Validators.minLength(ValidationConstants.MIN_LENGTH_EMAIL),
+    Validators.pattern(ValidationConstants.EMAIL_REGEX)
   ]);
 
   phoneNumber = new FormControl('',
     [Validators.required,
     Validators.maxLength(ValidationConstants.MAX_LENGTH_PHONE_NUMBER),
-    Validators.minLength(ValidationConstants.MIN_LENGTH_PHONE_NUMBER)
+    Validators.minLength(ValidationConstants.MIN_LENGTH_PHONE_NUMBER),
+    Validators.pattern("^[0-9]*$")
     ]);
 
   usernameMinLengthErrorMessage = ErrorMessages.MIN_LENGTH_ERROR_MESSAGE('Username', ValidationConstants.MIN_LENGTH_USERNAME);
@@ -76,10 +83,7 @@ export class AddUserComponent implements OnInit {
   passwordMinLengthErrorMessage = ErrorMessages.MIN_LENGTH_ERROR_MESSAGE('Password', ValidationConstants.MIN_LENGTH_PASSWORD);
   passwordMaxLengthErrorMessage = ErrorMessages.MAX_LENGTH_ERROR_MESSAGE('Password', ValidationConstants.MAX_LENGTH_PASSWORD);
   passwordRequiredErrorMessage = ErrorMessages.REQUIRED_ERROR_MESSAGE('Password');
-
-  confirmPasswordMinLengthErrorMessage = ErrorMessages.MIN_LENGTH_ERROR_MESSAGE('Password', ValidationConstants.MIN_LENGTH_PASSWORD);
-  confirmPasswordMaxLengthErrorMessage = ErrorMessages.MAX_LENGTH_ERROR_MESSAGE('Password', ValidationConstants.MAX_LENGTH_PASSWORD);
-  confirmPasswordRequiredErrorMessage = ErrorMessages.REQUIRED_ERROR_MESSAGE('Password');
+  passwordsDontMatch = ErrorMessages.PASSWORDS_DONT_MATCH();
 
   firstnameMinLengthErrorMessage = ErrorMessages.MIN_LENGTH_ERROR_MESSAGE('Firstname', ValidationConstants.MIN_LENGTH_NAME);
   firstnameMaxLengthErrorMessage = ErrorMessages.MAX_LENGTH_ERROR_MESSAGE('Firstname', ValidationConstants.MAX_LENGTH_NAME);
@@ -89,32 +93,40 @@ export class AddUserComponent implements OnInit {
   lastnameMaxLengthErrorMessage = ErrorMessages.MAX_LENGTH_ERROR_MESSAGE('Lastname', ValidationConstants.MAX_LENGTH_NAME);
   lastnameRequiredErrorMessage = ErrorMessages.REQUIRED_ERROR_MESSAGE('Lastname');
 
-  emailMinLengthErrorMessage = ErrorMessages.MIN_LENGTH_ERROR_MESSAGE('Email', ValidationConstants.MIN_LENGTH_NAME);
-  emailMaxLengthErrorMessage = ErrorMessages.MAX_LENGTH_ERROR_MESSAGE('Email', ValidationConstants.MAX_LENGTH_NAME);
+  emailMinLengthErrorMessage = ErrorMessages.MIN_LENGTH_ERROR_MESSAGE('Email', ValidationConstants.MIN_LENGTH_EMAIL);
+  emailMaxLengthErrorMessage = ErrorMessages.MAX_LENGTH_ERROR_MESSAGE('Email', ValidationConstants.MAX_LENGTH_EMAIL);
   emailRequiredErrorMessage = ErrorMessages.REQUIRED_ERROR_MESSAGE('Email');
+  emailValidErrorMessage = ErrorMessages.EMAIL_NOT_VALID();
 
-  phoneNumberMinLengthErrorMessage = ErrorMessages.MIN_LENGTH_ERROR_MESSAGE('Phone Number', ValidationConstants.MIN_LENGTH_NAME);
-  phoneNumberMaxLengthErrorMessage = ErrorMessages.MAX_LENGTH_ERROR_MESSAGE('Phone Number', ValidationConstants.MAX_LENGTH_NAME);
+  phoneNumberMinLengthErrorMessage = ErrorMessages.MIN_LENGTH_ERROR_MESSAGE('Phone Number', ValidationConstants.MIN_LENGTH_PHONE_NUMBER);
+  phoneNumberMaxLengthErrorMessage = ErrorMessages.MAX_LENGTH_ERROR_MESSAGE('Phone Number', ValidationConstants.MAX_LENGTH_PHONE_NUMBER);
   phoneNumberRequiredErrorMessage = ErrorMessages.REQUIRED_ERROR_MESSAGE('Phone Number');
+  phoneNumberShouldBeNumbersErrorMessage = ErrorMessages.PHONE_SHOULD_BE_ONLY_NUMBERS();
 
   get usernameControl() { return this.addUserForm.get('username') };
-  get passwordControl() { return this.addUserForm.get('password') };
-  get confirmPasswordControl() { return this.addUserForm.get('password') };
   get firstnameControl() { return this.addUserForm.get('firstname') };
   get lastnameControl() { return this.addUserForm.get('lastname') };
   get emailControl() { return this.addUserForm.get('email') };
   get phoneNumberControl() { return this.addUserForm.get('phoneNumber') };
+
+  get passwordControl() { return this.passwordForm.get('password') };
+  get confirmPasswordControl() { return this.passwordForm.get('confirmPassword') };
   
   ngOnInit(): void {
-    this.addUserForm = this.fb.group({
-      username: this.username,
+
+    this.passwordForm = this.fb.group({
       password: this.password,
       confirmPassword: this.confirmPassword,
+    }, { validators: this.customValidator.checkPasswords });
+
+    this.addUserForm = this.fb.group({
+      username: this.username,
+      passwordForm: this.passwordForm, 
       firstname: this.firstname,
       lastname: this.lastname,
       email: this.email,
       phoneNumber: this.phoneNumber
-    })
+  });
 
     this.cardsVisible$ = this.cardsService.cardsVisible$;
   }
@@ -123,7 +135,7 @@ export class AddUserComponent implements OnInit {
     this.cardsService.setCardVisible(!this.cardsService.getCardsVisible);
   }
 
-  addUser(){  
+  addUser(addUserFormDirective: FormGroupDirective){  
     let authData: Signup = 
     {
        username: this.username.value,
@@ -148,6 +160,9 @@ export class AddUserComponent implements OnInit {
               panelClass: [StyleConstants.SNACKBAR_TYPE_SUCCESS]
             }
           );
+          
+          addUserFormDirective.resetForm();
+          this.addUserForm.reset();
       },
         (errorResponse) => {
           console.log('error: ', errorResponse);
