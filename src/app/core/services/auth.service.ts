@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Authentication, Signup, Token, User } from '../models/auth-model';
+import { Authentication, DecodedToken, Signup, Token, User } from '../models/auth-model';
 import { API, CONTROLLER, METHOD } from '../../shared/constants';
 import { CoreModule } from '../core.module';
 import { JwtHelperService } from '@auth0/angular-jwt/';
 import { AddRole } from '../models/role-model';
 import { JsonContentTypeInterceptor } from '../Interceptors/json-content-type.interceptor';
+import jwt_decode from 'jwt-decode';
 
 @Injectable({
   providedIn: CoreModule
@@ -50,6 +51,10 @@ export class AuthService {
     return request$;
   }
 
+  decodeToken(token){
+    return jwt_decode(token);
+  }
+
   //set
   saveTokenInLocalStorage(token: string){
     localStorage.setItem('id_token', token);
@@ -70,9 +75,10 @@ export class AuthService {
 
   getUserInfo(): User{
     var userInfo = this.getFromLocalStorage('user_info');
-    console.log('userInfo', userInfo);
+    var tokenDecoded = this.decodeToken(this.getFromLocalStorage('id_token')) as DecodedToken;
     var res = JSON.parse(userInfo) as User;
-    console.log('res', res);
+    res.tenantRole = JSON.parse(tokenDecoded.tenant.toString());
+    res.defaultTenantId = tokenDecoded.defaultTenantId;
     return res;
   }
 

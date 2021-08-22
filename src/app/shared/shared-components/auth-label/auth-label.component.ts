@@ -17,7 +17,6 @@ export class AuthLabelComponent implements OnInit {
   tenant: string;
 
   ngOnInit(): void {
-    console.log('aca', this.authLabel);
     this.user = this.authLabel.userName;
     this.role = this.authLabel.role;
     this.tenant = this.authLabel.tenant;

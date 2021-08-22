@@ -14,10 +14,17 @@ export interface Signup {
     phoneNumber: string;
 }
 
+export interface DecodedToken
+{
+    tenant: TenantRole[];
+    defaultTenantId: string;
+}
+
 export interface TenantRole
 {
     tenantId: number;
     tenantName: string;
+    tenantHeader: string;
     roleId: number;
     roleName: string;
 }
@@ -26,7 +33,8 @@ export interface User{
     id: string;
     firstName: string;
     lastName: string;
-    tenantsRoles: TenantRole[];
+    tenantRole: TenantRole[];
+    defaultTenantId: string;
 }
 
 export interface Token{

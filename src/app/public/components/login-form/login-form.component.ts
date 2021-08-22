@@ -23,18 +23,12 @@ export class LoginFormComponent implements OnInit {
   
   loginForm: FormGroup;
   username = new FormControl('', {
-    validators: [Validators.required,
-      Validators.maxLength(ValidationConstants.MAX_LENGTH_USERNAME),
-      Validators.minLength(ValidationConstants.MIN_LENGTH_USERNAME)
-     ],
+    validators: [Validators.required],
      updateOn: 'blur'
   }
 );
   password = new FormControl('', {
-    validators: [Validators.required,
-      Validators.maxLength(ValidationConstants.MAX_LENGTH_PASSWORD),
-      Validators.minLength(ValidationConstants.MIN_LENGTH_PASSWORD)
-      ],
+    validators: [Validators.required],
       updateOn: 'blur'
   }
 );
@@ -94,7 +88,6 @@ export class LoginFormComponent implements OnInit {
               panelClass: [StyleConstants.SNACKBAR_TYPE_ERROR]
             }
           );
-          this.router.navigate(['unauthorized']);
         }
     );    
   }
