@@ -47,8 +47,8 @@ export class AddRoleComponent implements OnInit {
             InformationMessages.ADDED_SUCCESFULLY('Role'),
             'hide',
             {
-              horizontalPosition: StyleConstants.SNACKBAR_HORIZONTAL_POSITION,
-              verticalPosition: StyleConstants.SNACKBAR_VERTICAL_POSITION,
+              horizontalPosition: StyleConstants.SNACKBAR_HORIZONTAL_POSITION_END,
+              verticalPosition: StyleConstants.SNACKBAR_VERTICAL_POSITION_TOP,
               duration: StyleConstants.SNACKBAR_DURATION,
               panelClass: [StyleConstants.SNACKBAR_TYPE_SUCCESS]
             }
@@ -60,8 +60,8 @@ export class AddRoleComponent implements OnInit {
             ErrorMessages.INTERNAL_ERROR(),
             'hide',
             {
-              horizontalPosition: StyleConstants.SNACKBAR_HORIZONTAL_POSITION,
-              verticalPosition: StyleConstants.SNACKBAR_VERTICAL_POSITION,
+              horizontalPosition: StyleConstants.SNACKBAR_HORIZONTAL_POSITION_END,
+              verticalPosition: StyleConstants.SNACKBAR_VERTICAL_POSITION_TOP,
               duration: StyleConstants.SNACKBAR_DURATION,
               panelClass: [StyleConstants.SNACKBAR_TYPE_ERROR]
             }

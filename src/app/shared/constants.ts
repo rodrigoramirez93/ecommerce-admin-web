@@ -24,8 +24,10 @@ export class ValidationConstants{
 }
 
 export class StyleConstants{
-    public static SNACKBAR_HORIZONTAL_POSITION: MatSnackBarHorizontalPosition = 'end';
-    public static SNACKBAR_VERTICAL_POSITION: MatSnackBarVerticalPosition = 'top';
+    public static SNACKBAR_HORIZONTAL_POSITION_CENTER: MatSnackBarHorizontalPosition = 'center';
+    public static SNACKBAR_VERTICAL_POSITION_BOTTOM: MatSnackBarVerticalPosition = 'bottom';
+    public static SNACKBAR_HORIZONTAL_POSITION_END: MatSnackBarHorizontalPosition = 'end';
+    public static SNACKBAR_VERTICAL_POSITION_TOP: MatSnackBarVerticalPosition = 'top';
     public static SNACKBAR_DURATION: number = 2000;
     public static SNACKBAR_TYPE_SUCCESS: string = "snackbar-success";
     public static SNACKBAR_TYPE_ERROR: string = "snackbar-error";
@@ -36,6 +38,10 @@ export class InformationMessages{
     public static REDIRECT = (route) => {
         return `Redirecting to ${route}`;
     }    
+
+    public static CHANGED_COMPANY = (companyName) => {
+        return `Changed to company ${companyName}`;
+    }
 
     public static ADDED_SUCCESFULLY = (object) => {
         return `${object} was added succesfully`

@@ -1,7 +1,26 @@
-.auth-label{
-    display: flex;
+
+.container {
     background-color: black;
+    border-color:white;
     color: white;
-    justify-content: flex-end;
     padding: 1vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      ". .";
+}
+
+.text-container{
+  justify-content: center;
+}
+
+.text{
+  white-space: nowrap;
+}
+
+.buttons-container{
+  justify-content: flex-end;
 }

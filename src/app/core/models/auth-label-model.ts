@@ -1,19 +1,20 @@
-export interface AuthLabel {
+import { TenantRole } from "./auth-model";
 
+export interface AuthLabel {
     userName: string;
-    role: string;
-    tenant: string;
+    defaultTenant: TenantRole;
+    tenants: TenantRole[];
 }
 
 export class AuthLabelImpl implements AuthLabel {
     
-    constructor(name: string, role: string, tenant: string) {
+    constructor(name: string, tenants: TenantRole[], defaultTenant: TenantRole) {
         this.userName = name;
-        this.role = role;
-        this.tenant = tenant;
+        this.tenants = tenants;
+        this.defaultTenant = defaultTenant;
     }
 
     userName: string;
-    role: string;
-    tenant: string;
+    tenants: TenantRole[];
+    defaultTenant: TenantRole;
 }

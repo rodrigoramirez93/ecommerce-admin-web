@@ -166,8 +166,8 @@ export class AddUserComponent implements OnInit {
             InformationMessages.ADDED_SUCCESFULLY('user'),
             'hide',
             {
-              horizontalPosition: StyleConstants.SNACKBAR_HORIZONTAL_POSITION,
-              verticalPosition: StyleConstants.SNACKBAR_VERTICAL_POSITION,
+              horizontalPosition: StyleConstants.SNACKBAR_HORIZONTAL_POSITION_END,
+              verticalPosition: StyleConstants.SNACKBAR_VERTICAL_POSITION_BOTTOM,
               duration: StyleConstants.SNACKBAR_DURATION,
               panelClass: [StyleConstants.SNACKBAR_TYPE_SUCCESS]
             }
@@ -182,8 +182,8 @@ export class AddUserComponent implements OnInit {
             errorResponse?.error?.detail ?? ErrorMessages.INTERNAL_ERROR(),
             'hide',
             {
-              horizontalPosition: StyleConstants.SNACKBAR_HORIZONTAL_POSITION,
-              verticalPosition: StyleConstants.SNACKBAR_VERTICAL_POSITION,
+              horizontalPosition: StyleConstants.SNACKBAR_HORIZONTAL_POSITION_END,
+              verticalPosition: StyleConstants.SNACKBAR_VERTICAL_POSITION_BOTTOM,
               duration: StyleConstants.SNACKBAR_DURATION,
               panelClass: [StyleConstants.SNACKBAR_TYPE_ERROR]
             }

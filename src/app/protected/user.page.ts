@@ -39,6 +39,6 @@ export class UserPage implements OnInit {
     var userInfo = this.authService.getUserInfo();
     var name = userInfo.firstName + ' ' + userInfo.lastName;
     var tenantRole = this.getTenant(userInfo.tenantRole, parseInt(userInfo.defaultTenantId));
-    this.authLabel = new AuthLabelImpl(name, tenantRole.roleName, tenantRole.tenantName);
+    this.authLabel = new AuthLabelImpl(name, userInfo.tenantRole, tenantRole);
   }
 }

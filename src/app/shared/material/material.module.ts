@@ -12,6 +12,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatSelect, MatSelectModule } from '@angular/material/select';
 import { MatCell, MatCellDef, MatColumnDef, MatFooterCellDef, MatHeaderCell, MatHeaderCellDef, MatHeaderRow, MatHeaderRowDef, MatRow, MatRowDef, MatTable, MatTableModule } from '@angular/material/table';
 import { CdkTableModule } from '@angular/cdk/table';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 
 @NgModule({
   declarations: [],
@@ -27,7 +28,8 @@ import { CdkTableModule } from '@angular/cdk/table';
     MatNativeDateModule,
     MatSelectModule,
     MatTableModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatButtonToggleModule
   ],
   exports: 
     [MatCard, MatCardTitle, MatCardContent,
@@ -37,7 +39,7 @@ import { CdkTableModule } from '@angular/cdk/table';
     MatTabNav, MatTabLink, MatError, MatAccordion,
     MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelContent,
     MatExpansionPanelTitle, MatExpansionPanelDescription, MatDatepicker,
-    MatTabGroup, MatCardActions, MatSelect, MatTableModule, MatExpansionModule]
+    MatTabGroup, MatCardActions, MatSelect, MatTableModule, MatExpansionModule, MatButtonToggleModule]
 })
 
 export class MaterialModule { }

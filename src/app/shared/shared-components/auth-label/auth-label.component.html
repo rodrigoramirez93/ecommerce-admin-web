@@ -1,1 +1,10 @@
-<div class="auth-label">User: {{user}} | Role: {{role}} | Company: {{tenant}}</div>
+<div class="container" *ngIf="authLabel.tenants.length > 1">
+    <div class="middle-container text-container">
+        <div class="text middle-item">
+            User: {{user}} | Role: {{role}} | Company: {{tenant}}
+        </div>
+    </div>
+    <mat-button-toggle-group class="buttons-container" name="companies" aria-label="Companies">
+        <mat-button-toggle (change)="onTenantClick($event.value)" *ngFor="let tenant of authLabel.tenants" [value]="tenant.tenantId">{{tenant.tenantName}}</mat-button-toggle>
+    </mat-button-toggle-group>
+</div>

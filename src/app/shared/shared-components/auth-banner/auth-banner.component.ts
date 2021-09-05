@@ -35,8 +35,8 @@ export class AuthBannerComponent implements OnInit {
       InformationMessages.REDIRECT('Home. See you later!'),
       'hide',
       {
-        horizontalPosition: StyleConstants.SNACKBAR_HORIZONTAL_POSITION,
-        verticalPosition: StyleConstants.SNACKBAR_VERTICAL_POSITION,
+        horizontalPosition: StyleConstants.SNACKBAR_HORIZONTAL_POSITION_END,
+        verticalPosition: StyleConstants.SNACKBAR_VERTICAL_POSITION_BOTTOM,
         duration: StyleConstants.SNACKBAR_DURATION,
         panelClass: [StyleConstants.SNACKBAR_TYPE_SUCCESS]
       }
