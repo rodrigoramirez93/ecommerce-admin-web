@@ -55,7 +55,7 @@ export class AddRoleComponent implements OnInit {
           );
       },
         (error) => {
-          console.log('error: ', error);
+          //console.log('error: ', error);
           this.snackBar.open(
             ErrorMessages.INTERNAL_ERROR(),
             'hide',

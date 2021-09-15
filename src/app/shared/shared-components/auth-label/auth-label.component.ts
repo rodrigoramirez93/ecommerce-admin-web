@@ -28,7 +28,7 @@ export class AuthLabelComponent implements OnInit {
   }
 
   onTenantClick(tenantId){
-    console.log('tenant', tenantId);
+    //console.log('tenant', tenantId);
     var tenant = this.authLabel.tenants.find(x => x.tenantId == tenantId);
     this.role = tenant.roleName;
     this.tenant = tenant.tenantName;

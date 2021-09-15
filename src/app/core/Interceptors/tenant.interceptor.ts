@@ -17,7 +17,7 @@ export class TenantInterceptor implements HttpInterceptor {
     
     var tenantHeader = this.tenantService.getTenantHeader();
 
-    console.log('interceptor', tenantHeader);
+    //console.log('interceptor', tenantHeader);
 
     request = request.clone({
       setHeaders: {

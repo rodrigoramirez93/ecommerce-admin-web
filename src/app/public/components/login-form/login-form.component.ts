@@ -60,7 +60,7 @@ export class LoginFormComponent implements OnInit {
       .pipe(takeUntil(this.ngUnsubscribe))
       .subscribe(
         (res) => {
-          console.log('login form', res);
+          //console.log('login form', res);
           this.authService.saveTokenInLocalStorage(res.idToken);
           this.authService.saveExpirationDateInLocalStorage(res.expirationDate);
           this.authService.saveUserInfoInLocalStorage(res.user);
@@ -77,7 +77,7 @@ export class LoginFormComponent implements OnInit {
           this.router.navigate(['user/managment']);
       },
         (error) => {
-          console.log('error: ', error);
+          //console.logog('error: ', error);
           this.snackBar.open(
             ErrorMessages.UNAUTHORIZED(),
             'hide',

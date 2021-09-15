@@ -177,7 +177,7 @@ export class AddUserComponent implements OnInit {
           this.addUserForm.reset();
       },
         (errorResponse) => {
-          console.log('error: ', errorResponse);
+          //console.log('error: ', errorResponse);
           this.snackBar.open(
             errorResponse?.error?.detail ?? ErrorMessages.INTERNAL_ERROR(),
             'hide',

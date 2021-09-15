@@ -58,7 +58,7 @@ export class CardsService {
   }
 
   setCardVisible(cardVisible: boolean){
-    console.log('cards visible', cardVisible);
+    //console.log('cards visible', cardVisible);
     this.cardsVisibleSource.next(cardVisible);
   }
 
