@@ -1,17 +1,17 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { UserPage } from './user.page';
-import { ManagmentComponent } from './components/managment/managment.component';
+import { managementComponent } from './components/management/management.component';
 
-import { AddRoleComponent } from './components/managment/role/add-role/add-role.component';
-import { DeleteRoleComponent } from './components/managment/role/delete-role/delete-role.component';
-import { GetRoleComponent } from './components/managment/role/get-role/get-role.component'; 
-import { UpdateRoleComponent } from './components/managment/role/update-role/update-role.component';
+import { AddRoleComponent } from './components/management/role/add-role/add-role.component';
+import { DeleteRoleComponent } from './components/management/role/delete-role/delete-role.component';
+import { GetRoleComponent } from './components/management/role/get-role/get-role.component'; 
+import { UpdateRoleComponent } from './components/management/role/update-role/update-role.component';
 
-import { AddUserComponent } from './components/managment/user/add-user/add-user.component'; 
-import { DeleteUserComponent } from './components/managment/user/delete-user/delete-user.component'; 
-import { GetUserComponent } from './components/managment/user/get-user/get-user.component'; 
-import { UpdateUserComponent } from './components/managment/user/update-user/update-user.component'; 
+import { AddUserComponent } from './components/management/user/add-user/add-user.component'; 
+import { DeleteUserComponent } from './components/management/user/delete-user/delete-user.component'; 
+import { GetUserComponent } from './components/management/user/get-user/get-user.component'; 
+import { UpdateUserComponent } from './components/management/user/update-user/update-user.component'; 
 
 
 const routes: Routes = 
@@ -21,7 +21,7 @@ const routes: Routes =
     children: 
     [
       { 
-        path: 'managment',  component: ManagmentComponent, children: 
+        path: 'management',  component: managementComponent, children: 
         [
           {  path: 'add-role', component: AddRoleComponent },
           {  path: 'delete-role', component: DeleteRoleComponent },
@@ -34,7 +34,7 @@ const routes: Routes =
           {  path: 'update-user', component: UpdateUserComponent }
         ]
       },
-      { path: '', component: ManagmentComponent, pathMatch: 'full' }
+      { path: '', component: managementComponent, pathMatch: 'full' }
     ]
   },
   { path: 'user', redirectTo: '', pathMatch: 'full'}

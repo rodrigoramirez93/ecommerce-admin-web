@@ -4,17 +4,17 @@ import { SharedModule } from '../shared/shared.module';
 import { ProtectedRoutingModule } from './protected-routing.module';
 import { UserPage } from './user.page';
 
-import { ManagmentComponent } from './components/managment/managment.component';
+import { managementComponent } from './components/management/management.component';
 
-import { AddUserComponent } from './components/managment/user/add-user/add-user.component';
-import { DeleteUserComponent } from './components/managment/user/delete-user/delete-user.component';
-import { GetUserComponent } from './components/managment/user/get-user/get-user.component';
-import { UpdateUserComponent } from './components/managment/user/update-user/update-user.component';
+import { AddUserComponent } from './components/management/user/add-user/add-user.component';
+import { DeleteUserComponent } from './components/management/user/delete-user/delete-user.component';
+import { GetUserComponent } from './components/management/user/get-user/get-user.component';
+import { UpdateUserComponent } from './components/management/user/update-user/update-user.component';
 
-import { AddRoleComponent } from './components/managment/role/add-role/add-role.component';
-import { GetRoleComponent } from './components/managment/role/get-role/get-role.component';
-import { DeleteRoleComponent } from './components/managment/role/delete-role/delete-role.component';
-import { UpdateRoleComponent } from './components/managment/role/update-role/update-role.component';
+import { AddRoleComponent } from './components/management/role/add-role/add-role.component';
+import { GetRoleComponent } from './components/management/role/get-role/get-role.component';
+import { DeleteRoleComponent } from './components/management/role/delete-role/delete-role.component';
+import { UpdateRoleComponent } from './components/management/role/update-role/update-role.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
@@ -22,7 +22,7 @@ import { MatSortModule } from '@angular/material/sort';
 @NgModule({
   declarations: [
     UserPage,
-    ManagmentComponent,  
+    managementComponent,  
       
       AddUserComponent, 
       GetUserComponent,

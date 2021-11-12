@@ -5,11 +5,11 @@ import { HostListener } from '@angular/core';
 import { Card, Cards } from "../../../core/models/card-model";
 
 @Component({
-  selector: 'managment',
-  templateUrl: './managment.component.html',
-  styleUrls: ['./managment.component.scss']
+  selector: 'management',
+  templateUrl: './management.component.html',
+  styleUrls: ['./management.component.scss']
 })
-export class ManagmentComponent implements OnInit {
+export class managementComponent implements OnInit {
   
   @HostListener('window:popstate', ['$event'])
 

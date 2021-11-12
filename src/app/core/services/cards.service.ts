@@ -12,16 +12,16 @@ export class CardsService {
   private userCards: Cards =  {
     context: 'User',
     cardList: [
-       { titleText: 'Add User', buttonText: 'Create', contentText: 'Create a new blank user', redirectRoute: '/user/managment/add-user'},
-       { titleText: 'Manage Users', buttonText: 'Manage', contentText: 'Manage users', redirectRoute: '/user/managment/update-user'}
+       { titleText: 'Add User', buttonText: 'Create', contentText: 'Create a new blank user', redirectRoute: '/user/management/add-user'},
+       { titleText: 'Manage Users', buttonText: 'Manage', contentText: 'Manage users', redirectRoute: '/user/management/update-user'}
     ]
   };
 
   private roleCards: Cards =  {
     context: 'Role',
     cardList: [
-       { titleText: 'Add role', buttonText: 'Create', contentText: 'Add new role', redirectRoute: '/user/managment/add-role'},
-       { titleText: 'Manage roles', buttonText: 'Manage', contentText: 'Update role', redirectRoute: '/user/managment/update-role'},
+       { titleText: 'Add role', buttonText: 'Create', contentText: 'Add new role', redirectRoute: '/user/management/add-role'},
+       { titleText: 'Manage roles', buttonText: 'Manage', contentText: 'Update role', redirectRoute: '/user/management/update-role'},
     ]
   }
 

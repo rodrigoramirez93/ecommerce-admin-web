@@ -74,7 +74,7 @@ export class LoginFormComponent implements OnInit {
               panelClass: [StyleConstants.SNACKBAR_TYPE_SUCCESS]
             }
           );
-          this.router.navigate(['user/managment']);
+          this.router.navigate(['user/management']);
       },
         (error) => {
           //console.logog('error: ', error);

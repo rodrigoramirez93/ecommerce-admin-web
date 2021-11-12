@@ -11,7 +11,7 @@ import { AuthService } from '../core/services/auth.service';
 export class UserPage implements OnInit {
 
   navLinks = [ 
-    { path: 'managment', label: 'Managment' }
+    { path: 'management', label: 'management' }
    ];
   
   authLabel: AuthLabelImpl;
