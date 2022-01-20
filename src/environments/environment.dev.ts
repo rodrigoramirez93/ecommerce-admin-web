@@ -1,6 +1,6 @@
 export const environment = {
     production: false,
-    ApiUrl: 'https://localhost:44391',
-    IdentityUrl: 'https://localhost:44390'
+    ApiUrl: 'http://localhost:8081',
+    IdentityUrl: 'http://localhost:8080'
   };
   
